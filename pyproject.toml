@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rrt-echo"
+version = "0.1.0"
+description = "Offline, evidence-scoped long-video memory with revisable identity"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+audio = ["av>=12", "numpy>=1.26", "faster-whisper>=1.0", "torch>=2.2", "torchaudio>=2.2", "scikit-learn>=1.3"]
+perception = ["av>=12", "Pillow>=10", "numpy>=1.26", "jsonschema>=4.20"]
+video = ["av>=12", "Pillow>=10", "numpy>=1.26"]
+detection = ["torch>=2.2", "torchvision>=0.17", "Pillow>=10"]
+face = ["insightface>=0.7", "onnxruntime>=1.17", "opencv-python-headless>=4.8"]
+face-gpu = ["insightface>=0.7", "onnxruntime-gpu>=1.17", "opencv-python-headless>=4.8"]
+dev = ["pytest>=8", "ruff>=0.9", "build>=1"]
+
+[project.urls]
+Repository = "https://git.woa.com/bryankztan/rrt_echo"
+
+[project.scripts]
+rrt-echo-multimodal = "rrt_echo.rrt.multimodal:main"
+rrt-echo-audio = "rrt_echo.rrt.audio:main"
+rrt-echo = "rrt_echo.cli:main"
+rrt-echo-offline = "rrt_echo.rrt.pipeline:main"
+rrt-echo-qa = "rrt_echo.rrt.reader:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]

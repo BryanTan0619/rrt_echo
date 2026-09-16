@@ -1,0 +1,1 @@
+{"question_id": "toy1", "type": "role_direction", "question": "Which local participant performs the attack?", "options": {"A": "adult_a attacks adult_b", "B": "adult_b attacks adult_a"}, "ans": "A"}

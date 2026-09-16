@@ -1,0 +1,2 @@
+{"proposal_id": "id0", "left": "o0:adult_b", "right": "o1:adult_b", "verdict": "same", "media_ids": ["synthetic_frame_0", "synthetic_frame_1"], "visual_basis": "Synthetic fixture: supplied correspondence; not a measured visual result."}
+{"proposal_id": "id1", "left": "o1:adult_b", "right": "o2:adult_b", "verdict": "same", "media_ids": ["synthetic_frame_1", "synthetic_frame_2"], "visual_basis": "Synthetic fixture: supplied correspondence; not a measured visual result."}

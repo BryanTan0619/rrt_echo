@@ -1,0 +1,25 @@
+{
+  "budget_seconds": 3600,
+  "window_seconds": 8,
+  "base_fps": 1,
+  "high_fps": 8,
+  "max_frames": 16,
+  "shot_threshold": 0.1,
+  "max_output_tokens": 4096,
+  "max_identity_comparisons": 400,
+  "candidate_limit": 3,
+  "detector_weights": null,
+  "detector_device": "cpu",
+  "model": null,
+  "base_url": null,
+  "face_model_root": null,
+  "face_provider": "CPUExecutionProvider",
+  "staged": true,
+  "image_max_edge": 1024,
+  "identity_kinds": [
+    "person",
+    "object"
+  ],
+  "detector_architecture": "v1",
+  "joint": false
+}

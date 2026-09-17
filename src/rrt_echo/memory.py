@@ -125,6 +125,7 @@ class Memory:
                         "predicate": fact.predicate,
                         "roles": roles,
                         "value": fact.value,
+                        "carrier": fact.carrier,
                         "resolved_roles": {
                             role: {
                                 "local_instance": ref,

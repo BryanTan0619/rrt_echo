@@ -55,6 +55,19 @@ def joint_schema(target_ids, all_ids, reference_ids=(), max_instances=16, max_fa
             "regions": arr(region, 4, 1),
         }
     )
+    # Optional discriminative attributes: closed dimensions, open values.
+    instance["properties"]["attributes"] = arr(
+        obj(
+            {
+                "dimension": enum(
+                    ["color", "shape", "material", "size", "attire", "state"]
+                ),
+                "value": string(40),
+            }
+        ),
+        6,
+        0,
+    )
     fact = obj(
         {
             "fact_id": string(40),
@@ -68,6 +81,12 @@ def joint_schema(target_ids, all_ids, reference_ids=(), max_instances=16, max_fa
             "unresolved_slots": arr(string(40), 16),
         }
     )
+    # carrier applies only to text facts; it stays optional so event/state/attribute
+    # facts remain valid without it.
+    fact["properties"]["carrier"] = {
+        "type": "string",
+        "enum": ["inscribed", "screen", "overlay", "unknown"],
+    }
     link = obj(
         {
             "source": enum(local),

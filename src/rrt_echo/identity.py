@@ -2,11 +2,44 @@
 
 from __future__ import annotations
 
+import re
 from dataclasses import asdict, dataclass, replace
 from datetime import datetime, timezone
 from typing import Mapping
 
 from .schema import Instance, digest
+
+# Discriminative inscribed identifiers (vest/bib/jersey numbers, tags, plates).
+# These are physically inscribed, designed to be unique per entity, and far more
+# reliable than shared appearance attributes (e.g. everyone wearing the same
+# uniform). Leading zeros are normalized so "05" and "5" compare equal.
+_IDENTIFIER_PATTERN = re.compile(
+    r"(?:number|vest|bib|jersey|player|contestant|racer)\s*#?\s*(\d+)"
+    r"|\b#\s*(\d+)"
+    r"|no\.?\s*(\d+)",
+    re.IGNORECASE,
+)
+
+
+def extract_identifiers(description: str) -> frozenset[str]:
+    """Extract normalized inscribed identifiers from an appearance description.
+
+    Only identifiers preceded by an explicit label are kept, so unrelated numbers
+    (e.g. "18-inch weapon") are not treated as identity evidence. Returns an empty
+    set when no explicit identifier was observed, which must never be used as
+    evidence of distinctness. Leading zeros are normalized ("05" == "5").
+    """
+    ids = set()
+    for group in _IDENTIFIER_PATTERN.findall(description or ""):
+        value = next((g for g in group if g), None)
+        if value is not None:
+            ids.add(str(int(value)))
+    return frozenset(ids)
+
+
+def discriminative_identifiers(instance: Instance) -> frozenset[str]:
+    """Identifiers for a local instance; delegates to extract_identifiers."""
+    return extract_identifiers(instance.description)
 
 
 @dataclass(frozen=True)
@@ -132,6 +165,13 @@ class IdentityGraph:
         if p.verdict == "same":
             if instances[p.left].kind != instances[p.right].kind:
                 return self._append(p, "deferred", "incompatible_instance_types")
+            # Explicit inscribed identifiers are the strongest identity evidence.
+            # When both endpoints carry different ones, the SAME interpretation is
+            # vetoed; absence of an identifier never counts as distinctness.
+            left_ids = discriminative_identifiers(instances[p.left])
+            right_ids = discriminative_identifiers(instances[p.right])
+            if left_ids and right_ids and left_ids.isdisjoint(right_ids):
+                return self._append(p, "deferred", "inscribed_identifier_conflict")
             conflict = any(
                 d.proposal.verdict == "different" and {d.proposal.left, d.proposal.right} <= union
                 for d in self.active()

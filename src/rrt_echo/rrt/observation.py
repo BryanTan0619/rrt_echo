@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 
 from jsonschema import Draft202012Validator
+from jsonschema.exceptions import ValidationError
 
 from ..echo_perception.types import atomic_json
 from ..echo_perception.vlm import VisionClient, transport_schema
@@ -30,12 +31,21 @@ leave their role in unresolved_slots. Do not substitute a nearby person for them
 For writing, writer, instrument and surface are distinct semantic roles. A body
 surface is a region instance with a separate part_of link to its owner if visible.
 Properties describe owned appearance/state; text contains literal readable characters
-on its own surface. Do not infer death, infection, cause, kinship, reading/comprehension,
+on its own surface. For each text property set carrier: inscribed for characters
+physically on an object surface (dial, label, sign), screen for characters shown by
+an electronic screen or instrument display (readings, step numbers), overlay for
+captions/subtitles/narration added over the frame rather than present in the scene.
+Use unknown when uncertain; non-text properties use carrier=unknown. Do not infer
+death, infection, cause, kinship, reading/comprehension,
 or unchanged state during gaps from appearance alone. Names are not identity proof.
 For links: continues=short visual continuity, part_of=region ownership (never holding),
 same_identity=cross-segment person/object identity. Compare supplied references directly,
 cite visible frames for BOTH endpoints, and use unresolved for uncertain matches.
-Instance descriptions are visible appearance, not stories. Give at most a few useful
+Instance descriptions are visible appearance, not stories. Carry discriminative
+attributes for every instance: object dimensions are color/shape/material/size/state
+(e.g. shape=umbrella, color=brown, state=raw/collapsing); person dimensions are
+attire/color (e.g. attire=leather jacket, color=green tracksuit). A generic noun
+alone (food/cookie) or a bare person is not enough. Give at most a few useful
 anchors per instance, spread across its appearances; do not duplicate an instance when
 anchor capacity is exhausted. Empty lists are valid. Plan the region list together with events: each role's region frame MUST occur in that event's frames. Create a separate region observation at another frame when needed, reusing the same instance ID. Cite 1-4 decisive frames, not a full frame enumeration. Avoid generic look/sit/stand repetitions; prioritize distinctive actions and observable changes. Stop after the actual events; maxima are not quotas. A writer is a PERSON; the arm being written on is the SURFACE, not the writer. Locate the writer at that action frame (or leave writer unresolved). A previously written inscription is a text observation, never evidence of an ongoing writing action. Link isolated body regions to their person with part_of, using the region INSTANCE ID as source and person INSTANCE ID as target and frames for both. Output compact JSON only.
 """
@@ -46,7 +56,29 @@ def event_schema(target, all_frames, refs, max_instances=20, max_events=8):
     rids = [f"r{i}" for i in range(128)]
     frames = arr(enum(target), 12, 1)
     inst = obj(
-        {"id": enum(ids), "kind": enum(["person", "object", "region"]), "description": string(160)}
+        {
+            "id": enum(ids),
+            "kind": enum(["person", "object", "region"]),
+            "description": string(160),
+        }
+    )
+    # Discriminative attributes: closed dimensions, open values.
+    # Optional at the schema level; the prompt requires discriminative detail so
+    # a generic noun (food/cookie) or bare person can still be distinguished.
+    #   color/shape/material/size -> object appearance
+    #   attire -> what a person wears (jacket, tracksuit, ...)
+    #   state  -> object/person condition (raw, dry, smooth, collapsing, ...)
+    inst["properties"]["attributes"] = arr(
+        obj(
+            {
+                "dimension": enum(
+                    ["color", "shape", "material", "size", "attire", "state"]
+                ),
+                "value": string(40),
+            }
+        ),
+        6,
+        0,
     )
     region = obj(
         {
@@ -76,6 +108,7 @@ def event_schema(target, all_frames, refs, max_instances=20, max_events=8):
             "predicate": string(48),
             "value": string(180),
             "owner_region": enum(rids),
+            "carrier": enum(["inscribed", "screen", "overlay", "unknown"]),
             "frames": frames,
         }
     )
@@ -139,6 +172,7 @@ def expand_events(raw, audit):
             "instance_id": key,
             "kind": v["kind"],
             "description": v["description"],
+            "attributes": v.get("attributes", []),
             "regions": anchors[key],
         }
         for key, v in instances.items()
@@ -178,7 +212,7 @@ def expand_events(raw, audit):
                 "unresolved_slots": event["unresolved_slots"],
             }
             validate({**base, "facts": [fact]}, audit["schema"], audit["reference_endpoints"])
-        except (KeyError, ValueError) as error:
+        except (KeyError, ValueError, ValidationError) as error:
             rejected.append({"record": event, "reason": str(error)})
             continue
         facts.append(fact)
@@ -203,8 +237,10 @@ def expand_events(raw, audit):
                 "observed_media_ids": p["frames"],
                 "unresolved_slots": [],
             }
+            if p["kind"] == "text":
+                fact["carrier"] = p.get("carrier", "unknown")
             validate({**base, "facts": [fact]}, audit["schema"], audit["reference_endpoints"])
-        except (KeyError, ValueError) as error:
+        except (KeyError, ValueError, ValidationError) as error:
             rejected.append({"record": p, "reason": str(error)})
             continue
         facts.append(fact)
@@ -213,7 +249,7 @@ def expand_events(raw, audit):
     for link in raw["links"]:
         try:
             validate({**base, "links": [link]}, audit["schema"], audit["reference_endpoints"])
-        except ValueError as error:
+        except (ValueError, ValidationError) as error:
             rejected.append({"record": link, "reason": str(error)})
         else:
             links.append(link)
@@ -364,6 +400,7 @@ class OccurrenceVisionClient(EventVisionClient):
                 "predicate": prop["predicate"],
                 "value": prop["value"],
                 "region": region,
+                "carrier": prop["carrier"],
                 "frames": arr(prop["frames"]["items"], 4, 1),
             }
         )
@@ -401,7 +438,8 @@ region-kind instance and target is the person/object instance; holding is never 
 """
         extra += """
 JSON LAYOUT (limits are maxima, never quotas):
-{"instances":[{"id":"i0","kind":"person|object|region","description":"visible appearance"}],
+{"instances":[{"id":"i0","kind":"person|object|region","description":"visible appearance",
+   "attributes":[{"dimension":"color|shape|material|size","value":"open text, e.g. umbrella"}]}],
  "events":[{"predicate":"specific observed action","frames":["f0"],
    "regions":[{"id":"r0","instance":"i0","frame":"f0","box":[0,0,1000,1000]}],
    "roles":[{"role":"directed semantic role","region":"r0"}],"unresolved_slots":[]}],
@@ -487,20 +525,35 @@ occurrence across its frames, not several copies of the same action.
             mapping = {}
             for r in local:
                 if r["id"] in mapping:
-                    raise ValueError("duplicate_occurrence_region")
+                    # Duplicate region ids inside one event are a model error.
+                    # Keep the first mapping and drop later duplicates instead of
+                    # failing the entire window.
+                    continue
                 rid = f"r{len(regions)}"
                 mapping[r["id"]] = rid
                 regions.append({**r, "id": rid})
-            for role in event["roles"]:
-                if role["region"] not in mapping:
-                    raise ValueError("undeclared_occurrence_region")
-                role["region"] = mapping[role["region"]]
+            # Undeclared region references drop only that role; the event's other
+            # roles survive. A role-less event is then rejected per record by
+            # expand_events instead of raising here and losing the whole window.
+            event["roles"] = [
+                {**role, "region": mapping[role["region"]]}
+                for role in event["roles"]
+                if role["region"] in mapping
+            ]
         for prop in raw["properties"]:
             r = prop.pop("region")
             rid = f"r{len(regions)}"
             regions.append({**r, "id": rid})
             prop["owner_region"] = rid
         raw["regions"] = regions
+        # A repeated link or a repeated evidence frame carries no extra
+        # information and would later fail the full-schema uniqueItems check.
+        # Deduplicate losslessly; distinct links are preserved.
+        dedup = {}
+        for link in raw["links"]:
+            link["evidence_ids"] = list(dict.fromkeys(link["evidence_ids"]))
+            dedup[json.dumps(link, sort_keys=True)] = link
+        raw["links"] = list(dedup.values())
         return raw
 
     def decode_output(self, text, audit):

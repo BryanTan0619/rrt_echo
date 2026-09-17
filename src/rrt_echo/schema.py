@@ -77,6 +77,7 @@ class Instance:
     regions: tuple[Region, ...]
     description: str = ""  # current appearance, never a global name
     track_ref: str | None = None  # candidate cue, not a global identity
+    attributes: tuple[tuple[str, str], ...] = ()  # (dimension, value) pairs
 
 
 @dataclass(frozen=True)
@@ -89,6 +90,7 @@ class Fact:
     joint_evidence: tuple[str, ...]
     observed_media_ids: tuple[str, ...]
     value: str | None = None
+    carrier: str | None = None  # text facts only: inscribed/screen/overlay/unknown
     unresolved_slots: tuple[str, ...] = ()
     # Bounds are only accepted when explicitly marked by a reviewed proposal.
     time_bounds: tuple[float, float] | None = None
@@ -184,6 +186,10 @@ class ObservationPacket:
                         Region(r["media_id"], tuple(r["box"]), r.get("source", "vlm"))
                         for r in i.get("regions", [])
                     ),
+                    attributes=tuple(
+                        (a["dimension"], a["value"])
+                        for a in i.get("attributes", [])
+                    ),
                 )
                 for i in data.get("instances", [])
             ),
@@ -199,6 +205,7 @@ class ObservationPacket:
                     joint_evidence=tuple(f.get("joint_evidence", [])),
                     observed_media_ids=tuple(f.get("observed_media_ids", [])),
                     value=f.get("value"),
+                    carrier=f.get("carrier"),
                     unresolved_slots=tuple(f.get("unresolved_slots", [])),
                     time_bounds=tuple(f["time_bounds"])
                     if f.get("time_bounds") is not None

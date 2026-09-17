@@ -134,11 +134,40 @@ def candidate_pairs(results, motion=None, top_k=3):
     pairs = {}
     for p in (motion or {}).get("pairs", []):
         pairs[tuple(sorted((p["left"], p["right"])))] = dict(p, priority=2.0)
+    # Inscribed identifier index: same-number buckets pair directly at high priority,
+    # so identity recall no longer depends on the top-k appearance ranking.
+    from ..identity import extract_identifiers
+
+    id_of = {}
+    buckets = defaultdict(list)
+    for key, inst in eligible.items():
+        ids = extract_identifiers(inst["description"])
+        id_of[key] = ids
+        for nid in ids:
+            buckets[nid].append(key)
+    for nid, keys in buckets.items():
+        for a in range(len(keys)):
+            for b in range(a + 1, len(keys)):
+                pair = tuple(sorted((keys[a], keys[b])))
+                pairs.setdefault(
+                    pair,
+                    {
+                        "left": pair[0],
+                        "right": pair[1],
+                        "relation": "same_identity",
+                        "source": "inscribed_identifier_match",
+                        "priority": 5.0,
+                    },
+                )
     for key, inst in eligible.items():
         ranks = []
         words = set(re.findall(r"\w+", inst["description"].lower()))
         for other, oi in eligible.items():
             if other == key or oi["kind"] != inst["kind"]:
+                continue
+            # Explicitly different inscribed identifiers cannot merge; skip the pair
+            # rather than spend comparison budget on an identity that will be vetoed.
+            if id_of[key] and id_of[other] and id_of[key].isdisjoint(id_of[other]):
                 continue
             appearance = max(
                 (sum(a * b for a, b in zip(x, y)) for x in features[key] for y in features[other]),
@@ -226,33 +255,18 @@ def ownership_candidates(results, top_k=3):
     return sorted(rows, key=lambda p: (-p["priority"], p["left"], p["right"]))
 
 
-def representative_regions(instance, media, limit=2):
-    """Area and temporal diversity are cheap proxies, not semantic quality proof."""
-    regions = list(instance["regions"])
+def representative_regions(instance, media, limit=3):
+    """Temporally spread anchors (first/middle/last), not area-max crops.
 
-    def area(r):
-        a, b, c, d = r["box"]
-        return (c - a) * (d - b)
-
-    regions.sort(key=lambda r: (-area(r), r["media_id"], r["box"]))
-    selected = []
-    while regions and len(selected) < limit:
-        if selected:
-            regions.sort(
-                key=lambda r: (
-                    -area(r)
-                    * (
-                        1
-                        + min(
-                            abs(seconds(media[r["media_id"]]) - seconds(media[x["media_id"]]))
-                            for x in selected
-                        )
-                    ),
-                    r["media_id"],
-                )
-            )
-        selected.append(regions.pop(0))
-    return selected
+    Continuity comparisons need a person's pose and attire across their whole
+    sighting, not the largest box (which may be only a back view). Spread evenly
+    in time so a turn or a frontal frame in between is not dropped.
+    """
+    regions = sorted(instance["regions"], key=lambda r: seconds(media[r["media_id"]]))
+    if len(regions) <= limit:
+        return regions
+    idx = [round(i * (len(regions) - 1) / (limit - 1)) for i in range(limit)]
+    return [regions[i] for i in dict.fromkeys(idx)]
 
 
 def resolve(

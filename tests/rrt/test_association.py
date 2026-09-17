@@ -129,3 +129,37 @@ def test_bounded_batches_reserve_ownership_and_skip_previously_compared(tmp_path
     assert all(p["relation"] == "same_identity" for p in seen[0])
     assert all(p["relation"] == "part_of" for p in seen[1])
     assert not any(p["left"] == "i0" and p["right"] == "i1" for batch in seen for p in batch)
+
+
+def test_representative_regions_temporal_spread():
+    from rrt_echo.rrt.association import representative_regions
+
+    instance = {
+        "regions": [
+            {"media_id": "f0", "box": [0.0, 0.0, 0.2, 0.2]},  # t=0, 面积小
+            {"media_id": "f1", "box": [0.0, 0.0, 0.9, 0.9]},  # t=10, 面积最大
+            {"media_id": "f2", "box": [0.1, 0.1, 0.3, 0.3]},  # t=20
+            {"media_id": "f3", "box": [0.1, 0.1, 0.2, 0.2]},  # t=30
+            {"media_id": "f4", "box": [0.0, 0.0, 0.2, 0.2]},  # t=40
+        ]
+    }
+    media = {f"f{n}": {"pts": n * 10, "time_base": [1, 1]} for n in range(5)}
+    selected = representative_regions(instance, media, limit=3)
+    # 时间均匀分布选第一/中间/最后，而非面积最大的 f1
+    assert [r["media_id"] for r in selected] == ["f0", "f2", "f4"]
+
+
+def test_candidate_pairs_identifier_index(tmp_path):
+    from rrt_echo.rrt.association import candidate_pairs
+
+    results = observations(tmp_path)
+    results[0]["observation"]["instances"][0]["description"] = "man, number 398"
+    results[1]["observation"]["instances"][0]["description"] = "man, number 398"
+    results[2]["observation"]["instances"][0]["description"] = "man, number 323"
+    pairs = candidate_pairs(results, top_k=1)
+    indexed = [p for p in pairs if p["source"] == "inscribed_identifier_match"]
+    assert any(set((p["left"], p["right"])) == {"i0", "i1"} for p in indexed)
+    assert all(p["priority"] == 5.0 for p in indexed)
+    # 不同编号的 i0-i2 / i1-i2 被跳过
+    assert not any(set((p["left"], p["right"])) == {"i0", "i2"} for p in pairs)
+    assert not any(set((p["left"], p["right"])) == {"i1", "i2"} for p in pairs)

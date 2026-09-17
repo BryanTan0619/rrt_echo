@@ -123,7 +123,18 @@ def retrieve(graph: dict, query: Query, *, top_k=8, max_bytes=100_000) -> dict:
     question_stem = re.split(r"\n\s*[A-Z][).:]\s+", query.text, maxsplit=1)[0]
     words = terms(question_stem)
     available_facts = [f for f in graph["facts"] if not f.get("retrieval_quarantined")]
-    descriptions = {i["instance_id"]: i.get("description", "") for i in graph["instances"]}
+
+    def _instance_terms(i):
+        text = i.get("description", "")
+        for attr in i.get("attributes", ()) or ():
+            # attributes may be (dimension, value) tuples or {dimension, value} dicts.
+            if isinstance(attr, dict):
+                text += " " + str(attr.get("value", ""))
+            elif len(attr) >= 2:
+                text += " " + str(attr[1])
+        return text
+
+    descriptions = {i["instance_id"]: _instance_terms(i) for i in graph["instances"]}
     documents = {}
     for f in available_facts:
         local = " ".join(descriptions.get(i, "") for i in f["roles"].values())

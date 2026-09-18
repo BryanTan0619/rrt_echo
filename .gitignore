@@ -24,3 +24,9 @@ htmlcov/
 *.key
 *.log
 .DS_Store
+# Visualization viewer experiment artifacts (data.json embeds cropped avatars, segment.* is transcoded video)
+# Exception: runs/demo-* ships with the repo (example data), index.json is the run list
+visualization/hypergraph_viewer/runs/*
+!visualization/hypergraph_viewer/runs/index.json
+!visualization/hypergraph_viewer/runs/demo-*/
+visualization/hypergraph_viewer/runs/demo-*/segment.*

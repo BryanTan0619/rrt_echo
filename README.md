@@ -37,7 +37,7 @@ MP4 ──→ 帧采样与连续片段 ──→ RRT 联合观察 ──→ 有�
 Python 3.11+，在仓库根目录执行：
 
 ```bash
-git clone https://git.woa.com/bryankztan/rrt_echo.git
+git clone https://github.com/BryanTan0619/rrt_echo.git
 cd rrt_echo
 python3 -m venv .venv
 source .venv/bin/activate

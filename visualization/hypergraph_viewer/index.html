@@ -1,0 +1,863 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RRT-ECHO Hypergraph</title>
+<style>
+:root {
+  --surface: #fcfcfb; --panel: #ffffff; --border: #e4e3df; --grid: #efeee9;
+  --ink: #0b0b0b; --ink-2: #52514e; --ink-3: #8a8983;
+  --ev: #2a78d6; --ev-light-stroke: #9ec5f4; --now: #eb6834; --obj: #fff1dc; --obj-stroke: #c27a12; --merge: #7a4fd0;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--surface); color: var(--ink);
+       font: 14px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+.wrap { padding: 12px 16px 10px; display: grid; grid-template-rows: auto auto 1fr auto; height: 100vh; gap: 8px; }
+.top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; }
+h1 { font-size: 17px; margin: 0; font-weight: 650; }
+.sub { color: var(--ink-2); font-size: 12.5px; }
+.controls { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12.5px; color: var(--ink-2); align-items: center; }
+.controls select, .controls button { font: inherit; border: 1px solid var(--border); background: #fff; border-radius: 6px; padding: 2px 6px; }
+.seg { display: inline-flex; border: 1px solid var(--border); border-radius: 7px; overflow: hidden; }
+.seg button { border: 0; border-radius: 0; padding: 3px 10px; background: #fff; cursor: pointer; }
+.seg button.on { background: var(--ink); color: #fff; }
+.main { display: grid; grid-template-columns: 460px 1fr; gap: 12px; min-height: 0; }
+.left { display: grid; grid-template-rows: auto 1fr; gap: 10px; min-height: 0; }
+.videobox { position: relative; background: #111; border-radius: 10px; overflow: hidden; aspect-ratio: 16 / 9; }
+.videobox video { width: 100%; height: 100%; object-fit: contain; display: block; cursor: pointer; }
+.videobox .novideo { position: absolute; inset: 0; display: grid; place-items: center; color: #aaa; font-size: 13px; }
+.videobox .novideo[hidden] { display: none; }
+.canvas { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; position: relative; min-height: 0; }
+.canvas svg { width: 100%; height: 100%; display: block; }
+.panel { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; overflow: auto; min-height: 0; }
+.panel h2 { font-size: 15.5px; margin: 0 0 2px; word-break: break-all; }
+.panel h3 { font-size: 12.5px; color: var(--ink-3); font-weight: 600; margin: 14px 0 6px; }
+.muted { color: var(--ink-3); }
+.chip { display: inline-block; font-size: 12px; padding: 1px 8px; border-radius: 10px; border: 1px solid var(--border); color: var(--ink-2); margin: 0 4px 4px 0; }
+.chip.merge { border-color: #cdbdf0; color: var(--merge); }
+.faces { display: flex; flex-wrap: wrap; gap: 5px; }
+.faces img { width: 52px; height: 52px; border-radius: 7px; object-fit: cover; border: 1px solid var(--border); }
+.member { border: 1px solid var(--grid); border-radius: 8px; padding: 6px 8px; margin-bottom: 6px; }
+.member .mh { font-size: 12.5px; color: var(--ink-2); margin-bottom: 4px; }
+.row { display: grid; grid-template-columns: 78px 1fr auto; gap: 8px; padding: 4px 0; border-bottom: 1px solid var(--grid); font-size: 13px; align-items: baseline; }
+.row .k { color: var(--ink-3); overflow-wrap: anywhere; }
+.row .t { color: var(--ink-3); font-variant-numeric: tabular-nums; font-size: 12px; white-space: nowrap; }
+.row.future { opacity: .4; }
+.row.link { cursor: pointer; } .row.link:hover { background: #f5f4f1; }
+.tl { list-style: none; margin: 0; padding: 0; }
+.tl li { display: grid; grid-template-columns: 74px 1fr; gap: 8px; padding: 5px 4px; border-bottom: 1px solid var(--grid); cursor: pointer; border-radius: 6px; }
+.tl li:hover { background: #f5f4f1; }
+.tl li.future { opacity: .4; }
+.tl li.now .time { color: var(--now); font-weight: 600; }
+.tl .time { font-variant-numeric: tabular-nums; color: var(--ink-2); font-size: 12.5px; }
+.tl .what { font-size: 13px; }
+.tl .role { font-size: 11.5px; color: var(--ink-3); }
+.flag { display: inline-block; font-size: 11px; padding: 0 6px; border-radius: 8px; background: #efe9fb; color: var(--merge); margin: 2px 4px 0 0; }
+.note { font-size: 12.5px; color: var(--ink-2); background: #fbf7ee; border: 1px solid #efe3c4; border-radius: 6px; padding: 6px 8px; margin-top: 6px; }
+.note p { margin: 0 0 4px; } .note p:last-child { margin: 0; }
+.divider { list-style: none; text-align: center; color: var(--now); font-size: 12px; font-weight: 600; padding: 3px 0; border-bottom: 1px dashed var(--now) !important; cursor: default !important; display: block !important; }
+.timebar { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 8px 14px; display: grid;
+           grid-template-columns: auto auto auto 1fr auto; gap: 12px; align-items: center; }
+.timebar button { font: inherit; border: 1px solid var(--border); background: #fff; border-radius: 8px; padding: 4px 12px; cursor: pointer; }
+.clock { font-variant-numeric: tabular-nums; font-size: 18px; font-weight: 600; min-width: 56px; }
+.track { position: relative; height: 34px; }
+.track input { position: absolute; left: 0; right: 0; top: 4px; width: 100%; margin: 0; accent-color: var(--ev); z-index: 1; }
+.band { position: absolute; top: 7px; height: 12px; background: rgba(138,137,131,.16); border-left: 2px solid var(--ink-3); border-radius: 2px; pointer-events: none; z-index: 0; }
+.hA { position: absolute; top: 1px; width: 9px; height: 22px; margin-left: -4px; background: #fff; border: 1.5px solid var(--ink-2); border-radius: 3px; cursor: ew-resize; z-index: 2; touch-action: none; }
+.hA::after { content: ''; position: absolute; left: 2px; top: 5px; width: 1px; height: 10px; background: var(--ink-3); box-shadow: 2px 0 0 var(--ink-3); }
+.controls input[type=range].mini { width: 100px; vertical-align: middle; accent-color: var(--ev); margin: 0 2px; }
+.controls input[type=range].w { width: 150px; }
+.mono { font-variant-numeric: tabular-nums; display: inline-block; min-width: 40px; }
+.ticks { position: absolute; left: 0; right: 0; top: 24px; height: 10px; }
+.ticks span { position: absolute; width: 2px; height: 8px; background: var(--ev-light-stroke); transform: translateX(-1px); border-radius: 1px; }
+.legend { display: flex; gap: 12px; font-size: 12px; color: var(--ink-2); white-space: nowrap; }
+.sw { display: inline-block; width: 18px; height: 12px; border-radius: 6px; vertical-align: -1px; margin-right: 5px; }
+.bubble-label { font-size: 11.5px; font-weight: 500; paint-order: stroke; stroke: #fff; stroke-width: 4px; stroke-linejoin: round; pointer-events: none; }
+.ev-pred { font-size: 11px; font-weight: 700; paint-order: stroke; stroke: #fff; stroke-width: 3px; stroke-linejoin: round; pointer-events: none; }
+.hull { pointer-events: none; }
+.ev-time { font-size: 9px; font-variant-numeric: tabular-nums; pointer-events: none; }
+.role-label { font-size: 9.5px; paint-order: stroke; stroke: #fff; stroke-width: 3px; stroke-linejoin: round; pointer-events: none; }
+.sw.ring { width: 14px; height: 14px; border-radius: 50%; }
+.node-label { font-size: 12px; font-weight: 600; paint-order: stroke; stroke: #fff; stroke-width: 4px; stroke-linejoin: round; pointer-events: none; }
+.node-sub { font-size: 10.5px; fill: var(--ink-3); paint-order: stroke; stroke: #fff; stroke-width: 3px; pointer-events: none; }
+.chipc { font-size: 10.5px; pointer-events: none; }
+.qaback { font-size: 12.5px; color: var(--ev); cursor: pointer; margin-bottom: 8px; }
+.qrow { border: 1px solid var(--grid); border-radius: 8px; padding: 6px 9px; margin-bottom: 6px; cursor: pointer; font-size: 13px; }
+.qrow:hover, .qrow.on { background: #f5f4f1; } .qrow.on { border-color: var(--ink-2); }
+.qrow .qh { display: flex; gap: 8px; align-items: baseline; font-size: 12px; color: var(--ink-3); margin-bottom: 2px; }
+.ok { color: #1b8a5a; font-weight: 700; } .bad { color: #c62828; font-weight: 700; }
+.opt { display: grid; grid-template-columns: 36px 1fr; gap: 6px; padding: 3px 0; font-size: 13px; border-bottom: 1px solid var(--grid); }
+.opt .lt { font-weight: 700; color: var(--ink-3); } .opt.gold .lt { color: #1b8a5a; } .opt.pick { background: #fff7e8; }
+.opt .cf { font-size: 11.5px; color: var(--ink-3); }
+.bd { display: inline-block; font-size: 10.5px; padding: 0 5px; border-radius: 6px; border: 1px solid var(--border); color: var(--ink-2); margin-left: 3px; vertical-align: 1px; }
+.bd.q { border-color: #0b0b0b; color: #0b0b0b; } .bd.ch { background: #0b0b0b; color: #fff; border-color: #0b0b0b; }
+.qf { display: grid; grid-template-columns: 74px 1fr; gap: 8px; padding: 5px 4px; border-bottom: 1px solid var(--grid); border-radius: 6px; font-size: 13px; }
+.qf.link { cursor: pointer; } .qf.link:hover { background: #f5f4f1; } .qf .time { font-variant-numeric: tabular-nums; color: var(--ink-2); font-size: 12.5px; }
+.qf .k { color: var(--ink-3); font-size: 11.5px; }
+.qtx { padding: 5px 4px; border-bottom: 1px solid var(--grid); font-size: 12.5px; }
+.qtx.sup { border-left: 3px solid #1b8a5a; padding-left: 7px; } .qtx.ins { border-left: 3px solid #d9a21f; padding-left: 7px; } .qtx.con { border-left: 3px solid #c62828; padding-left: 7px; }
+.qticks { position: absolute; left: 0; right: 0; top: 22px; height: 12px; pointer-events: none; z-index: 1; }
+.qticks span { position: absolute; width: 3px; height: 12px; background: #c9367a; transform: translateX(-1.5px); border-radius: 1px; }
+.qticks span.ch { background: #0b0b0b; }
+.sp { display: inline-block; font-size: 11.5px; padding: 0 7px; border-radius: 9px; border: 1px solid #b8d4f5; background: #f2f7fe; color: #1a5fb4; cursor: pointer; margin: 0 3px 2px 0; font-variant-numeric: tabular-nums; }
+.sp:hover { background: #dbe8f8; } .sp.on { background: #1a5fb4; color: #fff; border-color: #1a5fb4; }
+.sp.gold { border-color: #9fd3b4; background: #f1faf4; color: #1b6b45; } .sp.gold:hover { background: #dff0e6; }
+.spnote { font-size: 12px; color: var(--ink-2); background: #f5f4f1; border-radius: 6px; padding: 5px 8px; margin: 4px 0 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <h1>RRT-ECHO Hypergraph</h1>
+    <span class="sub" id="sub"></span>
+  </div>
+  <div class="controls">
+    <label>Run <select id="runSel"></select></label>
+    <span class="seg" id="viewSeg"></span>
+    <span>Layout <span class="seg" id="modeSeg"><button data-m="event" class="on">one ring per event</button><button data-m="group">one ring per participant set</button></span></span>
+    <label><input type="checkbox" id="singles"> also draw single-member events</label>
+    <label>not-yet opacity <input type="range" id="futureOp" min="0" max="100" value="0" class="mini"> <span id="futureOpV" class="mono">0%</span></label>
+    <label>past fade <input type="range" id="fadeStr" min="0" max="100" value="70" class="mini"> <span id="fadeStrV" class="mono">70%</span></label>
+    <span id="qaBox" hidden>QA trace <span class="seg" id="qaSeg"><button data-q="off" class="on">off</button><button data-q="on">on</button></span></span>
+    <label>look-back window <input type="range" id="winSize" min="0" max="1000" value="1000" class="mini w"> <span id="winSizeV" class="mono">all</span></label>
+    <span>labels beside rings <span class="seg" id="labelSeg"><button data-l="now" class="on">now + selected</button><button data-l="all">all</button></span></span>
+  </div>
+
+  <div class="main">
+    <div class="left">
+      <div class="videobox"><video id="video" preload="auto" playsinline muted></video><div class="novideo" id="novideo" hidden>no preview video for this run</div></div>
+      <div class="panel" id="panel"></div>
+    </div>
+    <div class="canvas" id="canvas"><svg id="svg"></svg></div>
+  </div>
+
+  <div class="timebar">
+    <button id="play">▶ play</button>
+    <button id="mute" title="sound">muted</button>
+    <div class="clock" id="clock">0:00</div>
+    <div class="track" id="track">
+      <div class="band" id="band"></div>
+      <input type="range" id="slider" step="0.5">
+      <div class="hA" id="hA" title="look-back window start: drag to resize"></div>
+      <div class="ticks" id="ticks"></div>
+      <div class="qticks" id="qticks"></div>
+    </div>
+    <div class="legend">
+      <span><span style="display:inline-block;width:10px;height:10px;background:#2a78d6;transform:rotate(45deg);margin-right:6px"></span>event (diamond)</span>
+      <span><i class="sw" style="background:rgba(42,120,214,.12);border:1.5px solid #2a78d6;border-radius:50%"></i>one colour = one hyperedge</span>
+      <span><i class="sw" style="background:rgba(235,104,52,.15);border:2.5px solid var(--now);border-radius:8px"></i>happening now</span>
+      <span><i class="sw" style="background:#e8e7e4;border:1.5px solid #9a9994;border-radius:8px;opacity:.5"></i>past, older = more transparent</span>
+      <span><i class="sw" style="border:1.5px dashed #9ec5f4;border-radius:8px"></i>not yet</span>
+      <span><i class="sw ring" style="background:#fff;border:1.5px solid var(--ink-2)"></i>person (black edge, big circle)</span>
+      <span><i class="sw ring" style="background:var(--obj);border:2.5px solid var(--obj-stroke)"></i>object (orange edge, small circle)</span>
+      <span>— line = role binding, role written on it</span>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const mmss = t => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, '0')}`;
+const span = (a, b) => `${mmss(a)}–${mmss(b)}`;
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const VIEW_NAME = { graph: 'hypergraph.json', after: 'after offline merge', after_av: 'after merge + face/voice', before: 'before merge (as written)' };
+
+let D = null, V = null, viewKey = null, ents = new Map();
+let T = 0, selected = null, showSingles = false, mode = 'event', labelMode = 'now', shownSig = null;
+// Not-yet events are hidden by default (opacity 0); the canvas grows with the visible node count
+// and auto-fits on the first picture; while playing, the view follows the event happening now.
+let futureOp = 0, fadeStr = 0.7, WIN = Infinity, needFit = true, lastNowKey = null, LW = 800, LH = 600, lastVis = new Map();
+// QA trace: runs/<name>/qa.json is produced by build_qa.py from the reader's results.json.
+// With QA trace on and a question selected, only the facts the reader was shown are drawn
+// (event -> diamond/ring; the owner of a text/state fact -> highlighted person/object node);
+// everything else is hidden and the time window is ignored (the reader sees the whole memory).
+// Facts cited by the audit get a thick border; facts pulled in only by an option (not the stem) get a dashed border.
+let QA = null, qaOn = false, qaQ = null, qaF = new Map(), qaOwn = new Set(), qaSpan = null;
+// Gold-span trace: qa.json's annotation comes from the question-set provenance (gold evidence span,
+// each distractor's own time, query/bridge events). Clicking a time chip sets qaSpan, switching the
+// graph to "what the memory actually recorded during that span" (not what the reader retrieved).
+const ovl = (b, sp) => b.intervals.some(([s, e]) => e >= sp.a - 0.5 && s <= sp.b + 0.5);
+const qaShow = b => qaSpan ? ovl(b, qaSpan) : b.events.some(e => qaF.has(e.id));
+const inQA = b => !!qaQ && qaShow(b);
+const qaChain = d => !!qaQ && d.b.events.some(e => qaF.has(e.id) && qaF.get(e.id).chain);
+const qaOpt = d => !!qaQ && d.b.events.every(e => !qaF.has(e.id) || !qaF.get(e.id).in.includes('stem'));
+const qaCur = () => QA && qaQ ? QA.questions.find(q => q.id === qaQ) : null;
+function setQ(id) {   // pick a question: rebuild the retrieved-fact index, redraw (single-member events among them get drawn too), refit
+  qaQ = id; qaF = new Map(); qaOwn = new Set(); qaSpan = null;
+  const q = qaCur();
+  if (q) q.facts.forEach(f => { qaF.set(f.id, f); if (f.kind !== 'event') f.members.forEach(m => qaOwn.add(m)); });
+  $('qticks').innerHTML = q ? q.facts.filter(f => f.t0 != null).map(f => `<span class="${f.chain ? 'ch' : ''}" style="left:${(f.t0 - D.t0) / (D.t1 - D.t0) * 100}%" title="${esc(f.pred || f.value || '')}"></span>`).join('') : '';
+  selected = null; userZoomed = false; shownSig = null; render();
+}
+function qaSegSet(v) { qaOn = v === 'on'; $('qaSeg').querySelectorAll('button').forEach(x => x.classList.toggle('on', x.dataset.q === v)); if (!qaOn) { qaQ = null; qaF = new Map(); qaOwn = new Set(); qaSpan = null; $('qticks').innerHTML = ''; } }
+function setSpan(a, b) {   // gold span: switch the graph to what the memory recorded in this span, jump to its start
+  qaSpan = { a, b }; selected = null; userZoomed = false; shownSig = null; jumpAt(a); render();
+}
+// Look-back window [A, T], A = T − WIN (WIN set by the look-back slider; drag the A handle on the
+// time bar to resize while paused). Events inside the window fade from blue to gray by (T − end)/(T − A)
+// with opacity 100% → 30%; events before A are not drawn; not-yet events follow the opacity slider (default 0);
+// a selected person/event stays fully lit (even before A); not-yet still follows the slider.
+const winStart = () => Math.max(D.t0, T - WIN);
+const GRAY = '#9a9994', toGray = () => '#2a78d6', fillGray = () => '#dbe8f8', inkGray = () => '#0b0b0b';   // past keeps its colour (was: blend to gray)
+function vis(b) {   // how one event shows under the window: a = opacity, f = 0 (fresh, blue) … 1 (old, gray), s = state
+  const s = state(b);
+  if (s === 'future') return { a: futureOp, f: 0, s };
+  if (s === 'now') return { a: 1, f: 0, s };
+  const end = d3.max(b.intervals, iv => iv[1]), A = winStart();
+  if (end < A) return { a: 0, f: 1, s: 'gone' };
+  const f = clamp((T - end) / Math.max(1, T - A), 0, 1);
+  return { a: 1 - fadeStr * f, f, s };   // past keeps its colour, only fades by age (past-fade slider, 0 = never)
+}
+const DUR = () => Math.max(20, D.t1 - D.t0);
+const wFromSlider = v => v >= 1000 ? Infinity : 10 * Math.pow(DUR() / 10, v / 1000);   // log scale 10 s … whole run
+const sliderFromW = w => !isFinite(w) || w >= DUR() ? 1000 : Math.round(1000 * Math.log(Math.max(10, w) / 10) / Math.log(DUR() / 10));
+const fmtW = w => !isFinite(w) || w >= DUR() ? 'all' : (w < 60 ? `${Math.round(w)}s` : `${Math.floor(w / 60)}m ${String(Math.round(w % 60)).padStart(2, '0')}s`);
+function setW(w, fromSlider = false) {
+  WIN = w; if (!fromSlider) $('winSize').value = sliderFromW(w);
+  $('winSizeV').textContent = fmtW(w); shownSig = null; restyle();
+}
+function updateTrack() {   // gray band = the window [A, T]; ticks take the colour of their event
+  const A = winStart(), span = D.t1 - D.t0, pct = t => (t - D.t0) / span * 100;
+  $('band').style.left = pct(A) + '%'; $('band').style.width = Math.max(0, pct(T) - pct(A)) + '%';
+  $('hA').style.left = pct(A) + '%';
+  $('ticks').querySelectorAll('span').forEach(el => {
+    const s0 = +el.dataset.s, e0 = +el.dataset.e;
+    el.style.background = (s0 <= T && T <= e0) ? 'var(--now)' : (e0 < T ? (e0 < A ? '#e4e3df' : toGray(clamp((T - e0) / Math.max(1, T - A), 0, 1))) : 'var(--ev-light-stroke)');
+  });
+}
+const video = $('video'), slider = $('slider');
+let pos = new Map();   // node positions per run, shared by both views so before/after line up
+
+// ---------- data / view ----------
+async function init() {
+  const idx = await (await fetch('runs/index.json', { cache: 'no-store' })).json();
+  $('runSel').innerHTML = idx.map(r => `<option value="${esc(r.name)}">${esc(r.name)}（${mmss(r.t0)}–${mmss(r.t1)}）</option>`).join('');
+  const want = new URLSearchParams(location.search).get('run');
+  const name = idx.some(r => r.name === want) ? want : idx[idx.length - 1].name;
+  $('runSel').value = name;
+  $('runSel').onchange = () => loadRun($('runSel').value);
+  await loadRun(name);
+}
+async function loadRun(name) {
+  D = await (await fetch(`runs/${encodeURIComponent(name)}/data.json`, { cache: 'no-store' })).json();
+  history.replaceState(null, '', `?run=${encodeURIComponent(name)}`);
+  pos = new Map();
+  userZoomed = false;
+  $('sub').textContent = `${mmss(D.t0)}–${mmss(D.t1)} · window ${D.window}s · data: ${D.source}`;
+  $('viewSeg').innerHTML = Object.keys(D.views).sort().map(v => `<button data-v="${v}">${VIEW_NAME[v]}</button>`).join('');
+  $('viewSeg').querySelectorAll('button').forEach(b => b.onclick = () => setView(b.dataset.v));
+  video.pause();
+  video.innerHTML = '';
+  video.removeAttribute('src');
+  if (D.video) {
+    const base = `runs/${encodeURIComponent(name)}/`;
+    video.innerHTML = `<source src="${base}${D.video}" type="video/mp4">` + (D.video_webm ? `<source src="${base}${D.video_webm}" type="video/webm">` : '');
+    video.load(); $('novideo').hidden = true;
+    // data declares a video but the file is absent (e.g. the bundled demo has no video): say where to put it
+    video.querySelectorAll('source').forEach(src => src.onerror = () => {
+      if (video.networkState === 3) { $('novideo').textContent = `preview video not found: put the source at runs/${name}/segment.mp4`; $('novideo').hidden = false; }
+    });
+  } else $('novideo').hidden = false;
+  slider.min = D.t0; slider.max = D.t1; T = D.t0; slider.value = T;
+  $('winSize').value = sliderFromW(WIN); $('winSizeV').textContent = fmtW(WIN);
+  QA = null; qaSegSet('off');
+  try { const r = await fetch(`runs/${encodeURIComponent(name)}/qa.json`, { cache: 'no-store' }); if (r.ok) QA = await r.json(); } catch (e) { QA = null; }
+  $('qaBox').hidden = !QA;
+  setView(D.default_view);
+}
+function setView(v) {
+  viewKey = v; V = D.views[v]; ents = new Map(V.entities.map(e => [e.key, e]));
+  $('viewSeg').querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.v === v));
+  if (selected && selected.type === 'entity' && !ents.has(selected.key)) selected = null;
+  if (selected && selected.type === 'bubble') selected = null;
+  render();
+}
+
+const evState = b => T < b.start ? 'future' : (b.intervals.some(([s, e]) => T >= s && T <= e) ? 'now' : 'past');
+function bubblesAll() {
+  const evs = V.bubbles.filter(b => showSingles || !b.single || (qaQ && (qaF.has(b.id) || (qaSpan && ovl({ intervals: b.intervals }, qaSpan)))));   // QA trace: also draw single-member events that were retrieved / in the gold span
+  if (mode === 'event') return evs.map(b => ({ ...b, events: [b] }));
+  const groups = new Map();
+  evs.forEach(b => { const k = b.members.join(''); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(b); });
+  return [...groups.entries()].map(([k, list]) => {
+    list.sort((a, b) => a.start - b.start);
+    return { id: 'g_' + k, members: list[0].members, events: list, single: list[0].single,
+             start: Math.min(...list.map(b => b.start)), intervals: list.flatMap(b => b.intervals),
+             actions: list.flatMap(b => b.actions).sort((a, b) => a.start - b.start) };
+  });
+}
+const state = sh => { const st = sh.events.map(evState); return st.includes('now') ? 'now' : (st.includes('past') ? 'past' : 'future'); };
+
+// ---------- layout (automatic; nothing hand-placed) ----------
+// Layout (ECHO figure 1 style): one event = one ring (action + time inside), participants are small circles;
+// a role line runs from the ring to each participant with the role written on it; a person is drawn once.
+const svg = d3.select('#svg');
+const defs = svg.append('defs');
+const ARROW = { past: '#2a78d6', gray: '#9a9994', now: '#eb6834', future: '#9ec5f4', sel: '#0b0b0b' };
+Object.entries(ARROW).forEach(([k, c]) => defs.append('marker').attr('id', 'arr_' + k).attr('viewBox', '0 0 10 10')
+  .attr('refX', 9).attr('refY', 5).attr('markerWidth', 6).attr('markerHeight', 6).attr('orient', 'auto')
+  .append('path').attr('d', 'M0,0 L10,5 L0,10 z').attr('fill', c));
+const gRoot = svg.append('g');   // wheel = zoom, drag on empty space = pan, double-click = reset (dense runs need it)
+const gH = gRoot.append('g'), gA = gRoot.append('g'), gE = gRoot.append('g'), gN = gRoot.append('g'), gL = gRoot.append('g');
+const zoom = d3.zoom().scaleExtent([0.12, 4]).on('zoom', ev => { gRoot.attr('transform', ev.transform); if (ev.sourceEvent) userZoomed = true; });
+svg.call(zoom).on('dblclick.zoom', () => { userZoomed = false; fit(true); });
+let W = 800, H = 600, sim = null, nodes = [], rings = [], arrows = [];
+const byKey = k => pos.get(k);
+const entR = k => (ents.get(k) && ents.get(k).kind === 'object') ? 15 : 23;
+function ringText(b) {   // inside the ring: predicate (+ ×N when several events share one ring) and the time span
+  const preds = [...new Set(b.actions.map(a => a.pred))], n = b.events.length;
+  const end = d3.max(b.events, e => d3.max(e.intervals, iv => iv[1]));
+  const head = t => t.length > 16 ? t.slice(0, 15) + '…' : t;   // rrt_echo predicates are whole sentences
+  const pred = preds.length === 1 ? head(preds[0]) + (n > 1 ? ` ×${n}` : '') : (n === 1 ? head(preds.join('/')) : `${n} events`);
+  return { pred, time: span(b.start, end) };
+}
+const ringR = txt => 15;   // author-figure style: the event is a small diamond; the coloured region around it is drawn separately
+// one colour per event (author's figure: h1 blue, h2 green, h3 purple, h4 orange); events sharing a participant avoid the same colour
+const PALETTE = ['#2a78d6', '#2e9e5b', '#7a4fd0', '#d98a1f', '#c9367a', '#1f9fb8', '#8a6d2f', '#5b6ac9'];
+let evColor = new Map();
+const regionMode = 'cells';   // two region styles: a circle around the event, or dividing lines between events (Voronoi cells)
+function assignColors(bs) {
+  evColor = new Map();
+  const byMember = new Map();
+  bs.forEach(b => b.members.forEach(m => { if (!byMember.has(m)) byMember.set(m, []); byMember.get(m).push(b.id); }));
+  bs.forEach((b, i) => {
+    const used = new Set(b.members.flatMap(m => byMember.get(m)).filter(id => evColor.has(id)).map(id => evColor.get(id)));
+    let pick = null;
+    for (let k = 0; k < PALETTE.length; k++) { const c = PALETTE[(i + k) % PALETTE.length]; if (!used.has(c)) { pick = c; break; } }
+    evColor.set(b.id, pick || PALETTE[i % PALETTE.length]);
+  });
+}
+
+// Node/arrow objects are built once for the whole graph, but the force simulation only holds what is
+// visible (inside the window + selected + not-yet revealed by the slider). When the visible set changes
+// the layout is recomputed: new nodes grow out from their participants, the rest drift smoothly; the
+// canvas size follows the visible count and auto-fits unless the user has zoomed manually.
+let entNodes = [], visNodes = [], layoutSig = '', layoutFresh = true, userZoomed = false;
+function layout(bs) {   // build node / arrow objects for everything; the simulation only ever holds what is visible (relayout)
+  const box = $('canvas').getBoundingClientRect(); W = box.width; H = box.height;
+  const keys = [...new Set(bs.flatMap(b => b.members))]
+    .sort((a, b) => (ents.get(a).first - ents.get(b).first) || a.localeCompare(b));
+  entNodes = keys.map((k, i) => {
+    let n = pos.get(k);
+    if (!n) { n = { key: k, kind: 'ent', x: null, y: null }; pos.set(k, n); }
+    n.i = i; n.r = entR(k); return n;
+  });
+  rings = bs.map(b => {
+    const key = 'ev:' + b.id;
+    let n = pos.get(key);
+    if (!n) { n = { key, kind: 'ev', x: null, y: null }; pos.set(key, n); }
+    n.b = b; n.txt = ringText(b); n.r = ringR(n.txt); return n;
+  });
+  nodes = [...entNodes, ...rings];
+  arrows = bs.flatMap(b => b.members.map(m => ({ source: pos.get('ev:' + b.id), target: pos.get(m), b,
+    role: [...new Set(b.actions.map(a => a.roles[m]).filter(Boolean))].join('/') })));
+  if (!sim) sim = d3.forceSimulation().randomSource(d3.randomLcg(7)).alphaDecay(0.04).stop().on('tick', drawGeometry);
+  else sim.stop();
+  layoutSig = ''; layoutFresh = true; visNodes = [];
+}
+function relayout(visKeys) {
+  const vn = nodes.filter(n => visKeys.has(n.key));
+  const kk = Math.max(1, Math.sqrt(vn.length / 30));   // regions take more room than rings   // virtual canvas grows with what is visible (45 nodes fit one screen)
+  LW = Math.round(W * kk); LH = Math.round(H * kk);
+  let fresh = 0;
+  const seedEnt = n => { if (n.x == null) { const ang = n.i * 2.39996, r = 30 + 34 * Math.sqrt(n.i); n.x = LW / 2 + r * Math.cos(ang); n.y = LH / 2 + r * Math.sin(ang); fresh++; } };
+  vn.filter(n => n.kind === 'ent').forEach(seedEnt);
+  vn.filter(n => n.kind === 'ev').forEach((n, i) => {   // a new ring grows out from between its participants
+    if (n.x != null) return;
+    const ms = n.b.members.map(byKey); ms.forEach(seedEnt);
+    const ang = i * 2.39996; n.x = d3.mean(ms, m => m.x) + 40 * Math.cos(ang); n.y = d3.mean(ms, m => m.y) + 40 * Math.sin(ang); fresh++;
+  });
+  const va = arrows.filter(l => visKeys.has(l.source.key) && visKeys.has(l.target.key));
+  sim.nodes(vn)
+    .force('link', d3.forceLink(va).distance(l => l.source.r + l.target.r + 62).strength(0.6))
+    .force('charge', d3.forceManyBody().strength(d => d.kind === 'ev' ? -380 : -420).distanceMax(460))
+    .force('collide', d3.forceCollide(d => d.kind === 'ev' ? d.r + 42 : d.r + 36))
+    .force('x', d3.forceX(LW / 2).strength(0.05))
+    .force('y', d3.forceY(LH / 2).strength(0.08))
+    .force('bound', () => vn.forEach(n => {   // soft clamp: ease back inside when the canvas shrinks
+      n.x += (clamp(n.x, n.r + 30, LW - n.r - 30) - n.x) * .3; n.y += (clamp(n.y, n.r + 10, LH - (n.kind === 'ev' ? n.r + 10 : 100)) - n.y) * .3; }));
+  visNodes = vn;
+  if (layoutFresh) {   // first picture of a run / view: settle instantly
+    sim.alpha(1); for (let i = 0; i < (vn.length > 300 ? 200 : 320); i++) sim.tick(); sim.alpha(0); drawGeometry(); layoutFresh = false;
+    if (!userZoomed) fit(false);
+  } else {             // later changes: drift smoothly from where things are
+    sim.alpha(Math.min(.6, .25 + .03 * fresh)).restart();
+    if (!userZoomed) fit(true);
+  }
+}
+
+const drag = d3.drag()
+  .on('start', (ev, d) => { if (!ev.active) sim.alphaTarget(.2).restart(); d.fx = d.x; d.fy = d.y; })
+  .on('drag', (ev, d) => { d.fx = ev.x; d.fy = ev.y; })
+  .on('end', (ev, d) => { if (!ev.active) sim.alphaTarget(0); d.fx = null; d.fy = null; });
+const chipText = a => (['clothing', 'accessory', 'color', 'material'].includes(a.prop) ? a.value : `${a.prop}: ${a.value}`).replace(/^(.{18}).+$/, '$1…');
+const safeId = k => 'clip_' + String(k).replace(/[^A-Za-z0-9_-]/g, '_');
+const lineGen = d3.line().curve(d3.curveCatmullRomClosed.alpha(.6));
+const trunc = (s, n) => (s || '').length > n ? s.slice(0, n - 1) + '…' : (s || '');
+const MAX_ROWS = 4;
+
+// Clicking a ring/node jumps the video to its next event (wrapping to the first); click again for the
+// one after that. A click-jump is a temporary detour: returnT remembers where we were before the first
+// jump; clicking empty space deselects and jumps back once. Dragging the time bar accepts the new
+// position and cancels the return; playing does not count as dragging.
+let returnT = null;
+function jumpAt(t) { if (returnT === null) returnT = T; setTime(t); }
+function jumpTo(acts) {
+  if (!acts || !acts.length) return;
+  const sorted = [...acts].sort((a, b) => a.start - b.start);
+  jumpAt((sorted.find(a => a.start > T + 0.5) || sorted[0]).start);
+}
+
+// ---------- render ----------
+function render() {
+  const bs = bubblesAll();
+  $('ticks').innerHTML = bs.map(b => `<span data-s="${b.start}" data-e="${d3.max(b.intervals, iv => iv[1])}" style="left:${(b.start - D.t0) / (D.t1 - D.t0) * 100}%" title="${mmss(b.start)}"></span>`).join('');
+  layout(bs);
+  // arrows: ring -> participant, the role written on the line
+  gA.selectAll('*').remove();
+  const ag = gA.selectAll('g.arrow').data(arrows).enter().append('g').attr('class', 'arrow');
+  ag.append('line');
+  ag.append('text').attr('class', 'role-label').attr('text-anchor', 'middle').text(d => d.role);
+  // rings: one per event (or per participant set, in group mode)
+  const rsel = gE.selectAll('g.ev').data(rings, d => d.key);
+  rsel.exit().remove();
+  const re = rsel.enter().append('g').attr('class', 'ev').style('cursor', 'pointer')
+    .on('click', (ev, d) => { ev.stopPropagation(); select({ type: 'bubble', id: d.b.id }); jumpTo(d.b.actions); })
+    .call(drag);
+  re.append('path').attr('class', 'ring').attr('d', 'M0,-13 L13,0 L0,13 L-13,0 Z');   // ◆ joint event
+  re.append('text').attr('class', 'ev-pred').attr('text-anchor', 'middle').attr('dy', 27);
+  re.append('text').attr('class', 'ev-time').attr('text-anchor', 'middle').attr('dy', 39);
+  re.append('title');
+  assignColors(bs);
+  gE.selectAll('g.ev').each(function (d) {
+    const g = d3.select(this);
+    g.select('text.ev-pred').text(d.txt.pred);
+    g.select('text.ev-time').text('e · ' + d.txt.time);
+    g.select('title').text(d.b.events.map(ev => ev.label).join('\n'));
+  });
+  // coloured region = the hyperedge: wraps the diamond and all its participants
+  const hsel = gH.selectAll('path.hull').data(rings, d => d.key);
+  hsel.exit().remove();
+  hsel.enter().append('path').attr('class', 'hull');
+  // entities: people are avatar circles, objects small circles
+  gN.selectAll('g.node').remove();
+  const ne = gN.selectAll('g.node').data(nodes.filter(n => n.kind === 'ent'), d => d.key).enter().append('g').attr('class', 'node').style('cursor', 'pointer')
+    // Clicking a person/object only selects it (does not move the playhead); it jumps only when the
+    // entity has exactly one event, where the target is unambiguous.
+    .on('click', (ev, d) => { ev.stopPropagation(); select({ type: 'entity', key: d.key });
+      const tl = timelineFor(d.key); if (tl.length === 1) jumpTo(tl); })
+    .call(drag);
+  ne.each(function (d) {
+    const g = d3.select(this), e = ents.get(d.key);
+    let y0;
+    if (e.kind === 'person') {
+      const cid = safeId(d.key);
+      if (defs.select('#' + cid).empty()) defs.append('clipPath').attr('id', cid).append('circle').attr('r', 21);
+      if (e.members.length > 1) g.append('circle').attr('r', 28).style('fill', 'none').style('stroke', 'var(--merge)').attr('stroke-width', 1.5).attr('stroke-dasharray', '4 3');
+      g.append('circle').attr('class', 'ring').attr('r', 23).style('fill', '#fff').style('stroke', 'var(--ink-2)').attr('stroke-width', 1.5);
+      if (e.faces.length) g.append('image').attr('href', e.faces[0]).attr('x', -21).attr('y', -21).attr('width', 42).attr('height', 42)
+        .attr('clip-path', `url(#${cid})`).attr('preserveAspectRatio', 'xMidYMid slice');
+      else g.append('text').attr('text-anchor', 'middle').attr('dy', 5).attr('font-size', 13).style('fill', 'var(--ink-3)').text('?');
+      g.append('text').attr('class', 'node-label').attr('text-anchor', 'middle').attr('y', 38).style('fill', e.members.length > 1 ? 'var(--merge)' : null).text(e.name);
+      g.append('text').attr('class', 'node-sub').attr('text-anchor', 'middle').attr('y', 51).text(trunc(e.look, 16));
+      y0 = 58;
+    } else {
+      g.append('circle').attr('class', 'ring').attr('r', 15).style('fill', 'var(--obj)').style('stroke', 'var(--obj-stroke)').attr('stroke-width', 2.5);
+      if (e.faces.length) {   // rrt_echo gives objects boxes too: show the crop instead of an initial
+        const cid = safeId(d.key);
+        if (defs.select('#' + cid).empty()) defs.append('clipPath').attr('id', cid).append('circle').attr('r', 14);
+        g.append('image').attr('href', e.faces[0]).attr('x', -14).attr('y', -14).attr('width', 28).attr('height', 28).attr('clip-path', `url(#${cid})`).attr('preserveAspectRatio', 'xMidYMid slice');
+      } else g.append('text').attr('text-anchor', 'middle').attr('dy', 4).attr('font-size', 12).style('fill', 'var(--ink-2)').text(e.name.split(/\s+/).pop()[0].toUpperCase());
+      g.append('text').attr('class', 'node-label').attr('text-anchor', 'middle').attr('y', 30).style('fill', 'var(--obj-stroke)').text('▪ ' + trunc(e.name, 22));
+      y0 = 36;
+    }
+    const chips = g.append('g').attr('transform', `translate(0,${y0})`);
+    e.attributes.slice(0, 2).forEach((a, i) => {
+      const c = chips.append('g').attr('class', 'achip').datum(a).attr('transform', `translate(0,${i * 16})`);
+      const t = c.append('text').attr('class', 'chipc').attr('text-anchor', 'middle').attr('y', 10).text(chipText(a));
+      const wd = t.node().getComputedTextLength() + 12;
+      c.insert('rect', 'text').attr('x', -wd / 2).attr('y', -1).attr('width', wd).attr('height', 14).attr('rx', 4);
+    });
+    if (e.attributes.length > 2) chips.append('text').attr('class', 'chipc').attr('text-anchor', 'middle').attr('y', 2 * 16 + 9)
+      .style('fill', 'var(--ink-3)').text(`+${e.attributes.length - 2} more`);
+  });
+  gN.selectAll('g.node').each(function (d) { const b = this.getBBox(); d._box = [b.x, b.y, b.width, b.height]; });
+
+  // text beside a ring: the description of each event in it (Chinese translation); shown for what's happening now / what's clicked
+  const lsel = gL.selectAll('text.bubble-label').data(rings, d => d.key);
+  lsel.exit().remove();
+  lsel.enter().append('text').attr('class', 'bubble-label');
+  gL.selectAll('text.bubble-label').each(function (d) {
+    const t = d3.select(this); t.selectAll('tspan').remove();
+    // rows with exactly the same text are folded into one "×N" row (display only; the panel lists every record)
+    const byText = new Map();
+    d.b.events.forEach(ev => ev.actions.forEach(a => { const s = trunc(a.desc || a.pred, 24);
+      if (!byText.has(s)) byText.set(s, { label: s, events: [] }); byText.get(s).events.push(ev); }));
+    let rows = [...byText.values()];
+    if (rows.length > MAX_ROWS + 1) rows = [...rows.slice(0, MAX_ROWS), { more: rows.length - MAX_ROWS, events: [] }];
+    rows.forEach((row, i) => t.append('tspan').datum(row).attr('dy', i ? 15 : 0)
+      .text(row.more ? `…${row.more} more rows (click the ring)` : row.label + (row.events.length > 1 ? `  ×${row.events.length}` : '')));
+    d._w = d3.max(t.selectAll('tspan').nodes(), n => n.getComputedTextLength()) + 6; d._h = rows.length * 15 + 4;
+  });
+  shownSig = null;
+  restyle();
+}
+function fit(anim) {   // zoom out so the whole virtual canvas is visible
+  const k = Math.min(W / LW, H / LH), t = d3.zoomIdentity.translate((W - LW * k) / 2, (H - LH * k) / 2).scale(k);
+  svg.interrupt(); (anim ? svg.transition().duration(500) : svg).call(zoom.transform, t);
+}
+function panTo(n) {   // keep the scale; slide the view only when the ring is outside (or at the edge of) the canvas
+  const t = d3.zoomTransform(svg.node()), [sx, sy] = t.apply([n.x, n.y]), m = 60;
+  if (sx > m && sx < W - m && sy > m && sy < H - m) return;
+  svg.interrupt().transition().duration(450).call(zoom.transform, d3.zoomIdentity.translate(W / 2 - n.x * t.k, H / 2 - n.y * t.k).scale(t.k));
+}
+
+const overlap = (a, b) => Math.max(0, Math.min(a[0] + a[2], b[0] + b[2]) - Math.max(a[0], b[0]))
+                        * Math.max(0, Math.min(a[1] + a[3], b[1] + b[3]) - Math.max(a[1], b[1]));
+function drawGeometry() {
+  gE.selectAll('g.ev').attr('transform', d => d.x == null ? null : `translate(${d.x},${d.y})`);
+  gN.selectAll('g.node').attr('transform', d => d.x == null ? null : `translate(${d.x},${d.y})`);
+  if (regionMode === 'circle') {   // one circle per event: centred between the diamond and its participants, big enough to hold them all
+    gH.selectAll('path.hull').attr('d', d => {
+      if (d.x == null) return null;
+      const ms = d.b.members.map(byKey).filter(n => n && n.x != null);
+      const cx = (d.x + d3.sum(ms, n => n.x)) / (ms.length + 1), cy = (d.y + 14 + d3.sum(ms, n => n.y)) / (ms.length + 1);
+      const r = Math.max(Math.hypot(d.x - cx, d.y - cy) + 44, ...ms.map(n => Math.hypot(n.x - cx, n.y - cy) + n.r + 20));
+      return `M${cx - r},${cy} a${r},${r} 0 1,0 ${2 * r},0 a${r},${r} 0 1,0 ${-2 * r},0`;
+    });
+  } else {   // dividing lines: the canvas is split between the visible events (Voronoi cells around the diamonds)
+    const vis = rings.filter(d => d.x != null && (lastVis.get(d.key) || { a: 1 }).a > 0);
+    const vor = vis.length ? d3.Delaunay.from(vis, d => d.x, d => d.y).voronoi([0, 0, LW, LH]) : null;
+    const idx = new Map(vis.map((d, i) => [d.key, i]));
+    gH.selectAll('path.hull').attr('d', d => (vor && idx.has(d.key)) ? vor.renderCell(idx.get(d.key)) : null);
+  }
+  gA.selectAll('g.arrow').each(function (l) {
+    if (l.source.x == null || l.target.x == null) return;   // from the ring's edge to the participant's edge; role label just off the midpoint
+    const s = l.source, t = l.target, dx = t.x - s.x, dy = t.y - s.y, L = Math.hypot(dx, dy) || 1, ux = dx / L, uy = dy / L;
+    const x1 = s.x + ux * (s.r + 1), y1 = s.y + uy * (s.r + 1), x2 = t.x - ux * (t.r + 5), y2 = t.y - uy * (t.r + 5);
+    const g = d3.select(this);
+    g.select('line').attr('x1', x1).attr('y1', y1).attr('x2', x2).attr('y2', y2);
+    g.select('text').attr('x', (x1 + x2) / 2 - uy * 7).attr('y', (y1 + y2) / 2 + ux * 7 + 3);
+  });
+  placeLabels();
+}
+const labelShown = d => { const v = lastVis.get(d.key) || vis(d.b); if (v.a <= 0) return false; return labelMode === 'all' || v.s === 'now' || (selected && isFocus(d.b)) || inQA(d.b); };
+function placeLabels() {
+  // labels: try spots around the ring; keep the one overlapping least with nodes, rings, labels already placed
+  // and the canvas edge, while staying close to the ring. Biggest labels first.
+  const boxOf = n => [n.x + n._box[0], n.y + n._box[1], n._box[2], n._box[3]];
+  const boxes = visNodes.filter(n => n._box && n.kind === 'ent').map(boxOf).concat(visNodes.filter(n => n.kind === 'ev').map(n => [n.x - n.r, n.y - n.r, 2 * n.r, 2 * n.r]));
+  const placed = [], frame = [4, 4, LW - 8, LH - 8];
+  gL.selectAll('text.bubble-label').style('display', d => labelShown(d) ? null : 'none');
+  gL.selectAll('text.bubble-label').data().filter(labelShown).sort((a, b) => b._w * b._h - a._w * a._h).forEach(n => {
+    const w = n._w, h = n._h, cands = [];
+    for (let j = -3; j <= 3; j++) cands.push([n.x + n.r + 6, n.y - h / 2 + j * 16], [n.x - n.r - 6 - w, n.y - h / 2 + j * 16]);
+    for (let j = -2; j <= 2; j++) cands.push([n.x - w / 2 + j * 40, n.y - n.r - 4 - h], [n.x - w / 2 + j * 40, n.y + n.r + 4]);
+    let best = null;
+    cands.forEach(([x, y]) => {
+      const r = [x, y, w, h];
+      const dist = Math.hypot(Math.max(0, x - n.x, n.x - x - w), Math.max(0, y - n.y, n.y - y - h));
+      let s = 20 * (w * h - overlap(r, frame)) + 2.5 * dist;
+      placed.forEach(p => { s += 5 * overlap(r, p); });
+      boxes.forEach(b => { s += 3 * overlap(r, b); });
+      if (!best || s < best.s) best = { s, x, y };
+    });
+    if (!best) return;
+    placed.push([best.x, best.y, w, h]); n._lx = best.x; n._ly = best.y;
+  });
+  gL.selectAll('text.bubble-label').attr('x', d => (d._lx ?? 0) + 3).attr('y', d => (d._ly ?? 0) + 13)
+    .each(function (d) { d3.select(this).selectAll('tspan').attr('x', (d._lx ?? 0) + 3); });
+}
+
+function isFocus(b) {
+  if (!selected) return true;
+  if (selected.type === 'bubble') return b.id === selected.id;
+  return b.members.includes(selected.key);
+}
+function restyle() {
+  if (!V) return;
+  const selRing = d => selected && selected.type === 'bubble' && selected.id === d.b.id, focusOn = !!selected;
+  // per ring: window fade first, then the selection override (focused = fully lit, the rest dimmed)
+  lastVis = new Map();
+  rings.forEach(d => {
+    let v = vis(d.b);
+    if (qaQ) v = inQA(d.b) ? { a: 1, f: 0, s: v.s === 'now' ? 'now' : 'past' } : { a: 0, f: 1, s: 'gone' };   // QA trace: only what the reader saw
+    if (focusOn) v = isFocus(d.b) ? (v.s === 'future' ? v : { a: 1, f: 0, s: v.s }) : { ...v, a: v.a > 0 ? Math.min(v.a, .12) : 0 };
+    lastVis.set(d.key, v);
+  });
+  const vr = d => lastVis.get(d.key), ringOf = new Map(rings.map(d => [d.b.id, d]));
+  // colour of an event under the window: its own hue, pulled toward gray as it ages; future = its hue, light and dashed
+  const hue = d => evColor.get(d.b.id) || PALETTE[0];
+  const col = d => { const v = vr(d); return v.s === 'future' ? d3.interpolateRgb(hue(d), '#ffffff')(.45) : hue(d); };
+  gE.selectAll('g.ev').attr('opacity', d => vr(d).a).style('pointer-events', d => vr(d).a > 0 ? null : 'none')
+    .select('path.ring')
+    .style('fill', d => col(d)).style('stroke', d => vr(d).s === 'now' ? 'var(--now)' : col(d))
+    .attr('stroke-width', d => selRing(d) || qaChain(d) ? 4 : (vr(d).s === 'now' ? 3.5 : 1.5))
+    .attr('stroke-dasharray', d => vr(d).s === 'future' ? '4 3' : (qaOpt(d) ? '3 3' : null));
+  gH.selectAll('path.hull').attr('opacity', d => vr(d).a)
+    .style('fill', d => d3.color(col(d)).copy({ opacity: vr(d).s === 'now' ? .2 : .11 }).formatRgb())
+    .style('stroke', d => regionMode === 'cells' ? '#fff' : (vr(d).s === 'now' ? 'var(--now)' : col(d)))
+    .attr('stroke-width', d => regionMode === 'cells' ? 3 : (selRing(d) || qaChain(d) ? 3 : (vr(d).s === 'now' ? 2.5 : 1.3)))
+    .attr('stroke-dasharray', d => regionMode !== 'cells' && vr(d).s === 'future' ? '6 5' : (regionMode !== 'cells' && qaOpt(d) ? '6 5' : null));
+  gE.selectAll('text.ev-pred').style('fill', d => vr(d).s === 'now' ? 'var(--now)' : col(d));
+  gE.selectAll('text.ev-time').style('fill', d => { const v = vr(d); return v.s === 'future' ? '#c9c8c2' : inkGray(Math.max(.3, v.f)); });
+  gA.selectAll('g.arrow').attr('opacity', l => vr(ringOf.get(l.b.id)).a).each(function (l) {
+    const v = vr(ringOf.get(l.b.id)), sel = selected && selected.type === 'bubble' && selected.id === l.b.id, g = d3.select(this);
+    const acol = v.s === 'now' ? ARROW.now : col(ringOf.get(l.b.id));
+    g.select('line').style('stroke', acol).attr('stroke-width', sel || v.s === 'now' ? 2 : 1.3)
+      .attr('stroke-dasharray', v.s === 'future' ? '5 4' : null).attr('marker-end', null);   // role-binding lines carry no arrowhead in the author's figure
+    g.select('text').style('fill', v.s === 'future' ? '#c3c2bb' : (v.s === 'now' ? 'var(--now)' : inkGray(Math.max(.45, v.f))));
+  });
+  const sig = gL.selectAll('text.bubble-label').data().filter(labelShown).map(d => d.key).join('');
+  if (sig !== shownSig) { shownSig = sig; placeLabels(); }
+  const rowState = row => { const s = row.events.map(evState); return s.includes('now') ? 'now' : (s.includes('past') ? 'past' : 'future'); };
+  gL.selectAll('text.bubble-label').attr('opacity', d => vr(d).a > 0 ? (focusOn && !isFocus(d.b) ? .12 : 1) : 0)
+    .selectAll('tspan').style('fill', row => row.more ? 'var(--ink-3)' : (rowState(row) === 'future' ? '#bdbcb6' : (rowState(row) === 'now' ? 'var(--now)' : 'var(--ink)')))
+    .style('font-weight', row => row.more || rowState(row) === 'future' ? 400 : 500);
+  // people / objects: as bright as their brightest event, and gray along with it
+  const NV = new Map();
+  rings.forEach(d => { const v = vr(d); d.b.members.forEach(m => { const c = NV.get(m) || { a: 0, f: 1 }; if (v.a > c.a || (v.a === c.a && v.f < c.f)) NV.set(m, { a: v.a, f: v.f }); }); });
+  if (qaQ && !qaSpan) qaOwn.forEach(k => { const c = NV.get(k); if (!c || c.a < 1) NV.set(k, { a: 1, f: 0 }); });   // QA trace: also light up the owner of text/state facts
+  const visKeys = new Set();
+  rings.forEach(d => { if (vr(d).a > 0) visKeys.add(d.key); });
+  gN.selectAll('g.node').each(function (d) {
+    let v = NV.get(d.key) || { a: 0, f: 1 };
+    if (selected && selected.type === 'entity' && d.key === selected.key) v = { a: 1, f: 0 };
+    if (v.a > 0) visKeys.add(d.key);
+    d3.select(this).attr('opacity', v.a).style('pointer-events', v.a > 0 ? null : 'none').style('filter', null);
+  });
+  const lsig = [...visKeys].sort().join('|');
+  if (lsig !== layoutSig) { layoutSig = lsig; relayout(visKeys); shownSig = null; } else if (regionMode === 'cells') drawGeometry();
+  gN.selectAll('g.node').select('.ring').style('stroke', d => ents.get(d.key).kind === 'person' ? 'var(--ink-2)' : 'var(--obj-stroke)')
+    .attr('stroke-width', d => selected && selected.type === 'entity' && selected.key === d.key ? 3 : (ents.get(d.key).kind === 'person' ? 1.5 : 2.5));
+  gN.selectAll('g.achip').each(function (a) {   // attribute chips in the author's "state" orange
+    const seen = T >= a.start;
+    d3.select(this).select('rect').style('fill', seen ? '#fff1df' : '#fdf9f3').style('stroke', seen ? '#f0c48c' : '#ecdfcc').attr('stroke-dasharray', seen ? null : '3 3');
+    d3.select(this).select('text').style('fill', seen ? '#8a5a1e' : '#c9bfb0');
+  });
+  const nowRing = rings.filter(d => vr(d).s === 'now').sort((a, b) => b.b.start - a.b.start)[0];
+  if (nowRing && nowRing.key !== lastNowKey) { lastNowKey = nowRing.key; panTo(nowRing); } else if (!nowRing) lastNowKey = null;
+  updateTrack();
+  $('clock').textContent = mmss(T);
+  panel();
+}
+
+// ---------- side panel ----------
+const cls = a => T < a.start ? 'future' : (T <= a.end ? 'now' : '');
+const slotName = s => { try { const p = JSON.parse(s.slice(1)); return `${p[1]}.${p[2]}`; } catch (e) { return s; } };
+function withNow(items, rowHtml) {
+  let html = '', done = false;
+  items.forEach(a => { if (!done && a.start > T) { html += `<li class="divider">—— now ${mmss(T)} ——</li>`; done = true; } html += rowHtml(a); });
+  if (!done) html += `<li class="divider">—— now ${mmss(T)} ——</li>`;
+  return html;
+}
+function flags(a) {
+  let f = '';
+  if (a.continued) f += `<span class="flag">continued ${Math.round(a.end - a.start)}s across windows</span>`;
+  if (a.merged_members.length) f += `<span class="flag">offline-merged ${a.merged_members.length + 1} records</span>`;
+  if (a.offline_rewritten) f += `<span class="flag">offline identity rewrite</span>`;
+  return f;
+}
+function timelineFor(key) {
+  const items = [];
+  V.bubbles.filter(b => b.members.includes(key)).forEach(b => b.actions.forEach(a => items.push({ ...a, bubble: b.id, single: b.single })));
+  return items.sort((a, b) => a.start - b.start || a.pred.localeCompare(b.pred));
+}
+function bindPanelClicks(P) {
+  if (qaQ && selected) P.insertAdjacentHTML('afterbegin', `<div class="qaback" data-qaback>← back to question ${esc(qaQ)}</div>`);
+  P.querySelectorAll('[data-qaback]').forEach(el => el.onclick = () => { selected = null; restyle(); });
+  P.querySelectorAll('[data-qa]').forEach(el => el.onclick = () => setQ(el.dataset.qa));
+  P.querySelectorAll('[data-span]').forEach(el => el.onclick = () => { const [a, b] = el.dataset.span.split(',').map(Number); setSpan(a, b); });
+  P.querySelectorAll('[data-unspan]').forEach(el => el.onclick = () => { qaSpan = null; selected = null; userZoomed = false; render(); });
+  P.querySelectorAll('[data-fid]').forEach(el => el.onclick = () => {
+    if (el.dataset.t) jumpAt(+el.dataset.t);
+    const b = bubblesAll().find(x => x.events.some(e => e.id === el.dataset.fid));
+    if (b) select({ type: 'bubble', id: b.id });
+  });
+  P.querySelectorAll('[data-t]:not([data-fid])').forEach(el => el.onclick = () => jumpAt(+el.dataset.t));
+  P.querySelectorAll('[data-ent]').forEach(el => el.onclick = () => select({ type: 'entity', key: el.dataset.ent }));
+}
+
+// ---------- QA trace panel (data: build_qa.py -> qa.json, all from the reader's results.json / summary.json) ----------
+const spChip = (sp, cls, title) => `<span class="sp ${cls}${qaSpan && qaSpan.a === sp[0] && qaSpan.b === sp[1] ? ' on' : ''}" data-span="${sp[0]},${sp[1]}" title="${esc(title || 'open: see what the memory recorded in this span')}">${sp[0] === sp[1] ? mmss(sp[0]) : span(sp[0], sp[1])}</span>`;
+const inSpans = (f, spans) => (spans || []).some(([a, b]) => f.t0 != null && f.t0 <= b && f.t1 >= a);
+function spanPanel(q) {   // gold span: list what the memory actually recorded in this span (distinct from what the reader retrieved)
+  const bs = bubblesAll().filter(b => ovl(b, qaSpan)).sort((x, y) => x.start - y.start);
+  const got = bs.filter(b => b.events.some(e => qaF.has(e.id))).length;
+  const nameOf = k => ents.get(k) ? ents.get(k).name : k;
+  return `<div class="qaback" data-unspan>← back to ${esc(q.id)}: facts the reader retrieved</div>
+    <h2>gold span ${span(qaSpan.a, qaSpan.b)}</h2>
+    <div class="spnote">This is the time span where the <b>gold answer's evidence</b> was annotated. The graph now shows every event the memory actually recorded in this span — <b>${bs.length}</b> in total, <b>${got}</b> of which the reader retrieved. ${bs.length === 0 ? 'The memory recorded nothing here, so this question could not possibly be answered.' : (got === 0 ? 'Nothing was retrieved; the reader answered from material in other time spans.' : '')}</div>
+    <ul class="tl">${bs.map(b => {
+      const a0 = b.actions[0], hit = b.events.some(e => qaF.has(e.id));
+      return `<li data-fid="${esc(b.events[0].id)}" data-t="${b.start}"><span class="time">${span(b.start, d3.max(b.intervals, iv => iv[1]))}</span>
+        <span class="what">${esc(a0.desc || a0.pred)}${hit ? '<span class="bd q">retrieved</span>' : ''}<br><span class="role">${esc(b.members.map(nameOf).join(', ')) || 'no participants'}</span></span></li>`;
+    }).join('') || '<li class="muted">no events in this span</li>'}</ul>`;
+}
+const VERD = { supported: ['sup', 'supported'], insufficient: ['ins', 'insufficient'], contradicted: ['con', 'contradicted'] };
+const verd = v => { const [c, t] = VERD[v] || ['ins', v || '—']; return `<span class="bd ${c === 'sup' ? 'ch' : ''}">${esc(t)}</span>`; };
+function qaPanel() {
+  const q = qaCur(), S = QA.summary, nameOf = k => ents.get(k) ? ents.get(k).name : k;
+  if (q && qaSpan) return spanPanel(q);
+  if (!q) {
+    const sup = S.answer_support || {};
+    const byType = Object.entries(S.by_type || {}).map(([k, v]) => `${k} ${v.correct}/${v.questions}`).join(' · ');
+    return `<h2>reader answers · ${S.correct}/${S.questions} correct (${Math.round(S.accuracy * 100)}%)</h2>
+      <div class="muted" style="font-size:12.5px">model ${esc(QA.model)} · in-graph audit: supported ${sup.supported || 0} / insufficient ${sup.insufficient || 0} / contradicted ${sup.contradicted || 0} · by type ${esc(byType)}</div>
+      <div class="note"><p><b>How it answers (rrt.reader)</b>: for each question, the stem and the four options are turned into retrieval hypotheses against hypergraph.json (top-k ${esc(q ? q.top_k : (QA.questions[0] || {}).top_k}, within a byte budget); the matched facts, together with their instances, identity decisions and evidence frame ids, are packed into one JSON payload for the reader. The reader never sees the video and returns a single letter. A second call does the in-graph audit: the answer is split into assertions and each is checked for an evidence chain in the same JSON (supported / insufficient / contradicted).</p>
+      <p>Click a question: only the facts the reader saw remain on the graph (everything else hidden, time window ignored); magenta ticks = their times; black ticks / thick borders = facts the audit cited.</p></div>
+      <h3>${QA.questions.length} questions (★ = gold, ▶ = reader's pick)</h3>
+      ${QA.questions.map(x => {
+        const gs = (x.annotation || {}).gold_spans || [], nin = x.facts.filter(f => inSpans(f, gs)).length;
+        return `<div class="qrow" data-qa="${esc(x.id)}"><div class="qh"><b>${esc(x.id)}</b><span>${esc(x.type)}</span><span class="${x.correct ? 'ok' : 'bad'}">${x.correct ? '✓ right' : '✗ wrong'}</span><span>picked ${esc(x.answer)}, gold ${esc(x.gold)}</span><span>${x.n_event} events + ${x.n_other} text</span><span class="${nin ? '' : 'bad'}">${nin} in gold span</span>${verd(x.support_verdict)}</div>${esc(x.stem)}</div>`;
+      }).join('')}`;
+  }
+  const an = q.annotation || {}, gs = an.gold_spans || [], os = an.option_spans || {};
+  const opts = Object.entries(q.options).map(([L, txt]) => {
+    const chips = L === q.gold ? gs.map(sp => spChip(sp, 'gold', "gold answer's evidence span: open to see what the memory recorded here")).join('')
+      : (os[L] ? spChip(os[L], '', "this distractor's time: open to see what the memory recorded here") : '');
+    return `<div class="opt ${L === q.gold ? 'gold' : ''} ${L === q.answer ? 'pick' : ''}"><span class="lt">${L === q.gold ? '★' : ''}${L === q.answer ? '▶' : ''}${L}</span><span>${esc(txt)} ${chips}${q.wrong_options[L] ? `<br><span class="cf">${esc(q.wrong_options[L])}</span>` : ''}</span></div>`;
+  }).join('');
+  const nin = q.facts.filter(f => inSpans(f, gs)).length;
+  const annBox = an ? `<div class="spnote">annotation: gold evidence in ${gs.map(sp => spChip(sp, 'gold')).join('') || '(none)'}; <b class="${nin ? '' : 'bad'}">${nin}</b> of the ${q.facts.length} retrieved facts fall inside it.
+    ${(an.events || []).map(e => `<br>${esc(e.kind)}: ${e.span ? spChip(e.span, 'gold') : ''} ${esc(e.text)}`).join('')}
+    ${an.bridge_target ? `<br>bridge target: ${esc(an.bridge_target)}${an.bridge_gap_sec != null ? `, the two events are ${an.bridge_gap_sec}s apart` : ''}` : ''}
+    ${an.binding_category ? `<br>binding category: ${esc(an.binding_category)} · ${esc(an.modality || '')} · ${esc(an.memory_dependency || '')}` : ''}</div>` : '';
+  const asr = q.assertions.length ? q.assertions.map(a => `<div class="qtx ${(VERD[a.verdict] || ['ins'])[0]}">${verd(a.verdict)} <span class="muted">${esc(a.claim_type)}</span><br>${esc(a.text)}${a.chain.length ? `<br><span class="muted">evidence chain: </span>${a.chain.map(fid => { const f = qaF.get(fid); return f ? `<span class="bd ch" data-fid="${esc(fid)}" data-t="${f.t0}" style="cursor:pointer">${esc(f.kind)} ${f.t0 != null ? mmss(f.t0) : ''}</span>` : `<span class="bd">${esc(fid.slice(-14))}</span>`; }).join('')}` : ''}</div>`).join('') : '<div class="muted">no assertions</div>';
+  const facts = q.facts.map(f => {
+    const who = f.kind === 'event' ? Object.entries(f.roles).map(([r, k]) => `${esc(r)}=${esc(k ? nameOf(k) : '?')}`).join('，')
+      : `owner：${f.members.map(k => `<span class="chip" data-ent="${esc(k)}" style="cursor:pointer;margin:0 2px 0 0">${esc(nameOf(k))}</span>`).join('') || '—'}`;
+    const stemHit = f.in.includes('stem');
+    const badges = f.in.map(t => `<span class="bd ${t === 'stem' ? 'q' : ''}">${t === 'stem' ? 'stem hit' : (stemHit ? 'option ' : 'only option ') + esc(t)}</span>`).join(' ') + (f.chain ? ' <span class="bd ch">cited by audit</span>' : '');
+    const inGraph = f.kind === 'event' ? (f.drawn ? '' : ' <span class="muted">(not drawn)</span>') : '';
+    return `<div class="qf ${f.kind === 'event' && f.drawn ? 'link' : ''}" ${f.kind === 'event' && f.drawn ? `data-fid="${esc(f.id)}"` : ''} data-t="${f.t0 != null ? f.t0 : ''}"><span class="time">${f.t0 != null ? span(f.t0, f.t1) : '—'}</span>
+      <span>${f.kind === 'event' ? '◆ ' : '▭ '}${esc(f.pred)}${f.value ? `: <b>${esc(f.value)}</b>` : ''}${inGraph}${badges}<br><span class="k">${who}${f.support ? ' · structural support ' + esc(f.support) : ''}</span></span></div>`;
+  }).join('');
+  const calls = q.calls.map((c, i) => `${i === 0 ? 'answer' : 'audit'} call ${c.prompt_tokens} tok prompt / ${c.completion_tokens} tok reply / ${c.elapsed}s`).join('; ');
+  return `<div class="qaback" data-qa="">← all ${QA.questions.length} questions</div>
+    <h2>${esc(q.id)} · ${esc(q.type)} · <span class="${q.correct ? 'ok' : 'bad'}">${q.correct ? '✓ right' : '✗ wrong'}</span> (picked ${esc(q.answer)}, gold ${esc(q.gold)})</h2>
+    <div style="font-size:13.5px;margin:4px 0 6px">${esc(q.stem)}</div>${opts}${annBox}
+    <h3>in-graph audit: answer ${verd(q.support_verdict)}<span class="muted" style="font-weight:400"> (${esc(q.scope || '')})</span></h3>${asr}
+    <h3>facts the reader saw (${q.n_event} events + ${q.n_other} text / state${q.span ? ` · spanning ${span(q.span[0], q.span[1])}` : ''}${q.omitted_for_budget ? ` · ${q.omitted_for_budget} dropped for budget` : ''})</h3>
+    <div class="muted" style="font-size:12px;margin-bottom:4px">Click a fact: the video jumps there and selects it on the graph (click empty space to come back). "stem hit" = retrieved by the stem; "only option X" = retrieved only by option X's words.</div>
+    ${facts}
+    <div class="note" style="margin-top:8px"><p>${esc(calls)}</p><p>data: ${esc(QA.source)} · snapshot ${esc(String(QA.snapshot_id || '').slice(0, 16))}…${QA.diagnostic ? ' · marked diagnostic (no independent media acceptance)' : ''}</p></div>`;
+}
+function panel() {
+  const P = $('panel'), keep = P.scrollTop, sig = JSON.stringify([viewKey, selected, Math.floor(T), qaOn, qaQ, qaSpan]);
+  if (P._sig === sig) return; P._sig = sig;
+  const S = V.stats;
+  if (qaOn && !selected) { P.innerHTML = qaPanel(); bindPanelClicks(P); P.scrollTop = keep; return; }
+  if (!selected) {
+    const merges = V.identity_merges.map(m => `<div class="row link" data-ent="${esc(m.canonical)}"><span class="k">${esc(m.entities.length)} local instances</span><span>${m.entities.map(esc).join(' + ')}</span><span class="t">${m.pairs.filter(x => x != null).map(x => x.toFixed(2)).join(' / ')}</span></div>`).join('');
+    P.innerHTML = `<h2>${esc(D.name)} · ${VIEW_NAME[viewKey]}</h2>
+      <div class="muted" style="font-size:12.5px">A ring = one event (action + time inside), arrows point to the participating people/objects with the role on the line. Click a ring or a person/object to see details; the video jumps to its next event (click again for the one after). Only events inside the look-back window are drawn: the window is the gray band on the time bar (drag its start handle, or use the slider above), and it follows the playhead while playing; events age toward transparent inside the window, events before it are hidden, not-yet events follow the opacity slider. Click a person or an event to keep it lit. Zoom with the wheel, pan by dragging empty space, double-click to reset.</div>
+      <h3>this run</h3>
+      <div class="row"><span class="k">events</span><span>${S.events} total (facts kind=event), ${S.drawn} drawn${S.no_roles ? ` (${S.no_roles} have no participants, not drawn)` : ''}</span><span></span></div>
+      <div class="row"><span class="k">people / objects</span><span>${S.people} people, ${S.objects} objects / regions (entities, one node each)</span><span></span></div>
+      <div class="row"><span class="k">identity links</span><span>${S.identity_merges} entities are linked from multiple local instances (same_identity decisions)</span><span></span></div>
+      ${D.snapshot_id ? `<div class="row"><span class="k">snapshot</span><span class="muted">${esc(String(D.snapshot_id).slice(0, 16))}… · ${esc(D.architecture || '')}</span><span></span></div>` : ''}
+      ${merges ? `<h3>identity links (open to see each local instance's box)</h3>${merges}` : ''}
+      <div class="note">
+        <p><b>All data comes from hypergraph.json</b>: a ring = one event fact, an arrow = its role (agent / patient / writer…), pointing at the entities in resolved_roles; avatars are cropped from source frames using the reference boxes in entity_registry.</p>
+        <p>The page does no merging, rewriting or translation; a purple dashed circle marks an entity linked from multiple local instances — open it to see each instance's own box.</p>
+      </div>`;
+    bindPanelClicks(P); P.scrollTop = keep; return;
+  }
+  if (selected.type === 'entity') {
+    const e = ents.get(selected.key);
+    if (!e) { selected = null; return panel(); }
+    const tl = timelineFor(e.key);
+    const attrs = e.attributes.length ? e.attributes.map(a => {
+      const via = e.kind === 'object' && (a.via.length > 1 || a.via[0] !== e.name) ? ` <span class="muted">(on ${a.via.map(esc).join(' / ')})</span>` : '';
+      return `<div class="row ${T < a.start ? 'future' : ''}"><span class="k">${esc(a.prop)}</span><span>${esc(a.value)}${via}</span><span class="t">${span(a.start, a.end)}</span></div>`;
+    }).join('') : '<div class="muted">no attributes recorded</div>';
+    let head;
+    if (e.kind === 'person') {
+      const pairTable = e.pairs.length ? `<h3>pairwise face scores (pre-merge; threshold 0.38)</h3>${e.pairs.map(p => `<div class="row"><span class="k">${esc(p.a)}</span><span>${esc(p.b)}</span><span class="t">${p.score == null ? '—' : p.score.toFixed(3)}</span></div>`).join('')}` : '';
+      head = `<div><span class="chip">person</span>${e.members.length > 1 ? `<span class="chip merge">linked from ${e.members.length} local instances</span>` : ''}${e.unresolved_mention ? '<span class="chip">unresolved mention</span>' : ''}</div>
+        <h3>${e.members.length > 1 ? "each local instance's own box (to judge whether they are one person)" : 'reference boxes'}</h3>
+        ${e.members.map(m => `<div class="member"><div class="mh"><b>${esc(m.id.replace(/^.*:(win_\d+):/, '$1:'))}</b> · ${m.first != null ? mmss(m.first) : '?'}–${m.last != null ? mmss(m.last) : '?'} · ${m.face_embeds} boxes${m.aliases.length ? ' · ' + m.aliases.map(esc).join(' / ') : ''}</div>
+          <div class="faces">${m.faces.map(f => `<img src="${f}" alt="">`).join('') || '<span class="muted">no avatar cropped</span>'}</div></div>`).join('')}
+        ${pairTable}`;
+    } else {
+      head = `<div><span class="chip">object</span></div>
+        <h3>entity</h3>
+        <div class="note"><p>${esc(e.reason)}</p>${e.notes.map(n => `<p>${esc(n)}</p>`).join('')}</div>
+        <h3>events it takes part in (${e.occurrences.length})</h3>
+        ${e.occurrences.map(o => `<div class="row link ${T < o.start ? 'future' : ''}" data-t="${o.start}"><span class="k">${esc(o.slot)}</span><span>${esc(o.text)} <span class="muted">· ${esc(o.pred)}${o.holder ? ' · ' + esc(o.holder) : ''}</span></span><span class="t">${span(o.start, o.end)}</span></div>`).join('')}`;
+    }
+    P.innerHTML = `<h2>${esc(e.name)}</h2>${head}
+      <h3>attributes & states (facts kind=state / attribute / text with this owner)</h3>${attrs}
+      <h3>events it takes part in (${tl.length})</h3>
+      <ul class="tl">${withNow(tl, a => `<li class="${cls(a)}" data-t="${a.start}"><span class="time">${span(a.start, a.end)}</span>
+        <span class="what">${esc(a.desc || a.pred)}<br><span class="role">${esc(a.roles[e.key] || '')} of ${esc(a.pred)}${a.single ? ' · single-member' : ''}</span> ${flags(a)}</span></li>`)}</ul>`;
+    bindPanelClicks(P); P.scrollTop = keep; return;
+  }
+  const b = bubblesAll().find(x => x.id === selected.id);
+  if (!b) { selected = null; return panel(); }
+  const nameOf = k => ents.get(k) ? ents.get(k).name : k;
+  P.innerHTML = `<h2>${esc(b.members.map(nameOf).join(' · '))}</h2>
+    <div>${b.members.map(k => `<span class="chip" data-ent="${esc(k)}" style="cursor:pointer">${esc(nameOf(k))}</span>`).join('')}</div>
+    <h3>${b.events.length} events</h3>
+    <ul class="tl">${withNow(b.actions, a => {
+      const roles = Object.entries(a.roles).map(([k, r]) => `${a.text[k]} (${r})`).join(', ');
+      const mm = a.merged_members.length ? `<div class="note">merged in offline: ${a.merged_members.map(m => `${span(m.start, m.end)} ${esc(m.desc)}`).join('; ')}</div>` : '';
+      return `<li class="${cls(a)}" data-t="${a.start}"><span class="time">${span(a.start, a.end)}</span>
+        <span class="what">${esc(a.desc)}<br><span class="role">${esc(a.pred)} · ${esc(roles)} · ${a.status === 'full' ? 'full write' : 'partial write'} · ${a.evidence} evidence · v${a.version}</span> ${flags(a)}
+        ${a.unresolved.length ? `<div class="note">unresolved: ${esc(a.unresolved.map(slotName).join(', '))}</div>` : ''}${mm}</span></li>`;
+    })}</ul>`;
+  bindPanelClicks(P); P.scrollTop = keep;
+}
+
+// ---------- time: one clock for video + graph ----------
+let raf = null, timer = null;
+function setTime(t, fromVideo = false) {
+  T = clamp(t, D.t0, D.t1); slider.value = T;
+  if (!fromVideo && D.video && Math.abs(video.currentTime - (T - D.t0)) > 0.25) video.currentTime = T - D.t0;
+  restyle();
+}
+slider.oninput = () => { returnT = null; setTime(+slider.value); };
+function follow() {
+  const t = D.t0 + video.currentTime;
+  if (Math.floor(t * 2) !== Math.floor(T * 2)) setTime(t, true); else { T = t; }
+  raf = requestAnimationFrame(follow);
+}
+video.onplay = () => { $('play').textContent = '❚❚ pause'; cancelAnimationFrame(raf); follow(); };
+video.onpause = () => { $('play').textContent = '▶ play'; cancelAnimationFrame(raf); setTime(D.t0 + video.currentTime, true); };
+video.onended = video.onpause;
+video.onclick = () => $('play').click();
+$('play').onclick = () => {
+  if (D.video) { if (video.paused) { if (T >= D.t1 - 0.2) setTime(D.t0); video.play(); } else video.pause(); return; }
+  if (timer) { clearInterval(timer); timer = null; $('play').textContent = '▶ play'; return; }
+  if (T >= D.t1) setTime(D.t0);
+  $('play').textContent = '❚❚ pause';
+  timer = setInterval(() => { if (T >= D.t1) { $('play').click(); return; } setTime(T + 0.5); }, 500);
+};
+$('mute').onclick = () => { video.muted = !video.muted; $('mute').textContent = video.muted ? 'muted' : 'sound on'; };
+$('labelSeg').querySelectorAll('button').forEach(b => b.onclick = () => {
+  labelMode = b.dataset.l; $('labelSeg').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); shownSig = null; restyle(); });
+$('singles').onchange = e => { showSingles = e.target.checked; selected = null; userZoomed = false; render(); };
+$('modeSeg').querySelectorAll('button').forEach(b => b.onclick = () => {
+  mode = b.dataset.m; $('modeSeg').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); selected = null; userZoomed = false; render(); });
+$('futureOp').oninput = e => { futureOp = +e.target.value / 100; $('futureOpV').textContent = e.target.value + '%'; shownSig = null; restyle(); };
+$('winSize').oninput = e => setW(wFromSlider(+e.target.value), true);
+$('fadeStr').oninput = e => { fadeStr = +e.target.value / 100; $('fadeStrV').textContent = e.target.value + '%'; shownSig = null; restyle(); };
+(() => {   // drag the window-start handle on the time bar: W follows (the size slider updates), the playhead stays put
+  const h = $('hA'), tr = $('track'); let on = false;
+  h.onpointerdown = ev => { on = true; h.setPointerCapture(ev.pointerId); ev.preventDefault(); };
+  h.onpointermove = ev => { if (!on) return; const r = tr.getBoundingClientRect();
+    const a = clamp(D.t0 + (ev.clientX - r.left) / r.width * (D.t1 - D.t0), D.t0, Math.max(D.t0, T - 10));
+    setW(a <= D.t0 + 0.5 ? Infinity : T - a); };
+  h.onpointerup = h.onpointercancel = () => { on = false; };
+})();
+$('qaSeg').querySelectorAll('button').forEach(b => b.onclick = () => { qaSegSet(b.dataset.q); selected = null; userZoomed = false; render(); });
+svg.on('click', () => { selected = null; if (returnT !== null) { const t = returnT; returnT = null; setTime(t); } else restyle(); });
+function select(s) { selected = s; restyle(); }
+window.addEventListener('resize', () => { if (V) render(); });
+init();
+</script>
+</body>
+</html>

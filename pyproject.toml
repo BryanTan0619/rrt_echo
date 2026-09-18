@@ -20,7 +20,7 @@ face-gpu = ["insightface>=0.7", "onnxruntime-gpu>=1.17", "opencv-python-headless
 dev = ["pytest>=8", "ruff>=0.9", "build>=1"]
 
 [project.urls]
-Repository = "https://git.woa.com/bryankztan/rrt_echo"
+Repository = "https://github.com/BryanTan0619/rrt_echo"
 
 [project.scripts]
 rrt-echo-multimodal = "rrt_echo.rrt.multimodal:main"

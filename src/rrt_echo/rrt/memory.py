@@ -516,9 +516,53 @@ class RRTMemory:
                     fact["version"] = updates[-1]["version"]
                     fact["text_review"] = copy.deepcopy(updates[-1]["review"])
         graph.pop("snapshot_id", None)
+        graph["state_sequences"] = build_state_sequences(graph)
         graph["snapshot_id"] = digest(graph)
         reviews = [v for r in results for v in r.get("event_content_reviews", [])]
         return attach_event_contents(graph, reviews) if reviews else graph
+
+
+def build_state_sequences(graph):
+    """Per-entity temporal chains of observed state/attribute facts.
+
+    A sequence orders facts by observed time; it asserts only that the states were
+    observed in this order, never that one state causally transitioned into another
+    (correct-by-construction: gaps are gaps, not inferred transitions).
+    """
+    from collections import defaultdict
+
+    by_entity = defaultdict(list)
+    for f in graph["facts"]:
+        if f["kind"] not in {"state", "attribute"}:
+            continue
+        owner = f["roles"].get("owner")
+        if not owner:
+            continue
+        entity = f.get("resolved_roles", {}).get("owner", {}).get("entity_id")
+        if not entity or not f.get("observed_times"):
+            continue
+        by_entity[entity].append(
+            {
+                "fact_id": f["fact_id"],
+                "kind": f["kind"],
+                "predicate": f["predicate"],
+                "value": f.get("value"),
+                "observed_times": f["observed_times"],
+            }
+        )
+    sequences = []
+    for entity, items in by_entity.items():
+        if len(items) < 2:
+            continue
+        items.sort(key=lambda x: min(x["observed_times"]))
+        sequences.append(
+            {
+                "entity_id": entity,
+                "status": "observed_sequence_not_inferred_transition",
+                "sequence": items,
+            }
+        )
+    return sequences
 
 
 def narrative_projection(graph):

@@ -74,3 +74,22 @@ def binding_view(payload):
         for f in payload.get("facts", [])
         if f["kind"] in {"text", "attribute", "state"}
     ]
+
+
+def state_sequence_view(payload, graph):
+    """Per-entity temporal chains of observed state/attribute facts for payload entities.
+
+    Each sequence is an ordered list of observations, never an inferred transition.
+    """
+    seq_by_entity = {s["entity_id"]: s for s in graph.get("state_sequences", [])}
+    entities = {
+        r["entity_id"]
+        for f in payload.get("facts", [])
+        for r in f.get("resolved_roles", {}).values()
+    }
+    entities.update(
+        p["owner_entity"]
+        for f in payload.get("facts", [])
+        for p in f.get("owner_projections", {}).values()
+    )
+    return [seq_by_entity[e] for e in sorted(entities) if e in seq_by_entity]

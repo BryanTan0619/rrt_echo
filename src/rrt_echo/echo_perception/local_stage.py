@@ -180,6 +180,29 @@ def reference_profile(observation, instance):
                 "status": "model_observed; not_semantically_certified",
             }
         )
+    # Discriminative instance attributes (attire/color/state/...) also feed identity
+    # cues. They are anchored to the instance's own regions rather than a separate
+    # fact, so identity resolution keeps seeing the attribute signal even when the
+    # observer reported it on the instance instead of as an attribute property.
+    for attr in instance.get("attributes", ()) or ():
+        if isinstance(attr, dict):
+            dim, val = attr.get("dimension"), attr.get("value")
+        elif isinstance(attr, (tuple, list)) and len(attr) >= 2:
+            dim, val = attr[0], attr[1]
+        else:
+            continue
+        if not dim or not val:
+            continue
+        cues.append(
+            {
+                "fact_id": "attr:" + str(dim) + ":" + str(val),
+                "property": str(dim),
+                "value": str(val),
+                "evidence_ids": sorted(anchors),
+                "observed_times": [],
+                "status": "model_observed; not_semantically_certified",
+            }
+        )
     return {
         "instance_id": instance["instance_id"],
         "description_for_audit": instance["description"],

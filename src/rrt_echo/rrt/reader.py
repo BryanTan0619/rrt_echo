@@ -18,7 +18,7 @@ from ..schema import digest
 from ..scoped_identity import identity_paths
 from ..storage import read_graph
 from .audio import retrieve_audio
-from .binding_scope import binding_view, video_time_ranges
+from .binding_scope import binding_view, state_sequence_view, video_time_ranges
 from .hypergraph import proof_closure
 
 
@@ -76,6 +76,12 @@ def payload_for(
         payload = retrieve(graph, Query(stem, time_ranges=ranges), top_k=top_k, max_bytes=max_bytes)
     payload["query_time_windows"] = [list(r) for r in ranges]
     payload["attribute_bindings"] = binding_view(payload)
+    payload["state_sequences"] = state_sequence_view(payload, graph)
+    payload["state_sequence_rules"] = (
+        "A state_sequence lists observed states of one entity ordered by time. "
+        "Order is observation order, not proof that one state turned into another. "
+        "Do not infer a transition across an unobserved gap."
+    )
     payload["binding_rules"] = (
         "Attribute values belong only to their cited local surface/owner at the observed time. Distinct unresolved entity IDs are not evidence of different identities. Do not transfer values between owners or events."
     )

@@ -129,3 +129,21 @@ def test_context_reaches_proposer_but_remains_outside_target_evidence(tmp_path):
     )
     assert result["context_used_for_proposals"] == ["m0", "m2"]
     assert result["observation"]["facts"] == []
+
+
+def test_state_sequence_view_picks_payload_entities():
+    from rrt_echo.rrt.binding_scope import state_sequence_view
+
+    graph = {
+        "state_sequences": [
+            {"entity_id": "e0", "status": "observed_sequence_not_inferred_transition", "sequence": []},
+        ]
+    }
+    payload = {
+        "facts": [
+            {"resolved_roles": {"owner": {"entity_id": "e0"}}, "owner_projections": {}},
+        ]
+    }
+    view = state_sequence_view(payload, graph)
+    assert len(view) == 1
+    assert view[0]["entity_id"] == "e0"

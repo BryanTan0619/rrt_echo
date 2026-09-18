@@ -152,3 +152,35 @@ def test_cached_body_part_to_tool_link_is_not_accepted():
     graph = mem.snapshot()
     assert not graph["facts"][0]["owner_projections"]
     assert graph["binding_links"][0]["gap_reason"] == "body_part_owner_type_mismatch"
+
+
+def test_build_state_sequences_orders_by_time_and_excludes_non_state():
+    from rrt_echo.rrt.memory import build_state_sequences
+
+    graph = {
+        "facts": [
+            {
+                "fact_id": "f2", "kind": "state", "predicate": "smooth", "value": "yes",
+                "roles": {"owner": "i0"},
+                "resolved_roles": {"owner": {"entity_id": "e0"}},
+                "observed_times": [50.0],
+            },
+            {
+                "fact_id": "f1", "kind": "state", "predicate": "dry", "value": "yes",
+                "roles": {"owner": "i0"},
+                "resolved_roles": {"owner": {"entity_id": "e0"}},
+                "observed_times": [10.0],
+            },
+            {
+                "fact_id": "f3", "kind": "event", "predicate": "mix", "value": None,
+                "roles": {"agent": "i0"},
+                "resolved_roles": {"agent": {"entity_id": "e0"}},
+                "observed_times": [30.0],
+            },
+        ]
+    }
+    seqs = build_state_sequences(graph)
+    assert len(seqs) == 1
+    assert seqs[0]["status"] == "observed_sequence_not_inferred_transition"
+    preds = [it["predicate"] for it in seqs[0]["sequence"]]
+    assert preds == ["dry", "smooth"]  # 时间排序，event 被排除

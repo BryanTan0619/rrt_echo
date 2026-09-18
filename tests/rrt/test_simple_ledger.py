@@ -75,7 +75,7 @@ def test_owner_revocation_survives_restart(tmp_path):
 def test_simple_pipeline_one_observation_and_ledger(monkeypatch, tmp_path):
     from dataclasses import asdict
 
-    from rrt_echo.echo_perception.types import Clip, Media
+    from perception.types import Clip, Media
     from rrt_echo.rrt import pipeline
 
     sample = result("a")
@@ -127,7 +127,7 @@ def test_simple_does_not_silently_enable_omni(tmp_path):
 
 
 def test_bad_binding_row_does_not_erase_valid_independent_row():
-    from rrt_echo.echo_perception.correspondence import validate_partial_correspondences
+    from perception.correspondence import validate_partial_correspondences
 
     instances = {x + ":i": result(x)["observation"]["instances"][0] for x in "abc"}
     pairs = [

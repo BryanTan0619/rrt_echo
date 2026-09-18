@@ -3,8 +3,8 @@
 import json
 from pathlib import Path
 
-from ..echo_perception.correspondence import validate_correspondences
-from ..echo_perception.types import atomic_json
+from perception.correspondence import validate_correspondences
+from perception.types import atomic_json
 from .association import inventory
 
 

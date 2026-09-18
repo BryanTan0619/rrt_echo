@@ -1,6 +1,6 @@
 from types import SimpleNamespace
 
-from rrt_echo.echo_perception.local_stage import coverage_report
+from perception.local_stage import coverage_report
 from rrt_echo.rrt.binding_scope import text_companions, video_time_ranges
 from rrt_echo.rrt.diagnostics import repair_plan
 from rrt_echo.rrt.link_review import endpoint_verdict
@@ -98,7 +98,7 @@ def test_context_reaches_proposer_but_remains_outside_target_evidence(tmp_path):
 
     from PIL import Image
 
-    from rrt_echo.echo_perception.types import Clip, Media, digest
+    from perception.types import Clip, Media, digest
     from rrt_echo.rrt.verified import VerifiedPerceptionClient
 
     image = tmp_path / "frame.jpg"

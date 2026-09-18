@@ -3,7 +3,7 @@ import copy
 import pytest
 from jsonschema import ValidationError
 
-from rrt_echo.echo_perception.correspondence import validate_correspondences
+from perception.correspondence import validate_correspondences
 
 
 def data():
@@ -48,8 +48,8 @@ def test_omitted_correspondence_stays_unresolved():
 def test_comparison_aliases_roundtrip_and_cache(tmp_path):
     from PIL import Image
 
-    from rrt_echo.echo_perception.correspondence import CorrespondenceClient
-    from rrt_echo.echo_perception.types import Media, digest
+    from perception.correspondence import CorrespondenceClient
+    from perception.types import Media, digest
 
     frames = []
     instances = {}

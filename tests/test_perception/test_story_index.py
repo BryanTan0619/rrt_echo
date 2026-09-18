@@ -4,8 +4,8 @@ import json
 import pytest
 from jsonschema import ValidationError
 
-from rrt_echo.echo_perception.global_index import GlobalIndexClient, select_references
-from rrt_echo.echo_perception.graph import compile_graph
+from perception.global_index import GlobalIndexClient, select_references
+from perception.graph import compile_graph
 
 from .fixtures import clips_at, response
 

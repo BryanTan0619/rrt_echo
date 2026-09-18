@@ -8,8 +8,8 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw
 
-from ..echo_perception.types import Deadline, atomic_json
-from ..echo_perception.wire import enum, obj, string
+from perception.types import Deadline, atomic_json
+from perception.wire import enum, obj, string
 from .verified import VerifiedPerceptionClient, usable_box
 
 

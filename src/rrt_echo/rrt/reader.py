@@ -8,10 +8,10 @@ import json
 import re
 from pathlib import Path
 
-from ..echo_perception.types import atomic_json
+from perception.types import atomic_json
 from ..evaluation import audit_assertions, summarize
-from ..perception.prompts import AUDIT
-from ..perception.vlm import VisionClient
+from perception.reader_prompts import AUDIT
+from perception.reader_vlm import VisionClient
 from ..retrieval import Query, retrieve
 from ..runtime import Deadline
 from ..schema import digest

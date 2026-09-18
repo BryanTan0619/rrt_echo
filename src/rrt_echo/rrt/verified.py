@@ -18,10 +18,10 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw
 
-from ..echo_perception.local_stage import evenly
-from ..echo_perception.types import Deadline, atomic_json
-from ..echo_perception.vlm import jpeg
-from ..echo_perception.wire import arr, enum, joint_schema, materialize, obj, string, validate
+from perception.local_stage import evenly
+from perception.types import Deadline, atomic_json
+from perception.vlm import jpeg
+from perception.wire import arr, enum, joint_schema, materialize, obj, string, validate
 
 # Bounded interaction vocabulary: unknown interactions remain explicit generic events.
 EVENT_ROLES = {
@@ -309,7 +309,7 @@ class VerifiedPerceptionClient:
             "mm_processor_kwargs": {"max_pixels": 401408 if task == "temporal_review" else 1048576},
         }
         if schema is not None:
-            from ..echo_perception.vlm import transport_schema
+            from perception.vlm import transport_schema
 
             body["response_format"] = {
                 "type": "json_schema",

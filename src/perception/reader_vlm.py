@@ -10,9 +10,9 @@ import urllib.request
 from dataclasses import asdict, replace
 from pathlib import Path
 
-from ..runtime import Deadline
-from ..schema import ObservationPacket
-from .prompts import JOINT_LOCAL, LOCAL
+from rrt_echo.runtime import Deadline
+from rrt_echo.schema import ObservationPacket
+from .reader_prompts import JOINT_LOCAL, LOCAL
 
 
 class VisionClient:
@@ -175,8 +175,8 @@ class VisionClient:
         for attempt in range(2):
             try:
                 if self.joint:
-                    from ..schema import Region
-                    from .wire import joint_schema
+                    from rrt_echo.schema import Region
+                    from .reader_wire import joint_schema
 
                     try:
                         raw = self.complete(
@@ -200,7 +200,7 @@ class VisionClient:
                             len(raw["instances"]) >= 12 or len(raw["facts"]) >= 20
                         )
                 elif self.staged:
-                    from .wire import fact_schema, instance_schema
+                    from .reader_wire import fact_schema, instance_schema
 
                     first = self.complete(
                         "Ground all visible people (including infants), objects and owner regions across these frames. Use neutral local IDs; one ID per visibly continuous individual, not per detection box. Distinct people must remain separate. Kind is person/object/region. Detector boxes are fallible proposals. Do not invent people from isolated body parts. Cite up to four actual frame regions per instance. Box format is [x_min,y_min,x_max,y_max] in INTEGER 0..1000 coordinates, with x_min < x_max and y_min < y_max. Example box [120,80,610,930]. Do not register generic background scenery. No events, story roles or global identity decisions in this stage. Return compact JSON.\n"
@@ -215,7 +215,7 @@ class VisionClient:
                             source_media_aliases=sources,
                             observation_id=observation_id,
                         )
-                    from ..schema import Region
+                    from rrt_echo.schema import Region
 
                     for item in first["instances"]:
                         for region in item["regions"]:

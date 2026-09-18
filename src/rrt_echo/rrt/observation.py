@@ -9,9 +9,9 @@ from pathlib import Path
 from jsonschema import Draft202012Validator
 from jsonschema.exceptions import ValidationError
 
-from ..echo_perception.types import atomic_json
-from ..echo_perception.vlm import VisionClient, transport_schema
-from ..echo_perception.wire import arr, enum, obj, string, validate
+from perception.types import atomic_json
+from perception.vlm import VisionClient, transport_schema
+from perception.wire import arr, enum, obj, string, validate
 
 PROMPT = """Observe the TARGET video interval as a sequence of distinct occurrences.
 CONTEXT helps motion and ownership; REFERENCE helps identity only. Neither may

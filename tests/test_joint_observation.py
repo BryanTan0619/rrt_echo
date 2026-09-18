@@ -2,7 +2,7 @@ from copy import deepcopy
 
 from conftest import make_packet
 
-from rrt_echo.perception.vlm import VisionClient
+from perception.reader_vlm import VisionClient
 from rrt_echo.runtime import Deadline
 
 
@@ -68,7 +68,7 @@ def test_joint_bad_role_gets_one_repair_with_error_context(monkeypatch):
 
 
 def test_joint_schema_excludes_literal_attributes_from_roles():
-    from rrt_echo.perception.wire import joint_schema
+    from perception.reader_wire import joint_schema
 
     schema = joint_schema(["f0"])
     ids = schema["properties"]["instances"]["items"]["properties"]["instance_id"]["enum"]

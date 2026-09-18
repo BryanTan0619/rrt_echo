@@ -1,6 +1,6 @@
 from PIL import Image
 
-from rrt_echo.echo_perception.types import digest
+from perception.types import digest
 from rrt_echo.rrt.association import candidate_pairs, motion_candidates
 
 
@@ -90,7 +90,7 @@ def test_same_observation_duplicates_are_visual_candidates(tmp_path):
 def test_bounded_batches_reserve_ownership_and_skip_previously_compared(tmp_path, monkeypatch):
     import copy
 
-    from rrt_echo.echo_perception.types import Deadline
+    from perception.types import Deadline
     from rrt_echo.rrt import association
 
     rows = observations(tmp_path)

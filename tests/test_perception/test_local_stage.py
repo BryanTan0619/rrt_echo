@@ -1,4 +1,4 @@
-from rrt_echo.echo_perception.local_stage import reference_profile
+from perception.local_stage import reference_profile
 
 
 def test_reference_profile_reads_instance_attributes():

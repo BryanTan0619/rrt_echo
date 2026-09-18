@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Tiny HTTP proxy between rrt_echo and our vLLM, so the author's code runs unmodified (09-16).
 
-Why: `echo_perception/correspondence.py` sends `"structured_outputs": {"disable_any_whitespace": true}` next to
+Why: `perception/correspondence.py` sends `"structured_outputs": {"disable_any_whitespace": true}` next to
 `response_format.json_schema`. vLLM 0.19.1 validates `structured_outputs` and rejects it when it carries no
 constraint ("You must use one kind of structured outputs constraint but none are specified") -> every identity
 comparison batch died with HTTP 400 (24/24 on the 3-min clip). The joint-observation calls (vlm.py) don't send that

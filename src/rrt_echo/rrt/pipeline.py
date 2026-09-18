@@ -8,16 +8,16 @@ import time
 from dataclasses import asdict
 from pathlib import Path
 
-from ..echo_perception.global_index import GlobalIndexClient
-from ..echo_perception.local_stage import (
+from perception.global_index import GlobalIndexClient
+from perception.local_stage import (
     action_clip,
     coverage_order,
     coverage_report,
     local_references,
     plan_local,
 )
-from ..echo_perception.types import Deadline, atomic_json, clip_from_dict, digest
-from ..echo_perception.video import prepare
+from perception.types import Deadline, atomic_json, clip_from_dict, digest
+from perception.video import prepare
 from .anchor_review import enrich_tiny_anchors
 from .association import motion_candidates, resolve
 from .diagnostics import audit_observations, observation_clip_id, repair_plan

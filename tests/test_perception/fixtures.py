@@ -2,7 +2,7 @@ import json
 
 from PIL import Image
 
-from rrt_echo.echo_perception.types import Clip, Media, digest
+from perception.types import Clip, Media, digest
 
 
 def clips_at(tmp_path):

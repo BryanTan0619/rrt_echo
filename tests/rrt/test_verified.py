@@ -3,7 +3,7 @@ import json
 import pytest
 from PIL import Image
 
-from rrt_echo.echo_perception.types import Clip, Media, digest
+from perception.types import Clip, Media, digest
 from rrt_echo.rrt.verified import VerifiedPerceptionClient, usable_box, validate_review
 
 

@@ -15,7 +15,7 @@ def test_census_separates_singletons_and_global_links():
 
 
 def test_observer_retries_bad_reference_once(monkeypatch):
-    from rrt_echo.perception.vlm import VisionClient
+    from perception.reader_vlm import VisionClient
     from rrt_echo.runtime import Deadline
 
     packet = make_packet("a")
@@ -49,7 +49,7 @@ def test_observer_retries_bad_reference_once(monkeypatch):
 
 
 def test_request_aliases_restore_canonical_media(monkeypatch):
-    from rrt_echo.perception.vlm import VisionClient
+    from perception.reader_vlm import VisionClient
     from rrt_echo.runtime import Deadline
 
     packet = make_packet("a")
@@ -76,7 +76,7 @@ def test_request_aliases_restore_canonical_media(monkeypatch):
 
 
 def test_staged_integer_boxes_are_normalized_and_not_clamped(monkeypatch):
-    from rrt_echo.perception.vlm import VisionClient
+    from perception.reader_vlm import VisionClient
     from rrt_echo.runtime import Deadline
 
     packet = make_packet("a")

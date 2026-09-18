@@ -1,5 +1,5 @@
 """Run legacy vLLM with explicit RRT video metadata. No installed package edits.
-Usage: python -m rrt_echo.echo_perception.serve_compat serve MODEL [original vLLM flags]
+Usage: python -m perception.serve_compat serve MODEL [original vLLM flags]
 """
 
 import copy

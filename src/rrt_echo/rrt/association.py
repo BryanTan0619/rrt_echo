@@ -13,9 +13,9 @@ from pathlib import Path
 
 from PIL import Image
 
-from ..echo_perception.correspondence import CorrespondenceClient
-from ..echo_perception.tracking import LocalTracker
-from ..echo_perception.types import atomic_json
+from perception.correspondence import CorrespondenceClient
+from perception.tracking import LocalTracker
+from perception.types import atomic_json
 
 
 def inventory(results):
@@ -284,7 +284,7 @@ def resolve(
     skip_observed_pairs=False,
     previous_pairs=(),
 ):
-    from ..echo_perception.types import Media
+    from perception.types import Media
 
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)

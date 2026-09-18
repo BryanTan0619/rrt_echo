@@ -32,15 +32,15 @@ MP4 ──→ frame sampling & contiguous segments ──→ RRT joint observati
 | Module | Responsibility | Main code (`src/rrt_echo/`) |
 |---|---|---|
 | RRT | Per-segment joint extraction of people/objects/regions, event roles, text, time, and source frames; compares `continues`, `same_identity`, `part_of` | `rrt/pipeline.py`, `rrt/observation.py`, `rrt/association.py` |
-| ECHO | Appends raw observations; validates ownership and identity conflicts; produces the hypergraph and entity registry | `rrt/memory.py`, `rrt/hypergraph.py`, `echo_perception/graph.py` |
+| ECHO | Appends raw observations; validates ownership and identity conflicts; produces the hypergraph and entity registry | `rrt/memory.py`, `rrt/hypergraph.py`, `perception/graph.py` |
 | Retrieval | Retrieves whole facts by question and time, completing identity, ownership, and evidence dependencies | `retrieval.py`, `rrt/binding_scope.py`, `rrt/reader.py:payload_for` |
 | QA | Reads only the graph, never the video; forces an answer, then audits its support separately | `rrt/reader.py`, `evaluation.py` |
 | Audio | Timestamped ASR and anonymous voice clusters; unresolved speakers stay unresolved | `rrt/audio.py`, `rrt/multimodal.py` |
 
 `schema.py`, `memory.py`, `identity.py`, `storage.py` are the shared graph-storage base;
-`echo_perception/` and `perception/` keep the sampling, validation, and model adapters the main
-pipeline depends on. Some compatibility implementations remain internally — use the entry points
-below. Historical experiments and old reports are not shipped with this repository.
+`perception/` keeps the sampling, validation, and model adapters the main pipeline depends on.
+Use the entry points below. Historical experiments and old reports are not shipped with this
+repository.
 
 ### What the hypergraph stores
 

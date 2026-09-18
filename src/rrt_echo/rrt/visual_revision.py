@@ -38,7 +38,7 @@ def main():
     import json
     from pathlib import Path
 
-    from ..echo_perception.types import atomic_json
+    from perception.types import atomic_json
     from .memory import RRTMemory, narrative_projection
 
     parser = argparse.ArgumentParser(

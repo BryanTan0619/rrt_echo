@@ -8,8 +8,8 @@ import os
 from datetime import datetime, timezone
 from pathlib import Path
 
-from ..echo_perception.adapter import legacy_packet
-from ..echo_perception.graph import compile_graph
+from perception.adapter import legacy_packet
+from perception.graph import compile_graph
 from ..identity import IdentityProposal
 from ..memory import Memory
 from ..schema import ObservationPacket, digest
@@ -171,7 +171,7 @@ class RRTMemory:
         self.text_revisions.append(update)
 
     def materialize(self, out=None):
-        from ..echo_perception.types import atomic_json
+        from perception.types import atomic_json
         from .audio import attach_audio
         from .event_content import attach_coobserved_attributes
         from .hypergraph import TemporalEvidenceHypergraph

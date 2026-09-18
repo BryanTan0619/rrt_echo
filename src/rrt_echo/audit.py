@@ -12,8 +12,7 @@ import json
 from collections import Counter
 from pathlib import Path
 
-from .cli import read_graph
-from .storage import atomic_json
+from .storage import atomic_json, read_graph
 
 
 def census(graph):

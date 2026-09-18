@@ -180,17 +180,10 @@ python tools/rebuild_simple_memory.py \
 python tools/render_text_evidence.py \
   --graph outputs/video01/hypergraph.json --out outputs/video01_text
 python -m http.server 8767 --directory outputs
-
-# synthetic structure example without a video or model
-rrt-echo replay examples/observations.jsonl \
-  --identity examples/identity.jsonl --out outputs/toy
-rrt-echo inspect outputs/toy/hypergraph.json --question 'Who attacks whom?'
 ```
 
 After moving source frames across machines, pass `--path-map /old/prefix=/new/prefix` to the text
-viewer. The synthetic example only validates structure; `synthetic://` is not real video
-evidence. `rrt-echo inspect` is a low-level retrieval example — use `tools/inspect_memory.py` for
-the full QA payload.
+viewer. For the full QA retrieval payload, use `tools/inspect_memory.py`.
 
 The interactive hypergraph viewer lives in [`visualization/`](visualization/README.md): it renders
 the events, participants, and role bindings over time and traces a QA run back onto the graph.

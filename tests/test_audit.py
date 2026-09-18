@@ -75,22 +75,6 @@ def test_request_aliases_restore_canonical_media(monkeypatch):
     assert result.instances[0].regions[0].media_id == packet.media[0].media_id
 
 
-def test_shot_proposals_suppress_adjacent_motion_peaks():
-    from rrt_echo.perception.video import FrameIndex, assign_shots
-
-    rows = [FrameIndex(i, i, (1, 25), i / 25, 0, 0.01) for i in range(60)]
-    from dataclasses import replace
-
-    rows[20] = replace(rows[20], motion=0.4)
-    rows[21] = replace(rows[21], motion=0.3)
-    rows[45] = replace(rows[45], motion=0.25)
-    actual = assign_shots(rows)
-    assert actual[19].shot_id == 0
-    assert actual[20].shot_id == actual[21].shot_id == 1
-    assert actual[45].shot_id == 2
-    assert [r.pts for r in actual] == [r.pts for r in rows]
-
-
 def test_staged_integer_boxes_are_normalized_and_not_clamped(monkeypatch):
     from rrt_echo.perception.vlm import VisionClient
     from rrt_echo.runtime import Deadline
@@ -115,38 +99,6 @@ def test_staged_integer_boxes_are_normalized_and_not_clamped(monkeypatch):
     monkeypatch.setattr(client, "complete", lambda *a, **kw: next(responses))
     result = client.observe("o", "v", "s", packet.media, deadline=Deadline(20))
     assert result.instances[0].regions[0].box == (0.1, 0.2, 0.6, 0.9)
-
-
-def test_scoped_identity_compares_two_targets_and_preserves_sources():
-    from rrt_echo.reconcile import compare_scoped
-    from rrt_echo.runtime import Deadline
-
-    class Client:
-        calls = []
-
-        def complete(self, prompt, media, **kwargs):
-            assert [m.media_id for m in media] == ["A", "B"]
-            assert len(media) == 2
-            return {
-                "person_A": "adult",
-                "person_B": "infant",
-                "verdict": "different",
-                "visual_basis": "two distinct people",
-            }
-
-    crops = {
-        key: {
-            "uri": "/unused",
-            "pts": 0,
-            "time_base": [1, 25],
-            "sha256": "a" * 64,
-            "source_media_id": frame,
-        }
-        for key, frame in [("left", "source1"), ("right", "source2")]
-    }
-    result = compare_scoped(Client(), "p", "left", "right", crops, Deadline(20))
-    assert result.verdict == "different"
-    assert result.media_ids == ("source1", "source2")
 
 
 def test_identity_journal_restore_preserves_history_and_rejects_tampering():

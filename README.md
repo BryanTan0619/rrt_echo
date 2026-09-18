@@ -21,7 +21,7 @@ leakage, R6 attribute–owner leakage, and R7 event–relation corruption.
 
 ```text
 MP4 ──→ frame sampling & contiguous segments ──→ RRT joint observation ──→ budgeted entity correspondence
-         ↑ optional ASR text                          ↓
+         ↑ ASR text                                  ↓
                                           ECHO observation ledger & binding acceptance
                                                               ↓
                                                       hypergraph.json
@@ -35,7 +35,7 @@ MP4 ──→ frame sampling & contiguous segments ──→ RRT joint observati
 | ECHO | Appends raw observations; validates ownership and identity conflicts; produces the hypergraph and entity registry | `rrt/memory.py`, `rrt/hypergraph.py`, `echo_perception/graph.py` |
 | Retrieval | Retrieves whole facts by question and time, completing identity, ownership, and evidence dependencies | `retrieval.py`, `rrt/binding_scope.py`, `rrt/reader.py:payload_for` |
 | QA | Reads only the graph, never the video; forces an answer, then audits its support separately | `rrt/reader.py`, `evaluation.py` |
-| Optional audio | Timestamped ASR and anonymous voice clusters; unresolved speakers stay unresolved | `rrt/audio.py`, `rrt/multimodal.py` |
+| Audio | Timestamped ASR and anonymous voice clusters; unresolved speakers stay unresolved | `rrt/audio.py`, `rrt/multimodal.py` |
 
 `schema.py`, `memory.py`, `identity.py`, `storage.py` are the shared graph-storage base;
 `echo_perception/` and `perception/` keep the sampling, validation, and model adapters the main
@@ -195,9 +195,11 @@ the full QA payload.
 The interactive hypergraph viewer lives in [`visualization/`](visualization/README.md): it renders
 the events, participants, and role bindings over time and traces a QA run back onto the graph.
 
-## 6. Optional ASR
+## 6. ASR (audio modality)
 
-With M3-Agent code and local Whisper/ERes2NetV2 weights:
+The audio modality is part of RRT's multimodal extraction: ASR transcribes the soundtrack into
+timestamped text and ERes2NetV2 forms anonymous voice clusters. It requires the M3-Agent code and
+local Whisper/ERes2NetV2 weights:
 
 ```bash
 python -m pip install -e '.[audio]'

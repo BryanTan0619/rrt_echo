@@ -1,0 +1,105 @@
+{
+  "dataset": "BindScope",
+  "release_source_version": "mrx_v1.5_0924_with_current_R0",
+  "status": "prepared_release_candidate; source human audit incomplete",
+  "generated_utc": "2026-09-26T06:20:19.323695+00:00",
+  "questions": 2806,
+  "videos": 77,
+  "scoring_units": 1557,
+  "binding_pairs": 1110,
+  "presence_pairs": 139,
+  "paired_units": 1249,
+  "single_units": 308,
+  "questions_by_type": {
+    "R0": 278,
+    "R1": 190,
+    "R2": 408,
+    "R3": 322,
+    "R4": 440,
+    "R5": 342,
+    "R6": 574,
+    "R7": 252
+  },
+  "questions_by_format": {
+    "multiple_choice": 2146,
+    "true_false": 660
+  },
+  "paired_units_by_format": {
+    "multiple_choice": 984,
+    "true_false": 265
+  },
+  "scoring_units_by_type": {
+    "R0": 139,
+    "R1": 99,
+    "R2": 228,
+    "R3": 182,
+    "R4": 272,
+    "R5": 184,
+    "R6": 308,
+    "R7": 145
+  },
+  "paired_units_by_type": {
+    "R0": 139,
+    "R1": 91,
+    "R2": 180,
+    "R3": 140,
+    "R4": 168,
+    "R5": 158,
+    "R6": 266,
+    "R7": 107
+  },
+  "single_units_by_type": {
+    "R1": 8,
+    "R2": 48,
+    "R3": 42,
+    "R4": 104,
+    "R5": 26,
+    "R6": 42,
+    "R7": 38
+  },
+  "source_review_counts": {
+    "binding_pairs:human_reviewed": 90,
+    "binding_pairs:not_marked_human_reviewed": 1020,
+    "singles:human_reviewed": 0,
+    "singles:not_marked_human_reviewed": 308
+  },
+  "count_difference_from_2810": "Current R0 source contains 139 pairs / 278 questions, rather than the previous 141 pairs / 282 questions. No records were invented or restored from unaudited pools.",
+  "sources": {
+    "binding_pairs": {
+      "path": "bindscope_pairs_mrx_v1.5_release_0924/bindscope_pairs_mrx_v1.5_reviewed.json",
+      "sha256": "e86ebfc3d1b6410295ac933515f4f43b3971e5525bd7aee9a6eba5cd70b278a6"
+    },
+    "singles": {
+      "path": "bindscope_pairs_mrx_v1.5_release_0924/bindscope_singles_v1.5.json",
+      "sha256": "385a3aa2809b126becc1bbf72cb21e1a9325c43f33df832ab5e24ff153ad9394"
+    },
+    "presence_pairs": {
+      "path": "bindscope_b0.json",
+      "sha256": "1eb272cb40b28b1ca7474ac74744b6736a7c68b4543da7e34a0f1bdeea99487a"
+    }
+  },
+  "outputs": {
+    "bindscope_qa.json": "aac7cd5b3400789d189cce8493ca0e2c21e3afacb07f764802b47d0fde22659e",
+    "bindscope_qa.jsonl": "6c186fff095d69b08af1f09d731e336dda1864d822af3dce33a6e0bb2b78d7ce"
+  },
+  "evaluation": {
+    "question_accuracy": "mean individual question correctness",
+    "pair_accuracy": "both questions in each complete paired unit must be correct; exclude singles",
+    "paired_denominator_R1_R7": 1110,
+    "paired_denominator_R0_R7": 1249,
+    "all_unit_denominator": 1557,
+    "question_denominator": 2806,
+    "independent_random_baseline_four_option_pair": 0.0625,
+    "independent_random_baseline_presence_pair": 0.25,
+    "model_input": "one question and shuffled options per fresh conversation; do not expose answers, pair mates, directions or scoring metadata",
+    "answer_remapping": "After option shuffling, remap predictions to original semantic option IDs before scoring"
+  },
+  "validation": {
+    "unique_question_ids": true,
+    "correct_pair_sizes": true,
+    "answers_in_options": true,
+    "pair_video_and_type_consistency": true,
+    "R0_true_false_balance": true,
+    "private_annotations_excluded": true
+  }
+}

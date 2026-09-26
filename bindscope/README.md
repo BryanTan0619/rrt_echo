@@ -1,17 +1,17 @@
-# BindScope QA 发布文件
+# BindScope QA Release Files
 
-本目录导出与当前 ECHO 全量实验一致的 v1.5 问答源；准备文件不代表已完成全部人工审核或已公开发布。
+This directory contains the v1.5 QA export used by the current ECHO full-dataset evaluation. Distribution of these files does not imply that all source annotations have completed human review.
 
-- `bindscope_qa.json`：标准 JSON 数组，一条记录对应一道题。
-- `bindscope_qa.jsonl`：相同记录的逐行 JSON 版本。
-- `release_manifest.json`：统计、源文件哈希、验证结果及评分协议。
+- `bindscope_qa.json`: a standard JSON array, with one record per question.
+- `bindscope_qa.jsonl`: the same records in JSON Lines format.
+- `release_manifest.json`: dataset statistics, source hashes, validation results, and the evaluation protocol.
 
-共 **77 个视频、2,806 道题、1,557 个计分单位**。其中 R1–R7 为 1,110 对 / 2,220 题，R0 为 139 对 / 278 题，single 为 308 题。
-按格式统计：四选一 2146 题，判断题 660 题；配对单位中四选一 984 对、判断题 265 对。R1–R7 源文件同样含判断题，并非全部四选一。
+The export contains **77 videos, 2,806 questions, and 1,557 scoring units**: 1,110 R1–R7 pairs (2,220 questions), 139 R0 pairs (278 questions), and 308 single questions.
+By format, there are 2146 multiple-choice questions and 660 true/false questions. Paired units include 984 multiple-choice pairs and 265 true/false pairs. R1–R7 also includes true/false questions.
 
-旧的 2,810 题统计使用 141 对 R0；当前源文件仅有 139 对，因此少 4 题。没有为了凑数补题。
+The earlier count of 2,810 questions assumed 141 R0 pairs. The current R0 source contains 139 pairs, accounting for the four-question difference. No questions were added to reach the earlier count.
 
-| 类型 | 题数 | 配对单位 | 单题单位 | 全部单位 |
+| Type | Questions | Paired units | Single units | Total units |
 |---|---:|---:|---:|---:|
 | R0 | 278 | 139 | 0 | 139 |
 | R1 | 190 | 91 | 8 | 99 |
@@ -22,27 +22,27 @@
 | R6 | 574 | 266 | 42 | 308 |
 | R7 | 252 | 107 | 38 | 145 |
 
-## 字段与评分
+## Fields and Evaluation
 
-`question_id` 是稳定题号，`video_id` 定位视频，`binding_type` 使用 R0–R7。MCQ 的 `options` 为 A–D，`answer` 为对应字母；判断题的选项键与答案为字符串 `True` / `False`。
+`question_id` is a stable question identifier, `video_id` identifies the video, and `binding_type` takes values R0–R7. For multiple-choice questions, `options` uses keys A–D and `answer` is the correct letter. For true/false questions, option keys and answers are the strings `True` and `False`.
 
-`unit_id` 是计分单位；`unit_type` 为 `binding_pair`、`presence_pair` 或 `single`。配对题共享 `pair_id`，`pair_index` 为 1 或 2；single 的这两项为 null。两题均正确才算一个 pair 正确。单题另报，不混入 PairAcc。
+`unit_id` identifies the scoring unit; `unit_type` is `binding_pair`, `presence_pair`, or `single`. Paired questions share a `pair_id` and have `pair_index` 1 or 2; both fields are null for singles. A pair is correct only when both questions are answered correctly. Singles are reported separately and excluded from PairAcc.
 
-R1–R7 PairAcc 分母 1,110；含 R0 的 PairAcc 分母 1,249；All-Unit Accuracy 分母 1,557。随机基线对独立均匀四选一 pair 是 6.25%，对独立均匀判断题 pair 是 25%；实际模型两题错误可能相关，不能据此推导其盲测分数。
+R1–R7 PairAcc has a denominator of 1,110; PairAcc including R0 has a denominator of 1,249; All-Unit Accuracy has a denominator of 1,557. Independent uniform guessing gives 6.25% for a pair of four-option questions and 25% for a pair of true/false questions. Model errors across two questions may be correlated, so these baselines do not determine observed text-only scores.
 
-每道题独立开启对话，随机化选项位置，并将预测映射回原选项后评分。模型只接收视频（或方法允许的 memory）、本题文本与选项；不要把正确答案、另一道 paired question、direction 或计分元数据作为模型输入。
+Evaluate each question in a fresh conversation, randomize option positions, and map predictions back to the original options before scoring. Model inputs should contain only the video (or memory allowed by the method), the current question, and its options. Do not provide gold answers, the other question in the pair, `direction`, or scoring metadata.
 
-`direction` 原样保留源标识，不据此保证每一对都是语义上的正反向角色查询。发布文件没有私有 latent binding、证据时间段、source question、盲测得分或审核员信息。
+`direction` preserves the source label; it does not guarantee that every pair contains semantically opposite role queries. The QA files exclude private latent bindings, evidence intervals, source questions, text-only test scores, and reviewer information.
 
-## 剩余审核状态
+## Remaining Human Review
 
-源文件虽命名 reviewed，但包含未标记为 human-reviewed 的记录。以下按源标记统计，不能当作最终质量保证：
+Although the source filenames contain "reviewed", some records are not marked as human-reviewed. The counts below reflect source metadata and are not a guarantee of final annotation quality:
 
-- `binding_pairs:human_reviewed`：90
-- `binding_pairs:not_marked_human_reviewed`：1020
-- `singles:human_reviewed`：0
-- `singles:not_marked_human_reviewed`：308
+- `binding_pairs:human_reviewed`: 90
+- `binding_pairs:not_marked_human_reviewed`: 1020
+- `singles:human_reviewed`: 0
+- `singles:not_marked_human_reviewed`: 308
 
-实际公开发布前仍应完成这些记录的人工审核。本次仅做字段导出与结构核验，没有重新观看视频证明答案正确。
+Human review should be completed before these records are presented as a fully validated benchmark. This export checks fields and structural consistency; it does not independently rewatch videos to verify answer correctness.
 
-可用 `python tools/export_bindscope_release.py --data-root /path/to/Binding_Dataset --out bindscope` 复现导出。不会改动原始数据或正在进行的实验。
+Reproduce the export with `python tools/export_bindscope_release.py --data-root /path/to/Binding_Dataset --out bindscope`. The exporter preserves the original source files and does not affect running experiments.

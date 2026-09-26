@@ -1,8 +1,10 @@
 {
   "dataset": "BindScope",
+  "language": "English",
+  "text_normalization": "Chinese names are consistently romanized; remaining Chinese labels are translated. Answers, question IDs, and pair membership are unchanged.",
   "release_source_version": "mrx_v1.5_0924_with_current_R0",
   "status": "prepared_release_candidate; source human audit incomplete",
-  "generated_utc": "2026-09-26T06:20:19.323695+00:00",
+  "generated_utc": "2026-09-26T07:41:40.298050+00:00",
   "questions": 2806,
   "videos": 77,
   "scoring_units": 1557,
@@ -79,8 +81,8 @@
     }
   },
   "outputs": {
-    "bindscope_qa.json": "aac7cd5b3400789d189cce8493ca0e2c21e3afacb07f764802b47d0fde22659e",
-    "bindscope_qa.jsonl": "6c186fff095d69b08af1f09d731e336dda1864d822af3dce33a6e0bb2b78d7ce"
+    "bindscope_qa.json": "7fe0aba1ff85d56636de1f34e191cead5007ceea846ebf501e24c1e1a3c0e17b",
+    "bindscope_qa.jsonl": "c9a833aa7cffc476f9233b8f01164e2dae4c0834ae4c2d78a4aec00e3d5a1b4a"
   },
   "evaluation": {
     "question_accuracy": "mean individual question correctness",
@@ -100,6 +102,7 @@
     "answers_in_options": true,
     "pair_video_and_type_consistency": true,
     "R0_true_false_balance": true,
-    "private_annotations_excluded": true
+    "private_annotations_excluded": true,
+    "no_CJK_in_public_QA": true
   }
 }

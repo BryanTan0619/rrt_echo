@@ -11,6 +11,17 @@ from pathlib import Path
 DATA = Path('/apdcephfs/11/apdcephfs_nj7/share_303382070/xdata_public/Binding_Dataset')
 ROOT = Path(__file__).resolve().parents[1]
 
+ENGLISH_REPLACEMENTS = json.loads((ROOT/'tools/bindscope_english_replacements.json').read_text())
+
+
+def english_text(text):
+    import re
+    for original, translated in sorted(ENGLISH_REPLACEMENTS.items(), key=lambda item: -len(item[0])):
+        text = text.replace(original, translated)
+    text = re.sub(r'(\d+)\u53f7', r'No. \1', text)
+    assert not re.search(r'[\u3400-\u9fff]', text), text
+    return text
+
 
 def export(out, data_root=DATA):
     files = {
@@ -66,6 +77,9 @@ def export(out, data_root=DATA):
             'question_type': 'true_false', 'question': statement['text'],
             'options': {'True':'True', 'False':'False'}, 'answer': answer,
         })
+    for row in rows:
+        row['question'] = english_text(row['question'])
+        row['options'] = {key: english_text(value) for key, value in row['options'].items()}
     grouped = defaultdict(list)
     for row in rows: grouped[row['unit_id']].append(row)
     for unit, group in grouped.items():
@@ -94,7 +108,9 @@ def export(out, data_root=DATA):
     jsonl = out/'bindscope_qa.jsonl'
     jsonl.write_text(''.join(json.dumps(row,ensure_ascii=False)+'\n' for row in rows))
     manifest = {
-        'dataset': 'BindScope', 'release_source_version': 'mrx_v1.5_0924_with_current_R0',
+        'dataset': 'BindScope',
+        'language': 'English',
+        'text_normalization': 'Chinese names are consistently romanized; remaining Chinese labels are translated. Answers, question IDs, and pair membership are unchanged.', 'release_source_version': 'mrx_v1.5_0924_with_current_R0',
         'status': 'prepared_release_candidate; source human audit incomplete',
         'generated_utc': datetime.now(timezone.utc).isoformat(),
         'questions': len(rows), 'videos': len({x['video_id'] for x in rows}),
@@ -119,7 +135,7 @@ def export(out, data_root=DATA):
                       'answer_remapping':'After option shuffling, remap predictions to original semantic option IDs before scoring'},
         'validation':{'unique_question_ids':True,'correct_pair_sizes':True,'answers_in_options':True,
                       'pair_video_and_type_consistency':True,'R0_true_false_balance':True,
-                      'private_annotations_excluded':True},
+                      'private_annotations_excluded':True, 'no_CJK_in_public_QA':True},
     }
     (out/'release_manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
     lines = ['# BindScope QA Release Files', '',
@@ -134,7 +150,7 @@ def export(out, data_root=DATA):
              '|---|---:|---:|---:|---:|']
     for typ in sorted(questions_by_type):
         lines.append(f'| {typ} | {questions_by_type[typ]} | {paired_by_type[typ]} | {singles_by_type[typ]} | {units_by_type[typ]} |')
-    lines += ['', '## Fields and Evaluation', '',
+    lines += ['', 'All questions and options are in English. Chinese names use consistent romanization; Chinese on-screen labels are rendered as English translations. This text-only normalization preserves answer keys, question IDs, and pair membership. Previously collected predictions should be identified as using the pre-normalization text.', '', '## Fields and Evaluation', '',
               '`question_id` is a stable question identifier, `video_id` identifies the video, and `binding_type` takes values R0–R7. For multiple-choice questions, `options` uses keys A–D and `answer` is the correct letter. For true/false questions, option keys and answers are the strings `True` and `False`.', '',
               '`unit_id` identifies the scoring unit; `unit_type` is `binding_pair`, `presence_pair`, or `single`. Paired questions share a `pair_id` and have `pair_index` 1 or 2; both fields are null for singles. A pair is correct only when both questions are answered correctly. Singles are reported separately and excluded from PairAcc.', '',
               'R1–R7 PairAcc has a denominator of 1,110; PairAcc including R0 has a denominator of 1,249; All-Unit Accuracy has a denominator of 1,557. Independent uniform guessing gives 6.25% for a pair of four-option questions and 25% for a pair of true/false questions. Model errors across two questions may be correlated, so these baselines do not determine observed text-only scores.', '',

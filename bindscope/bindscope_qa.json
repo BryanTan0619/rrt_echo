@@ -2714,12 +2714,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "Which event happens first: 李四维 sitting on the golden dragon throne at the Dai Prince Palace, or the hosts walking through the South Gate entrance of the Yingxian Wooden Pagoda scenic area?",
+    "question": "Which event happens first: Li Siwei sitting on the golden dragon throne at the Dai Prince Palace, or the hosts walking through the South Gate entrance of the Yingxian Wooden Pagoda scenic area?",
     "options": {
-      "A": "李四维 sits on the golden dragon throne at the Dai Prince Palace and the hosts walk through the South Gate entrance of the Yingxian Wooden Pagoda scenic area simultaneously.",
-      "B": "The hosts walk through the South Gate entrance of the Yingxian Wooden Pagoda scenic area before 李四维 sits on the golden dragon throne at the Dai Prince Palace.",
-      "C": "李四维 sits on the golden dragon throne at the Dai Prince Palace before the hosts walk through the South Gate entrance of the Yingxian Wooden Pagoda scenic area.",
-      "D": "李四维 sits on the golden dragon throne at the Dai Prince Palace immediately after exiting the South Gate entrance of the Yingxian Wooden Pagoda scenic area."
+      "A": "Li Siwei sits on the golden dragon throne at the Dai Prince Palace and the hosts walk through the South Gate entrance of the Yingxian Wooden Pagoda scenic area simultaneously.",
+      "B": "The hosts walk through the South Gate entrance of the Yingxian Wooden Pagoda scenic area before Li Siwei sits on the golden dragon throne at the Dai Prince Palace.",
+      "C": "Li Siwei sits on the golden dragon throne at the Dai Prince Palace before the hosts walk through the South Gate entrance of the Yingxian Wooden Pagoda scenic area.",
+      "D": "Li Siwei sits on the golden dragon throne at the Dai Prince Palace immediately after exiting the South Gate entrance of the Yingxian Wooden Pagoda scenic area."
     },
     "answer": "C"
   },
@@ -2734,12 +2734,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "The hosts walk through the South Gate entrance of the Yingxian Wooden Pagoda scenic area at what point relative to 李四维 sitting on the golden dragon throne at the Dai Prince Palace?",
+    "question": "The hosts walk through the South Gate entrance of the Yingxian Wooden Pagoda scenic area at what point relative to Li Siwei sitting on the golden dragon throne at the Dai Prince Palace?",
     "options": {
-      "A": "The hosts walk through the South Gate entrance of the Yingxian Wooden Pagoda scenic area after 李四维 sits on the golden dragon throne at the Dai Prince Palace.",
-      "B": "The hosts walk through the South Gate entrance of the Yingxian Wooden Pagoda scenic area at the same time as 李四维 sits on the golden dragon throne at the Dai Prince Palace.",
-      "C": "The hosts walk through the South Gate entrance of the Yingxian Wooden Pagoda scenic area immediately before 李四维 sits on the golden dragon throne at the Dai Prince Palace.",
-      "D": "The hosts walk through the South Gate entrance of the Yingxian Wooden Pagoda scenic area before 李四维 sits on the golden dragon throne at the Dai Prince Palace."
+      "A": "The hosts walk through the South Gate entrance of the Yingxian Wooden Pagoda scenic area after Li Siwei sits on the golden dragon throne at the Dai Prince Palace.",
+      "B": "The hosts walk through the South Gate entrance of the Yingxian Wooden Pagoda scenic area at the same time as Li Siwei sits on the golden dragon throne at the Dai Prince Palace.",
+      "C": "The hosts walk through the South Gate entrance of the Yingxian Wooden Pagoda scenic area immediately before Li Siwei sits on the golden dragon throne at the Dai Prince Palace.",
+      "D": "The hosts walk through the South Gate entrance of the Yingxian Wooden Pagoda scenic area before Li Siwei sits on the golden dragon throne at the Dai Prince Palace."
     },
     "answer": "A"
   },
@@ -2754,12 +2754,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the video, what is the chronological order between 赵叔 talking with 潘天鸿 in front of the red wall and 潘天鸿 assembling camera equipment while blindfolded?",
+    "question": "In the video, what is the chronological order between Uncle Zhao talking with Pan Tianhong in front of the red wall and Pan Tianhong assembling camera equipment while blindfolded?",
     "options": {
-      "A": "赵叔 talks with 潘天鸿 first, then 潘天鸿 assembles the camera gear blindfolded",
-      "B": "潘天鸿 assembles the camera gear blindfolded first, then 赵叔 talks with him",
-      "C": "赵叔 gestures with open palm and fist first, then 潘天鸿 assembles the gear blindfolded",
-      "D": "赵叔 talks with 潘天鸿 while 潘天鸿 assembles the camera gear blindfolded"
+      "A": "Uncle Zhao talks with Pan Tianhong first, then Pan Tianhong assembles the camera gear blindfolded",
+      "B": "Pan Tianhong assembles the camera gear blindfolded first, then Uncle Zhao talks with him",
+      "C": "Uncle Zhao gestures with open palm and fist first, then Pan Tianhong assembles the gear blindfolded",
+      "D": "Uncle Zhao talks with Pan Tianhong while Pan Tianhong assembles the camera gear blindfolded"
     },
     "answer": "A"
   },
@@ -2774,12 +2774,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "Which statement correctly describes when 潘天鸿 assembles camera equipment while blindfolded relative to 赵叔 talking with him at the red wall?",
+    "question": "Which statement correctly describes when Pan Tianhong assembles camera equipment while blindfolded relative to Uncle Zhao talking with him at the red wall?",
     "options": {
-      "A": "潘天鸿 assembles the camera gear blindfolded before 赵叔 talks with him",
-      "B": "潘天鸿 assembles the camera gear blindfolded after 赵叔 talks with him",
-      "C": "潘天鸿 assembles the camera gear blindfolded as 赵叔 talks with him",
-      "D": "潘天鸿 assembles the camera gear blindfolded as 赵叔 gestures with palm and fist"
+      "A": "Pan Tianhong assembles the camera gear blindfolded before Uncle Zhao talks with him",
+      "B": "Pan Tianhong assembles the camera gear blindfolded after Uncle Zhao talks with him",
+      "C": "Pan Tianhong assembles the camera gear blindfolded as Uncle Zhao talks with him",
+      "D": "Pan Tianhong assembles the camera gear blindfolded as Uncle Zhao gestures with palm and fist"
     },
     "answer": "B"
   },
@@ -2794,12 +2794,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the video, which sequence correctly describes the driver's selection of the '越野' drive mode on the vehicle touchscreen relative to 潘天鸿 operating the dual-antenna drone remote controller behind the open trunk?",
+    "question": "In the video, which sequence correctly describes the driver's selection of the 'Off-road' drive mode on the vehicle touchscreen relative to Pan Tianhong operating the dual-antenna drone remote controller behind the open trunk?",
     "options": {
-      "A": "The driver selects the '越野' drive mode on the touchscreen while 潘天鸿 simultaneously operates the dual-antenna drone remote controller behind the open trunk.",
-      "B": "潘天鸿 operates the dual-antenna drone remote controller behind the open trunk before the driver selects the '越野' drive mode on the touchscreen.",
-      "C": "潘天鸿 operates the dual-antenna drone remote controller behind the open trunk immediately after the driver changes the drive mode from '越野' to '防滑'.",
-      "D": "The driver selects the '越野' drive mode on the touchscreen before 潘天鸿 operates the dual-antenna drone remote controller behind the open trunk."
+      "A": "The driver selects the 'Off-road' drive mode on the touchscreen while Pan Tianhong simultaneously operates the dual-antenna drone remote controller behind the open trunk.",
+      "B": "Pan Tianhong operates the dual-antenna drone remote controller behind the open trunk before the driver selects the 'Off-road' drive mode on the touchscreen.",
+      "C": "Pan Tianhong operates the dual-antenna drone remote controller behind the open trunk immediately after the driver changes the drive mode from 'Off-road' to 'Anti-slip'.",
+      "D": "The driver selects the 'Off-road' drive mode on the touchscreen before Pan Tianhong operates the dual-antenna drone remote controller behind the open trunk."
     },
     "answer": "D"
   },
@@ -2814,12 +2814,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "Regarding the order of events, what happens first when comparing the driver's touchscreen action of selecting the '越野' drive mode and 潘天鸿's operation of the dual-antenna drone remote controller behind the open trunk?",
+    "question": "Regarding the order of events, what happens first when comparing the driver's touchscreen action of selecting the 'Off-road' drive mode and Pan Tianhong's operation of the dual-antenna drone remote controller behind the open trunk?",
     "options": {
-      "A": "The driver selects the '越野' drive mode on the touchscreen at the same moment 潘天鸿 operates the dual-antenna drone remote controller behind the open trunk.",
-      "B": "潘天鸿 operates the dual-antenna drone remote controller behind the open trunk immediately after the driver changes the drive mode from '越野' to '防滑'.",
-      "C": "潘天鸿 operates the dual-antenna drone remote controller behind the open trunk first, and then the driver selects the '越野' drive mode on the touchscreen.",
-      "D": "The driver selects the '越野' drive mode on the touchscreen first, and then 潘天鸿 operates the dual-antenna drone remote controller behind the open trunk."
+      "A": "The driver selects the 'Off-road' drive mode on the touchscreen at the same moment Pan Tianhong operates the dual-antenna drone remote controller behind the open trunk.",
+      "B": "Pan Tianhong operates the dual-antenna drone remote controller behind the open trunk immediately after the driver changes the drive mode from 'Off-road' to 'Anti-slip'.",
+      "C": "Pan Tianhong operates the dual-antenna drone remote controller behind the open trunk first, and then the driver selects the 'Off-road' drive mode on the touchscreen.",
+      "D": "The driver selects the 'Off-road' drive mode on the touchscreen first, and then Pan Tianhong operates the dual-antenna drone remote controller behind the open trunk."
     },
     "answer": "D"
   },
@@ -2834,12 +2834,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In this video, which event happens first: the hosts inspecting handwritten notes on the '童年, 再见！' cartoon signboard, or their superhero landing on the ancient city wall walkway?",
+    "question": "In this video, which event happens first: the hosts inspecting handwritten notes on the 'Childhood, Goodbye！' cartoon signboard, or their superhero landing on the ancient city wall walkway?",
     "options": {
-      "A": "The superhero landing on the ancient city wall walkway and the inspection of the '童年, 再见！' cartoon signboard occur simultaneously.",
-      "B": "The hosts inspect the '童年, 再见！' cartoon signboard immediately after brushing off their clothes from the superhero landing.",
-      "C": "The hosts inspect handwritten notes on the '童年, 再见！' cartoon signboard before performing a superhero landing on the ancient city wall walkway.",
-      "D": "The hosts perform a superhero landing on the ancient city wall walkway before inspecting handwritten notes on the '童年, 再见！' cartoon signboard."
+      "A": "The superhero landing on the ancient city wall walkway and the inspection of the 'Childhood, Goodbye！' cartoon signboard occur simultaneously.",
+      "B": "The hosts inspect the 'Childhood, Goodbye！' cartoon signboard immediately after brushing off their clothes from the superhero landing.",
+      "C": "The hosts inspect handwritten notes on the 'Childhood, Goodbye！' cartoon signboard before performing a superhero landing on the ancient city wall walkway.",
+      "D": "The hosts perform a superhero landing on the ancient city wall walkway before inspecting handwritten notes on the 'Childhood, Goodbye！' cartoon signboard."
     },
     "answer": "C"
   },
@@ -2854,12 +2854,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "The hosts perform a superhero landing on the ancient city wall walkway and inspect handwritten notes on the '童年, 再见！' cartoon signboard at one point. Which statement correctly describes the order of these two events?",
+    "question": "The hosts perform a superhero landing on the ancient city wall walkway and inspect handwritten notes on the 'Childhood, Goodbye！' cartoon signboard at one point. Which statement correctly describes the order of these two events?",
     "options": {
-      "A": "The hosts inspect the '童年, 再见！' cartoon signboard right after they brush off their clothes from the superhero landing.",
-      "B": "The inspection of the handwritten notes on the '童年, 再见！' cartoon signboard and the superhero landing on the ancient city wall walkway happen at the same time.",
-      "C": "The superhero landing on the ancient city wall walkway comes before the inspection of the handwritten notes on the '童年, 再见！' cartoon signboard.",
-      "D": "The inspection of the handwritten notes on the '童年, 再见！' cartoon signboard comes before the superhero landing on the ancient city wall walkway."
+      "A": "The hosts inspect the 'Childhood, Goodbye！' cartoon signboard right after they brush off their clothes from the superhero landing.",
+      "B": "The inspection of the handwritten notes on the 'Childhood, Goodbye！' cartoon signboard and the superhero landing on the ancient city wall walkway happen at the same time.",
+      "C": "The superhero landing on the ancient city wall walkway comes before the inspection of the handwritten notes on the 'Childhood, Goodbye！' cartoon signboard.",
+      "D": "The inspection of the handwritten notes on the 'Childhood, Goodbye！' cartoon signboard comes before the superhero landing on the ancient city wall walkway."
     },
     "answer": "D"
   },
@@ -2874,7 +2874,7 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the photography studio scene, what upper garment is worn by 潘天鸿?",
+    "question": "In the photography studio scene, what upper garment is worn by Pan Tianhong?",
     "options": {
       "A": "a grey fleece jacket",
       "B": "a dark blue sweatshirt",
@@ -2894,7 +2894,7 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "On the ancient city wall rampart, what upper garment is worn by 潘天鸿?",
+    "question": "On the ancient city wall rampart, what upper garment is worn by Pan Tianhong?",
     "options": {
       "A": "a dark blue sweatshirt",
       "B": "a grey fleece jacket",
@@ -2914,12 +2914,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the carpentry workshop challenge and the vinegar tasting session, which option correctly describes what 潘天鸿 and 李四维 each did?",
+    "question": "In the carpentry workshop challenge and the vinegar tasting session, which option correctly describes what Pan Tianhong and Li Siwei each did?",
     "options": {
-      "A": "In the carpentry workshop, 李四维 wears a checkered blindfold and assembles camera equipment; in the vinegar sales counter, 李四维 extends his wrist to receive a drop of vinegar from the dropper and tastes it.",
-      "B": "In the carpentry workshop, 李四维 wears a checkered blindfold and assembles camera equipment; in the vinegar sales counter, 潘天鸿 extends his wrist to receive a drop of vinegar from the dropper and tastes it.",
-      "C": "In the carpentry workshop, 潘天鸿 wears a checkered blindfold and assembles camera equipment; in the vinegar sales counter, 潘天鸿 extends his wrist to receive a drop of vinegar from the dropper and tastes it.",
-      "D": "In the carpentry workshop, 潘天鸿 wears a checkered blindfold and assembles camera equipment; in the vinegar sales counter, 李四维 extends his wrist to receive a drop of vinegar from the dropper and tastes it."
+      "A": "In the carpentry workshop, Li Siwei wears a checkered blindfold and assembles camera equipment; in the vinegar sales counter, Li Siwei extends his wrist to receive a drop of vinegar from the dropper and tastes it.",
+      "B": "In the carpentry workshop, Li Siwei wears a checkered blindfold and assembles camera equipment; in the vinegar sales counter, Pan Tianhong extends his wrist to receive a drop of vinegar from the dropper and tastes it.",
+      "C": "In the carpentry workshop, Pan Tianhong wears a checkered blindfold and assembles camera equipment; in the vinegar sales counter, Pan Tianhong extends his wrist to receive a drop of vinegar from the dropper and tastes it.",
+      "D": "In the carpentry workshop, Pan Tianhong wears a checkered blindfold and assembles camera equipment; in the vinegar sales counter, Li Siwei extends his wrist to receive a drop of vinegar from the dropper and tastes it."
     },
     "answer": "D"
   },
@@ -2936,10 +2936,10 @@
     "question_type": "multiple_choice",
     "question": "Which option correctly assigns the blindfolded camera assembly in the carpentry workshop and the wrist-extending vinegar tasting at the sales counter to the people who performed them?",
     "options": {
-      "A": "The blindfolded camera assembly in the carpentry workshop was performed by 李四维, and the wrist-extending vinegar tasting at the sales counter was performed by 潘天鸿.",
-      "B": "The blindfolded camera assembly in the carpentry workshop was performed by 李四维, and the wrist-extending vinegar tasting at the sales counter was performed by 李四维.",
-      "C": "The blindfolded camera assembly in the carpentry workshop was performed by 潘天鸿, and the wrist-extending vinegar tasting at the sales counter was performed by 潘天鸿.",
-      "D": "The blindfolded camera assembly in the carpentry workshop was performed by 潘天鸿, and the wrist-extending vinegar tasting at the sales counter was performed by 李四维."
+      "A": "The blindfolded camera assembly in the carpentry workshop was performed by Li Siwei, and the wrist-extending vinegar tasting at the sales counter was performed by Pan Tianhong.",
+      "B": "The blindfolded camera assembly in the carpentry workshop was performed by Li Siwei, and the wrist-extending vinegar tasting at the sales counter was performed by Li Siwei.",
+      "C": "The blindfolded camera assembly in the carpentry workshop was performed by Pan Tianhong, and the wrist-extending vinegar tasting at the sales counter was performed by Pan Tianhong.",
+      "D": "The blindfolded camera assembly in the carpentry workshop was performed by Pan Tianhong, and the wrist-extending vinegar tasting at the sales counter was performed by Li Siwei."
     },
     "answer": "D"
   },
@@ -2954,12 +2954,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the Datong Volcano crater scene and the stone courtyard chess match, which option correctly pairs 李四维 and 潘天鸿 with what each does as the active participant or observer?",
+    "question": "In the Datong Volcano crater scene and the stone courtyard chess match, which option correctly pairs Li Siwei and Pan Tianhong with what each does as the active participant or observer?",
     "options": {
-      "A": "In the volcanic crater, 李四维 crawls up the volcanic slope reaching toward a small green plant while 潘天鸿 watches; in the courtyard, 李四维 plays chess on the board while 潘天鸿 watches with crossed arms.",
-      "B": "In the volcanic crater, 李四维 crawls up the volcanic slope reaching toward a small green plant while 潘天鸿 watches; in the courtyard, 潘天鸿 plays chess on the board while 李四维 watches with crossed arms.",
-      "C": "In the volcanic crater, 潘天鸿 crawls up the volcanic slope reaching toward a small green plant while 李四维 watches; in the courtyard, 李四维 plays chess on the board while 潘天鸿 watches with crossed arms.",
-      "D": "In the volcanic crater, 潘天鸿 crawls up the volcanic slope reaching toward a small green plant while 李四维 watches; in the courtyard, 潘天鸿 plays chess on the board while 李四维 watches with crossed arms."
+      "A": "In the volcanic crater, Li Siwei crawls up the volcanic slope reaching toward a small green plant while Pan Tianhong watches; in the courtyard, Li Siwei plays chess on the board while Pan Tianhong watches with crossed arms.",
+      "B": "In the volcanic crater, Li Siwei crawls up the volcanic slope reaching toward a small green plant while Pan Tianhong watches; in the courtyard, Pan Tianhong plays chess on the board while Li Siwei watches with crossed arms.",
+      "C": "In the volcanic crater, Pan Tianhong crawls up the volcanic slope reaching toward a small green plant while Li Siwei watches; in the courtyard, Li Siwei plays chess on the board while Pan Tianhong watches with crossed arms.",
+      "D": "In the volcanic crater, Pan Tianhong crawls up the volcanic slope reaching toward a small green plant while Li Siwei watches; in the courtyard, Pan Tianhong plays chess on the board while Li Siwei watches with crossed arms."
     },
     "answer": "D"
   },
@@ -2976,10 +2976,10 @@
     "question_type": "multiple_choice",
     "question": "At the Datong Volcano crater and the stone courtyard chess match, who crawls up the volcanic slope reaching toward a small green plant while the other watches, and who plays chess on the board while the other watches with crossed arms?",
     "options": {
-      "A": "李四维 does both: he crawls up the volcanic slope reaching toward a small green plant while 潘天鸿 watches, and he plays chess on the board while 潘天鸿 watches with crossed arms.",
-      "B": "潘天鸿 does both: he crawls up the volcanic slope reaching toward a small green plant while 李四维 watches, and he plays chess on the board while 李四维 watches with crossed arms.",
-      "C": "李四维 crawls up the volcanic slope reaching toward a small green plant while 潘天鸿 watches, but in the courtyard it is 潘天鸿 who plays chess on the board while 李四维 watches with crossed arms.",
-      "D": "潘天鸿 crawls up the volcanic slope reaching toward a small green plant while 李四维 watches, but in the courtyard it is 李四维 who plays chess on the board while 潘天鸿 watches with crossed arms."
+      "A": "Li Siwei does both: he crawls up the volcanic slope reaching toward a small green plant while Pan Tianhong watches, and he plays chess on the board while Pan Tianhong watches with crossed arms.",
+      "B": "Pan Tianhong does both: he crawls up the volcanic slope reaching toward a small green plant while Li Siwei watches, and he plays chess on the board while Li Siwei watches with crossed arms.",
+      "C": "Li Siwei crawls up the volcanic slope reaching toward a small green plant while Pan Tianhong watches, but in the courtyard it is Pan Tianhong who plays chess on the board while Li Siwei watches with crossed arms.",
+      "D": "Pan Tianhong crawls up the volcanic slope reaching toward a small green plant while Li Siwei watches, but in the courtyard it is Li Siwei who plays chess on the board while Pan Tianhong watches with crossed arms."
     },
     "answer": "B"
   },
@@ -2994,12 +2994,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the vinegar experience hall and the noodle restaurant, which option correctly identifies the actions performed by 大橙 and 潘天鸿?",
+    "question": "In the vinegar experience hall and the noodle restaurant, which option correctly identifies the actions performed by Da Cheng and Pan Tianhong?",
     "options": {
-      "A": "In the vinegar experience hall, 潘天鸿 leans forward over a large open ceramic urn to deeply sniff the fermenting vinegar vapor; in the noodle restaurant, 大橙 tilts his head back to drink and finish all the soup from his bowl.",
-      "B": "In the vinegar experience hall, 大橙 leans forward over a large open ceramic urn to deeply sniff the fermenting vinegar vapor; in the noodle restaurant, 潘天鸿 tilts his head back to drink and finish all the soup from his bowl.",
-      "C": "In the vinegar experience hall, 潘天鸿 leans forward over a large open ceramic urn to deeply sniff the fermenting vinegar vapor; in the noodle restaurant, 潘天鸿 tilts his head back to drink and finish all the soup from his bowl.",
-      "D": "In the vinegar experience hall, 大橙 leans forward over a large open ceramic urn to deeply sniff the fermenting vinegar vapor; in the noodle restaurant, 大橙 tilts his head back to drink and finish all the soup from his bowl."
+      "A": "In the vinegar experience hall, Pan Tianhong leans forward over a large open ceramic urn to deeply sniff the fermenting vinegar vapor; in the noodle restaurant, Da Cheng tilts his head back to drink and finish all the soup from his bowl.",
+      "B": "In the vinegar experience hall, Da Cheng leans forward over a large open ceramic urn to deeply sniff the fermenting vinegar vapor; in the noodle restaurant, Pan Tianhong tilts his head back to drink and finish all the soup from his bowl.",
+      "C": "In the vinegar experience hall, Pan Tianhong leans forward over a large open ceramic urn to deeply sniff the fermenting vinegar vapor; in the noodle restaurant, Pan Tianhong tilts his head back to drink and finish all the soup from his bowl.",
+      "D": "In the vinegar experience hall, Da Cheng leans forward over a large open ceramic urn to deeply sniff the fermenting vinegar vapor; in the noodle restaurant, Da Cheng tilts his head back to drink and finish all the soup from his bowl."
     },
     "answer": "B"
   },
@@ -3016,10 +3016,10 @@
     "question_type": "multiple_choice",
     "question": "Which option correctly matches each person to what they did at the vinegar experience hall and the noodle restaurant?",
     "options": {
-      "A": "大橙 leaned forward over a large open ceramic urn to deeply sniff the fermenting vinegar vapor at the vinegar experience hall, while 大橙 tilted his head back to drink and finish all the soup from his bowl at the noodle restaurant.",
-      "B": "大橙 leaned forward over a large open ceramic urn to deeply sniff the fermenting vinegar vapor at the vinegar experience hall, while 潘天鸿 tilted his head back to drink and finish all the soup from his bowl at the noodle restaurant.",
-      "C": "潘天鸿 leaned forward over a large open ceramic urn to deeply sniff the fermenting vinegar vapor at the vinegar experience hall, while 潘天鸿 tilted his head back to drink and finish all the soup from his bowl at the noodle restaurant.",
-      "D": "潘天鸿 leaned forward over a large open ceramic urn to deeply sniff the fermenting vinegar vapor at the vinegar experience hall, while 大橙 tilted his head back to drink and finish all the soup from his bowl at the noodle restaurant."
+      "A": "Da Cheng leaned forward over a large open ceramic urn to deeply sniff the fermenting vinegar vapor at the vinegar experience hall, while Da Cheng tilted his head back to drink and finish all the soup from his bowl at the noodle restaurant.",
+      "B": "Da Cheng leaned forward over a large open ceramic urn to deeply sniff the fermenting vinegar vapor at the vinegar experience hall, while Pan Tianhong tilted his head back to drink and finish all the soup from his bowl at the noodle restaurant.",
+      "C": "Pan Tianhong leaned forward over a large open ceramic urn to deeply sniff the fermenting vinegar vapor at the vinegar experience hall, while Pan Tianhong tilted his head back to drink and finish all the soup from his bowl at the noodle restaurant.",
+      "D": "Pan Tianhong leaned forward over a large open ceramic urn to deeply sniff the fermenting vinegar vapor at the vinegar experience hall, while Da Cheng tilted his head back to drink and finish all the soup from his bowl at the noodle restaurant."
     },
     "answer": "B"
   },
@@ -3034,12 +3034,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the first courtyard conversation at the Yingxian Wooden Pagoda, when 潘天鸿 addresses the camera on the open courtyard bench, what is 大橙 doing?",
+    "question": "In the first courtyard conversation at the Yingxian Wooden Pagoda, when Pan Tianhong addresses the camera on the open courtyard bench, what is Da Cheng doing?",
     "options": {
-      "A": "He talks to 潘天鸿 in an outdoor courtyard using bare hand gestures in front of a red wall.",
-      "B": "He stands behind 潘天鸿, holding one wrist with the opposite hand in front of his body.",
-      "C": "He stands beside 潘天鸿 gesturing expansively with both hands while facing the camera.",
-      "D": "He sits directly beside 潘天鸿 on the bench and gestures expansively with both hands."
+      "A": "He talks to Pan Tianhong in an outdoor courtyard using bare hand gestures in front of a red wall.",
+      "B": "He stands behind Pan Tianhong, holding one wrist with the opposite hand in front of his body.",
+      "C": "He stands beside Pan Tianhong gesturing expansively with both hands while facing the camera.",
+      "D": "He sits directly beside Pan Tianhong on the bench and gestures expansively with both hands."
     },
     "answer": "B"
   },
@@ -3054,12 +3054,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "In the later courtyard conversation at the Yingxian Wooden Pagoda, during the discussion about the master carpenter Lu Ban, what is 大橙 doing?",
+    "question": "In the later courtyard conversation at the Yingxian Wooden Pagoda, during the discussion about the master carpenter Lu Ban, what is Da Cheng doing?",
     "options": {
-      "A": "He stands behind 潘天鸿, holding one wrist with the opposite hand in front of his body.",
+      "A": "He stands behind Pan Tianhong, holding one wrist with the opposite hand in front of his body.",
       "B": "He leans forward over a large open ceramic urn to deeply sniff the fermenting vinegar vapor.",
-      "C": "He sits directly beside 潘天鸿 on the bench and gestures expansively with both hands.",
-      "D": "He sits directly behind 潘天鸿 on the bench with his hands clasped in front."
+      "C": "He sits directly beside Pan Tianhong on the bench and gestures expansively with both hands.",
+      "D": "He sits directly behind Pan Tianhong on the bench with his hands clasped in front."
     },
     "answer": "C"
   },
@@ -3074,7 +3074,7 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the climactic sequence that moves from the park to the ancient city wall, what do the figures resembling 潘天鸿 and 李四维 do first, and what do they do afterward?",
+    "question": "In the climactic sequence that moves from the park to the ancient city wall, what do the figures resembling Pan Tianhong and Li Siwei do first, and what do they do afterward?",
     "options": {
       "A": "First they launch from the city wall rampart into the sky; afterward they crash-land beside the astronaut statue on the park promenade.",
       "B": "First they cling to a rocket-launching astronaut statue and detach mid-air; afterward they land on the city wall walkway and rise laughing.",
@@ -3094,7 +3094,7 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "During the climactic park-to-city-wall sequence, which pair of actions matches what happens to the figures resembling 潘天鸿 and 李四维 — the astronaut-statue flight and the landing on the wall?",
+    "question": "During the climactic park-to-city-wall sequence, which pair of actions matches what happens to the figures resembling Pan Tianhong and Li Siwei — the astronaut-statue flight and the landing on the wall?",
     "options": {
       "A": "They detach from an astronaut statue and land in the park; later they launch from the ancient city wall amid smoke and dust.",
       "B": "They launch from the city wall rampart into the sky; later they crash-land beside the astronaut statue on the park promenade.",
@@ -3114,12 +3114,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "Earlier at Fogong Temple, which action does 赵叔 perform?",
+    "question": "Earlier at Fogong Temple, which action does Uncle Zhao perform?",
     "options": {
-      "A": "He completes a blindfolded dougong assembly in front of a red wall while talking to 潘天鸿.",
-      "B": "He talks to 潘天鸿 using hand gestures while planing a wooden beam in the workshop.",
+      "A": "He completes a blindfolded dougong assembly in front of a red wall while talking to Pan Tianhong.",
+      "B": "He talks to Pan Tianhong using hand gestures while planing a wooden beam in the workshop.",
       "C": "He planes a wooden beam with a hand plane and completes a blindfolded dougong bracket assembly.",
-      "D": "He talks to 潘天鸿 in an outdoor courtyard using bare hand gestures in front of a red wall."
+      "D": "He talks to Pan Tianhong in an outdoor courtyard using bare hand gestures in front of a red wall."
     },
     "answer": "D"
   },
@@ -3134,11 +3134,11 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "Later in the carpentry workshop, which action does 赵叔 perform?",
+    "question": "Later in the carpentry workshop, which action does Uncle Zhao perform?",
     "options": {
       "A": "He planes a wooden beam in an outdoor courtyard in front of a red wall while talking.",
-      "B": "He talks to 潘天鸿 in an outdoor courtyard using bare hand gestures in front of a red wall.",
-      "C": "He talks to 潘天鸿 using hand gestures while blindfolded in the outdoor courtyard.",
+      "B": "He talks to Pan Tianhong in an outdoor courtyard using bare hand gestures in front of a red wall.",
+      "C": "He talks to Pan Tianhong using hand gestures while blindfolded in the outdoor courtyard.",
       "D": "He planes a wooden beam with a hand plane and completes a blindfolded dougong bracket assembly."
     },
     "answer": "D"
@@ -3154,12 +3154,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "During the tour at Jinhuagong Coal Mine, what is the change in 李四维's activity from the waiting room scene to the underground tunnel corridor?",
+    "question": "During the tour at Jinhuagong Coal Mine, what is the change in Li Siwei's activity from the waiting room scene to the underground tunnel corridor?",
     "options": {
-      "A": "In the waiting room, 李四维 walks down the rail tracks away from the camera; in the underground tunnel, he remains seated on a wooden bench while 潘天鸿 stands up.",
-      "B": "In the waiting room, 李四维 stands up to lead the way with a selfie stick; in the underground tunnel, he sits on a bench while 潘天鸿 runs along the tracks.",
-      "C": "In the waiting room, 李四维 runs forward along the rail tracks toward the camera; in the underground tunnel, he remains seated on a wooden bench in front of a wall sign.",
-      "D": "In the waiting room, 李四维 sits on a wooden bench while 潘天鸿 stands up; in the underground tunnel, 李四维 walks along the tracks and runs toward the camera on the center rails."
+      "A": "In the waiting room, Li Siwei walks down the rail tracks away from the camera; in the underground tunnel, he remains seated on a wooden bench while Pan Tianhong stands up.",
+      "B": "In the waiting room, Li Siwei stands up to lead the way with a selfie stick; in the underground tunnel, he sits on a bench while Pan Tianhong runs along the tracks.",
+      "C": "In the waiting room, Li Siwei runs forward along the rail tracks toward the camera; in the underground tunnel, he remains seated on a wooden bench in front of a wall sign.",
+      "D": "In the waiting room, Li Siwei sits on a wooden bench while Pan Tianhong stands up; in the underground tunnel, Li Siwei walks along the tracks and runs toward the camera on the center rails."
     },
     "answer": "D"
   },
@@ -3174,12 +3174,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "At Jinhuagong Coal Mine, how does 李四维's activity differ between the waiting room and the later underground tunnel scene?",
+    "question": "At Jinhuagong Coal Mine, how does Li Siwei's activity differ between the waiting room and the later underground tunnel scene?",
     "options": {
-      "A": "In the waiting room, 李四维 stays seated on a wooden bench; later in the underground tunnel, he moves along the tracks and runs forward on the center rails toward the camera.",
-      "B": "In the waiting room, 李四维 stands up to lead the way with a selfie stick; later in the underground tunnel, he sits on a bench while 潘天鸿 runs forward along the center rails.",
-      "C": "In the waiting room, 李四维 walks down rail tracks away from the camera; later in the underground tunnel, he stays seated on a wooden bench in front of a wall sign.",
-      "D": "In the waiting room, 李四维 runs forward along rail tracks toward the camera; later in the underground tunnel, he remains seated on a wooden bench while 潘天鸿 stands up."
+      "A": "In the waiting room, Li Siwei stays seated on a wooden bench; later in the underground tunnel, he moves along the tracks and runs forward on the center rails toward the camera.",
+      "B": "In the waiting room, Li Siwei stands up to lead the way with a selfie stick; later in the underground tunnel, he sits on a bench while Pan Tianhong runs forward along the center rails.",
+      "C": "In the waiting room, Li Siwei walks down rail tracks away from the camera; later in the underground tunnel, he stays seated on a wooden bench in front of a wall sign.",
+      "D": "In the waiting room, Li Siwei runs forward along rail tracks toward the camera; later in the underground tunnel, he remains seated on a wooden bench while Pan Tianhong stands up."
     },
     "answer": "A"
   },
@@ -3196,10 +3196,10 @@
     "question_type": "multiple_choice",
     "question": "At the Dai Prince Palace staircase, what action takes place?",
     "options": {
-      "A": "潘天鸿 points upward toward 李四维 with a gesture",
-      "B": "李四维 points downward toward 潘天鸿 with a gesture",
-      "C": "李四维 grips both sides of 潘天鸿's neck from behind",
-      "D": "潘天鸿 grips both sides of 李四维's neck from behind"
+      "A": "Pan Tianhong points upward toward Li Siwei with a gesture",
+      "B": "Li Siwei points downward toward Pan Tianhong with a gesture",
+      "C": "Li Siwei grips both sides of Pan Tianhong's neck from behind",
+      "D": "Pan Tianhong grips both sides of Li Siwei's neck from behind"
     },
     "answer": "A"
   },
@@ -3216,10 +3216,10 @@
     "question_type": "multiple_choice",
     "question": "In the photography studio, what action takes place?",
     "options": {
-      "A": "潘天鸿 points upward toward 李四维 with a gesture",
-      "B": "李四维 points downward toward 潘天鸿 with a gesture",
-      "C": "潘天鸿 grips both sides of 李四维's neck from behind",
-      "D": "李四维 grips both sides of 潘天鸿's neck from behind"
+      "A": "Pan Tianhong points upward toward Li Siwei with a gesture",
+      "B": "Li Siwei points downward toward Pan Tianhong with a gesture",
+      "C": "Pan Tianhong grips both sides of Li Siwei's neck from behind",
+      "D": "Li Siwei grips both sides of Pan Tianhong's neck from behind"
     },
     "answer": "C"
   },
@@ -3236,10 +3236,10 @@
     "question_type": "multiple_choice",
     "question": "During the visit to Jinhuagong Coal Mine, when preparing to exit the waiting room, who leads whom?",
     "options": {
-      "A": "邱师傅 goes first while the two hosts follow",
-      "B": "The two hosts go first while 邱师傅 follows",
-      "C": "潘天鸿 goes first while 李四维 stays back",
-      "D": "李四维 goes first while 潘天鸿 stays back"
+      "A": "Master Qiu goes first while the two hosts follow",
+      "B": "The two hosts go first while Master Qiu follows",
+      "C": "Pan Tianhong goes first while Li Siwei stays back",
+      "D": "Li Siwei goes first while Pan Tianhong stays back"
     },
     "answer": "C"
   },
@@ -3256,10 +3256,10 @@
     "question_type": "multiple_choice",
     "question": "During the visit to Jinhuagong Coal Mine, when touring the underground corridor, who leads whom?",
     "options": {
-      "A": "邱师傅 goes first while the two hosts follow",
-      "B": "李四维 goes first while 潘天鸿 stays back",
-      "C": "潘天鸿 goes first while 李四维 stays back",
-      "D": "The two hosts go first while 邱师傅 follows"
+      "A": "Master Qiu goes first while the two hosts follow",
+      "B": "Li Siwei goes first while Pan Tianhong stays back",
+      "C": "Pan Tianhong goes first while Li Siwei stays back",
+      "D": "The two hosts go first while Master Qiu follows"
     },
     "answer": "A"
   },
@@ -3276,10 +3276,10 @@
     "question_type": "multiple_choice",
     "question": "During the vinegar workshop tour, who places the mini-tripod camera in front of the other person at the tasting room conference table, and who uses the dropper to put a drop of vinegar on the other person's wrist at the sales counter?",
     "options": {
-      "A": "At the conference table, 潘天鸿 places the camera in front of 李四维; at the sales counter, 食醋讲师 puts vinegar on 李四维's wrist.",
-      "B": "At the conference table, 潘天鸿 places the camera in front of 李四维; at the sales counter, 李四维 puts vinegar on 食醋讲师's wrist.",
-      "C": "At the conference table, 李四维 places the camera in front of 潘天鸿; at the sales counter, 食醋讲师 puts vinegar on 李四维's wrist.",
-      "D": "At the conference table, 李四维 places the camera in front of 潘天鸿; at the sales counter, 李四维 puts vinegar on 食醋讲师's wrist."
+      "A": "At the conference table, Pan Tianhong places the camera in front of Li Siwei; at the sales counter, the vinegar instructor puts vinegar on Li Siwei's wrist.",
+      "B": "At the conference table, Pan Tianhong places the camera in front of Li Siwei; at the sales counter, Li Siwei puts vinegar on the vinegar instructor's wrist.",
+      "C": "At the conference table, Li Siwei places the camera in front of Pan Tianhong; at the sales counter, the vinegar instructor puts vinegar on Li Siwei's wrist.",
+      "D": "At the conference table, Li Siwei places the camera in front of Pan Tianhong; at the sales counter, Li Siwei puts vinegar on the vinegar instructor's wrist."
     },
     "answer": "A"
   },
@@ -3296,10 +3296,10 @@
     "question_type": "multiple_choice",
     "question": "At the vinegar workshop tour, there is a guy in front of whom the mini-tripod camera is positioned at the tasting room conference table, and he is also the person whose wrist receives a vinegar drop at the sales counter; who performs each of these two actions?",
     "options": {
-      "A": "李四维 positions the camera in front of 潘天鸿 at the conference table, and 李四维 dispenses the vinegar drop onto 食醋讲师's wrist at the sales counter.",
-      "B": "潘天鸿 positions the camera in front of 李四维 at the conference table, and 李四维 dispenses the vinegar drop onto 食醋讲师's wrist at the sales counter.",
-      "C": "李四维 positions the camera in front of 潘天鸿 at the conference table, and 食醋讲师 dispenses the vinegar drop onto 李四维's wrist at the sales counter.",
-      "D": "潘天鸿 positions the camera in front of 李四维 at the conference table, and 食醋讲师 dispenses the vinegar drop onto 李四维's wrist at the sales counter."
+      "A": "Li Siwei positions the camera in front of Pan Tianhong at the conference table, and Li Siwei dispenses the vinegar drop onto the vinegar instructor's wrist at the sales counter.",
+      "B": "Pan Tianhong positions the camera in front of Li Siwei at the conference table, and Li Siwei dispenses the vinegar drop onto the vinegar instructor's wrist at the sales counter.",
+      "C": "Li Siwei positions the camera in front of Pan Tianhong at the conference table, and the vinegar instructor dispenses the vinegar drop onto Li Siwei's wrist at the sales counter.",
+      "D": "Pan Tianhong positions the camera in front of Li Siwei at the conference table, and the vinegar instructor dispenses the vinegar drop onto Li Siwei's wrist at the sales counter."
     },
     "answer": "D"
   },
@@ -3316,10 +3316,10 @@
     "question_type": "multiple_choice",
     "question": "In the carpentry workshop and at the Datong Volcano crater, who points out a specific feature on the other person's equipment or gear?",
     "options": {
-      "A": "In the workshop, 潘天鸿 points out the backward handle on 李四维's camera rig; in the crater, 李四维 points toward the chest hoses on 潘天鸿's spacesuit.",
-      "B": "In the workshop, 潘天鸿 points out the backward handle on 李四维's camera rig; in the crater, 潘天鸿 points toward the chest hoses on 李四维's spacesuit.",
-      "C": "In the workshop, 李四维 points out the backward handle on 潘天鸿's camera rig; in the crater, 李四维 points toward the chest hoses on 潘天鸿's spacesuit.",
-      "D": "In the workshop, 李四维 points out the backward handle on 潘天鸿's camera rig; in the crater, 潘天鸿 points toward the chest hoses on 李四维's spacesuit."
+      "A": "In the workshop, Pan Tianhong points out the backward handle on Li Siwei's camera rig; in the crater, Li Siwei points toward the chest hoses on Pan Tianhong's spacesuit.",
+      "B": "In the workshop, Pan Tianhong points out the backward handle on Li Siwei's camera rig; in the crater, Pan Tianhong points toward the chest hoses on Li Siwei's spacesuit.",
+      "C": "In the workshop, Li Siwei points out the backward handle on Pan Tianhong's camera rig; in the crater, Li Siwei points toward the chest hoses on Pan Tianhong's spacesuit.",
+      "D": "In the workshop, Li Siwei points out the backward handle on Pan Tianhong's camera rig; in the crater, Pan Tianhong points toward the chest hoses on Li Siwei's spacesuit."
     },
     "answer": "D"
   },
@@ -3336,10 +3336,10 @@
     "question_type": "multiple_choice",
     "question": "At the Datong Volcano crater and in the carpentry workshop, which person's equipment or gear is the focus when the other points out a specific feature?",
     "options": {
-      "A": "In the crater, the chest hoses on 李四维's spacesuit are pointed out by 潘天鸿; in the workshop, the backward handle on 潘天鸿's camera rig is pointed out by 李四维.",
-      "B": "In the crater, the chest hoses on 潘天鸿's spacesuit are pointed out by 李四维; in the workshop, the backward handle on 李四维's camera rig is pointed out by 潘天鸿.",
-      "C": "In the crater, the chest hoses on 潘天鸿's spacesuit are pointed out by 李四维; in the workshop, the backward handle on 潘天鸿's camera rig is pointed out by 李四维.",
-      "D": "In the crater, the chest hoses on 李四维's spacesuit are pointed out by 潘天鸿; in the workshop, the backward handle on 李四维's camera rig is pointed out by 潘天鸿."
+      "A": "In the crater, the chest hoses on Li Siwei's spacesuit are pointed out by Pan Tianhong; in the workshop, the backward handle on Pan Tianhong's camera rig is pointed out by Li Siwei.",
+      "B": "In the crater, the chest hoses on Pan Tianhong's spacesuit are pointed out by Li Siwei; in the workshop, the backward handle on Li Siwei's camera rig is pointed out by Pan Tianhong.",
+      "C": "In the crater, the chest hoses on Pan Tianhong's spacesuit are pointed out by Li Siwei; in the workshop, the backward handle on Pan Tianhong's camera rig is pointed out by Li Siwei.",
+      "D": "In the crater, the chest hoses on Li Siwei's spacesuit are pointed out by Pan Tianhong; in the workshop, the backward handle on Li Siwei's camera rig is pointed out by Pan Tianhong."
     },
     "answer": "A"
   },
@@ -3356,10 +3356,10 @@
     "question_type": "multiple_choice",
     "question": "In the woodcraft workshop and the city park, who directs a gesture of praise or appreciation toward whom?",
     "options": {
-      "A": "In the woodcraft workshop, 潘天鸿 claps to applaud 赵叔; in the park, the elderly chess player gives a thumbs-up to praise 潘天鸿.",
-      "B": "In the woodcraft workshop, 赵叔 claps to applaud 潘天鸿; in the park, the elderly chess player gives a thumbs-up to praise 潘天鸿.",
-      "C": "In the woodcraft workshop, 潘天鸿 claps to applaud 赵叔; in the park, 潘天鸿 gives a thumbs-up to praise the elderly chess player.",
-      "D": "In the woodcraft workshop, 赵叔 claps to applaud 潘天鸿; in the park, 潘天鸿 gives a thumbs-up to praise the elderly chess player."
+      "A": "In the woodcraft workshop, Pan Tianhong claps to applaud Uncle Zhao; in the park, the elderly chess player gives a thumbs-up to praise Pan Tianhong.",
+      "B": "In the woodcraft workshop, Uncle Zhao claps to applaud Pan Tianhong; in the park, the elderly chess player gives a thumbs-up to praise Pan Tianhong.",
+      "C": "In the woodcraft workshop, Pan Tianhong claps to applaud Uncle Zhao; in the park, Pan Tianhong gives a thumbs-up to praise the elderly chess player.",
+      "D": "In the woodcraft workshop, Uncle Zhao claps to applaud Pan Tianhong; in the park, Pan Tianhong gives a thumbs-up to praise the elderly chess player."
     },
     "answer": "A"
   },
@@ -3374,12 +3374,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "In the woodcraft workshop, who is the recipient of 潘天鸿's applause, and in the park, who is the recipient of the elderly chess player's thumbs-up?",
+    "question": "In the woodcraft workshop, who is the recipient of Pan Tianhong's applause, and in the park, who is the recipient of the elderly chess player's thumbs-up?",
     "options": {
-      "A": "In the woodcraft workshop, 赵叔 is the recipient of 潘天鸿's applause; in the park, 潘天鸿 is the recipient of the elderly chess player's thumbs-up.",
-      "B": "In the woodcraft workshop, 潘天鸿 is the recipient of 赵叔's applause; in the park, the elderly chess player is the recipient of 潘天鸿's thumbs-up.",
-      "C": "In the woodcraft workshop, 潘天鸿 is the recipient of 赵叔's applause; in the park, 潘天鸿 is the recipient of the elderly chess player's thumbs-up.",
-      "D": "In the woodcraft workshop, 赵叔 is the recipient of 潘天鸿's applause; in the park, the elderly chess player is the recipient of 潘天鸿's thumbs-up."
+      "A": "In the woodcraft workshop, Uncle Zhao is the recipient of Pan Tianhong's applause; in the park, Pan Tianhong is the recipient of the elderly chess player's thumbs-up.",
+      "B": "In the woodcraft workshop, Pan Tianhong is the recipient of Uncle Zhao's applause; in the park, the elderly chess player is the recipient of Pan Tianhong's thumbs-up.",
+      "C": "In the woodcraft workshop, Pan Tianhong is the recipient of Uncle Zhao's applause; in the park, Pan Tianhong is the recipient of the elderly chess player's thumbs-up.",
+      "D": "In the woodcraft workshop, Uncle Zhao is the recipient of Pan Tianhong's applause; in the park, the elderly chess player is the recipient of Pan Tianhong's thumbs-up."
     },
     "answer": "A"
   },
@@ -3396,10 +3396,10 @@
     "question_type": "multiple_choice",
     "question": "In the sequence where the stone astronaut statue launches into the sky and the figures crash-land on the ancient city wall walkway, who are the two figures that detach from the statue in mid-air and then land on the wall?",
     "options": {
-      "A": "潘天鸿 and 赵叔",
-      "B": "大橙 and 李四维",
-      "C": "潘天鸿 and 李四维",
-      "D": "大橙 and 赵叔"
+      "A": "Pan Tianhong and Uncle Zhao",
+      "B": "Da Cheng and Li Siwei",
+      "C": "Pan Tianhong and Li Siwei",
+      "D": "Da Cheng and Uncle Zhao"
     },
     "answer": "C"
   },
@@ -3416,10 +3416,10 @@
     "question_type": "multiple_choice",
     "question": "During the scene where two people fall from the soaring stone astronaut statue and then perform a superhero landing on the ancient city wall walkway, which two individuals are these?",
     "options": {
-      "A": "潘天鸿 and 大橙",
-      "B": "李四维 and 赵叔",
-      "C": "大橙 and 赵叔",
-      "D": "潘天鸿 and 李四维"
+      "A": "Pan Tianhong and Da Cheng",
+      "B": "Li Siwei and Uncle Zhao",
+      "C": "Da Cheng and Uncle Zhao",
+      "D": "Pan Tianhong and Li Siwei"
     },
     "answer": "D"
   },
@@ -29802,7 +29802,7 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "What was the reason the hosts gave for naming the puppy H (小H)?",
+    "question": "What was the reason the hosts gave for naming the puppy H (Little H)?",
     "options": {
       "A": "The puppy's breed is Shiba Inu (Chaiquan) and they wanted to name him after the first letter of Huang Lei",
       "B": "The names of all three hosts (He Jiong, Huang Lei, Henry/Dahua) start with the letter H",
@@ -33530,12 +33530,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the scene where 00 snacks at her office workstation and the scene where 雨菲 eats at home, which option correctly pairs each person with the food they eat and the way they eat it?",
+    "question": "In the scene where 00 snacks at her office workstation and the scene where Yufei eats at home, which option correctly pairs each person with the food they eat and the way they eat it?",
     "options": {
-      "A": "00 bites off a piece of noodles held in her hand, while 雨菲 slurps dry beef jerky with a yellow plastic fork.",
-      "B": "00 twirls and slurps noodles with a yellow plastic fork, while 雨菲 bites off a piece of dry beef jerky held in her hand.",
-      "C": "00 uses a yellow plastic fork to eat dry beef jerky, while 雨菲 holds a piece of noodles in her bare hand.",
-      "D": "00 bites off a piece of dry beef jerky held in her hand, while 雨菲 twirls and slurps noodles with a yellow plastic fork."
+      "A": "00 bites off a piece of noodles held in her hand, while Yufei slurps dry beef jerky with a yellow plastic fork.",
+      "B": "00 twirls and slurps noodles with a yellow plastic fork, while Yufei bites off a piece of dry beef jerky held in her hand.",
+      "C": "00 uses a yellow plastic fork to eat dry beef jerky, while Yufei holds a piece of noodles in her bare hand.",
+      "D": "00 bites off a piece of dry beef jerky held in her hand, while Yufei twirls and slurps noodles with a yellow plastic fork."
     },
     "answer": "D"
   },
@@ -33550,12 +33550,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "Considering the snack at 00's office workstation and the meal at 雨菲's home, which option matches each food item with the person who eats it and the manner of eating?",
+    "question": "Considering the snack at 00's office workstation and the meal at Yufei's home, which option matches each food item with the person who eats it and the manner of eating?",
     "options": {
-      "A": "Dry beef jerky is eaten by 00, who uses a yellow plastic fork, and noodles are eaten by 雨菲, who holds a portion in her bare hand.",
-      "B": "Noodles are eaten by 00, who bites off a portion held in her hand, and dry beef jerky is eaten by 雨菲, who slurps it with a yellow plastic fork.",
-      "C": "Noodles are eaten by 00, who twirls and slurps them with a yellow plastic fork, and dry beef jerky is eaten by 雨菲, who bites off a portion held in her hand.",
-      "D": "Dry beef jerky is eaten by 00, who bites off a portion held in her hand, and noodles are eaten by 雨菲, who twirls and slurps them with a yellow plastic fork."
+      "A": "Dry beef jerky is eaten by 00, who uses a yellow plastic fork, and noodles are eaten by Yufei, who holds a portion in her bare hand.",
+      "B": "Noodles are eaten by 00, who bites off a portion held in her hand, and dry beef jerky is eaten by Yufei, who slurps it with a yellow plastic fork.",
+      "C": "Noodles are eaten by 00, who twirls and slurps them with a yellow plastic fork, and dry beef jerky is eaten by Yufei, who bites off a portion held in her hand.",
+      "D": "Dry beef jerky is eaten by 00, who bites off a portion held in her hand, and noodles are eaten by Yufei, who twirls and slurps them with a yellow plastic fork."
     },
     "answer": "D"
   },
@@ -33572,10 +33572,10 @@
     "question_type": "multiple_choice",
     "question": "During the clinical body composition evaluations, which option correctly matches each participant with the specific examination machine used and their physical posture during the test?",
     "options": {
-      "A": "雨菲 stands barefoot holding the handgrips of the DEXA scanner, while 00 lies flat on her back on the examination bed of the InBody 720 analyzer.",
-      "B": "雨菲 lies flat on her back on the examination bed of the InBody 720 analyzer, while 00 stands barefoot holding the handgrips of the DEXA scanner.",
-      "C": "雨菲 lies flat on her back on the examination bed of the DEXA scanner, while 00 stands barefoot holding the handgrips of the InBody 720 analyzer.",
-      "D": "雨菲 stands barefoot holding the handgrips of the InBody 720 analyzer, while 00 lies flat on her back on the examination bed of the DEXA scanner."
+      "A": "Yufei stands barefoot holding the handgrips of the DEXA scanner, while 00 lies flat on her back on the examination bed of the InBody 720 analyzer.",
+      "B": "Yufei lies flat on her back on the examination bed of the InBody 720 analyzer, while 00 stands barefoot holding the handgrips of the DEXA scanner.",
+      "C": "Yufei lies flat on her back on the examination bed of the DEXA scanner, while 00 stands barefoot holding the handgrips of the InBody 720 analyzer.",
+      "D": "Yufei stands barefoot holding the handgrips of the InBody 720 analyzer, while 00 lies flat on her back on the examination bed of the DEXA scanner."
     },
     "answer": "D"
   },
@@ -33592,10 +33592,10 @@
     "question_type": "multiple_choice",
     "question": "In the clinical body composition evaluations, which option correctly identifies the participant who stands barefoot on the InBody 720 analyzer and the participant who lies flat on the DEXA scanner bed?",
     "options": {
-      "A": "雨菲 stands barefoot on the InBody 720 analyzer, while 00 lies flat on the DEXA scanner bed.",
-      "B": "雨菲 stands barefoot on the DEXA scanner bed, while 00 lies flat on the InBody 720 analyzer.",
-      "C": "00 stands barefoot on the InBody 720 analyzer, while 雨菲 lies flat on the DEXA scanner bed.",
-      "D": "00 stands barefoot on the DEXA scanner bed, while 雨菲 lies flat on the InBody 720 analyzer."
+      "A": "Yufei stands barefoot on the InBody 720 analyzer, while 00 lies flat on the DEXA scanner bed.",
+      "B": "Yufei stands barefoot on the DEXA scanner bed, while 00 lies flat on the InBody 720 analyzer.",
+      "C": "00 stands barefoot on the InBody 720 analyzer, while Yufei lies flat on the DEXA scanner bed.",
+      "D": "00 stands barefoot on the DEXA scanner bed, while Yufei lies flat on the InBody 720 analyzer."
     },
     "answer": "A"
   },
@@ -33612,10 +33612,10 @@
     "question_type": "multiple_choice",
     "question": "In the office scenes where the participants drink canned sodas, which option correctly pairs each person with the soda brand and the color of the can they drink from?",
     "options": {
-      "A": "00 drinks Coke Zero from a red can, while 厉寒 drinks Sprite from a green can.",
-      "B": "00 drinks Sprite from a red can, while 厉寒 drinks Coke Zero from a green can.",
-      "C": "00 drinks Sprite from a green can, while 厉寒 drinks Coke Zero from a red can.",
-      "D": "00 drinks Coke Zero from a green can, while 厉寒 drinks Sprite from a red can."
+      "A": "00 drinks Coke Zero from a red can, while Li Han drinks Sprite from a green can.",
+      "B": "00 drinks Sprite from a red can, while Li Han drinks Coke Zero from a green can.",
+      "C": "00 drinks Sprite from a green can, while Li Han drinks Coke Zero from a red can.",
+      "D": "00 drinks Coke Zero from a green can, while Li Han drinks Sprite from a red can."
     },
     "answer": "A"
   },
@@ -33632,10 +33632,10 @@
     "question_type": "multiple_choice",
     "question": "In the office scenes where canned sodas are consumed, which option correctly matches each soda brand and can color with the person who drinks it?",
     "options": {
-      "A": "Coke Zero from a green can is drunk by 00, while Sprite from a red can is drunk by 厉寒.",
-      "B": "Coke Zero from a red can is drunk by 00, while Sprite from a green can is drunk by 厉寒.",
-      "C": "Sprite from a red can is drunk by 00, while Coke Zero from a green can is drunk by 厉寒.",
-      "D": "Sprite from a green can is drunk by 00, while Coke Zero from a red can is drunk by 厉寒."
+      "A": "Coke Zero from a green can is drunk by 00, while Sprite from a red can is drunk by Li Han.",
+      "B": "Coke Zero from a red can is drunk by 00, while Sprite from a green can is drunk by Li Han.",
+      "C": "Sprite from a red can is drunk by 00, while Coke Zero from a green can is drunk by Li Han.",
+      "D": "Sprite from a green can is drunk by 00, while Coke Zero from a red can is drunk by Li Han."
     },
     "answer": "B"
   },
@@ -33652,10 +33652,10 @@
     "question_type": "multiple_choice",
     "question": "In the scene where the two participants inspect the skin blemishes that appeared during the experiment, which option correctly matches each person with the physical action he performs and the facial area he examines?",
     "options": {
-      "A": "厉寒 pulls back hair from his left cheek with his fingers to inspect red blemishes, while the young male employee touches his forehead to expose a pimple.",
-      "B": "厉寒 touches his left cheek with his fingers to inspect red blemishes, while the young male employee uses his left hand to pull back his hair from his forehead to expose a pimple near the hairline.",
-      "C": "厉寒 touches his hairline with his fingers to inspect red blemishes, while the young male employee touches his left cheek to expose a reddish bump.",
-      "D": "厉寒 uses his hand to pull back his hair from his forehead to expose a pimple near the hairline, while the young male employee touches his left cheek with his fingers to inspect red blemishes."
+      "A": "Li Han pulls back hair from his left cheek with his fingers to inspect red blemishes, while the young male employee touches his forehead to expose a pimple.",
+      "B": "Li Han touches his left cheek with his fingers to inspect red blemishes, while the young male employee uses his left hand to pull back his hair from his forehead to expose a pimple near the hairline.",
+      "C": "Li Han touches his hairline with his fingers to inspect red blemishes, while the young male employee touches his left cheek to expose a reddish bump.",
+      "D": "Li Han uses his hand to pull back his hair from his forehead to expose a pimple near the hairline, while the young male employee touches his left cheek with his fingers to inspect red blemishes."
     },
     "answer": "B"
   },
@@ -33672,10 +33672,10 @@
     "question_type": "multiple_choice",
     "question": "When the two participants examine the facial breakouts that developed during the challenge, which option correctly pairs each person with the physical action he performs and the facial area he inspects?",
     "options": {
-      "A": "The young male employee touches his left cheek to expose a reddish bump, while 厉寒 touches his hairline with his fingers to inspect red blemishes.",
-      "B": "The young male employee touches his left cheek with his fingers to inspect red blemishes, while 厉寒 uses his left hand to pull back his hair from his forehead to expose a pimple near the hairline.",
-      "C": "The young male employee touches his forehead to expose a pimple, while 厉寒 pulls back hair from his left cheek with his fingers to inspect red blemishes.",
-      "D": "The young male employee uses his left hand to pull back his hair from his forehead to expose a pimple near the hairline, while 厉寒 touches his left cheek with his fingers to inspect red blemishes."
+      "A": "The young male employee touches his left cheek to expose a reddish bump, while Li Han touches his hairline with his fingers to inspect red blemishes.",
+      "B": "The young male employee touches his left cheek with his fingers to inspect red blemishes, while Li Han uses his left hand to pull back his hair from his forehead to expose a pimple near the hairline.",
+      "C": "The young male employee touches his forehead to expose a pimple, while Li Han pulls back hair from his left cheek with his fingers to inspect red blemishes.",
+      "D": "The young male employee uses his left hand to pull back his hair from his forehead to expose a pimple near the hairline, while Li Han touches his left cheek with his fingers to inspect red blemishes."
     },
     "answer": "D"
   },
@@ -33690,12 +33690,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the home eating scenes, which option correctly describes what 雨菲 does while eating?",
+    "question": "In the home eating scenes, which option correctly describes what Yufei does while eating?",
     "options": {
-      "A": "雨菲 uses a fork to eat a piece of fresh durian fruit from a plate",
-      "B": "雨菲 uses a fork to pick up and eat sliced boiled eggs, kiwi, and pumpkin from a plate",
-      "C": "雨菲 wears a disposable plastic glove to eat sliced boiled eggs and pumpkin",
-      "D": "雨菲 wears a disposable plastic glove to hold and bite a piece of fresh durian fruit"
+      "A": "Yufei uses a fork to eat a piece of fresh durian fruit from a plate",
+      "B": "Yufei uses a fork to pick up and eat sliced boiled eggs, kiwi, and pumpkin from a plate",
+      "C": "Yufei wears a disposable plastic glove to eat sliced boiled eggs and pumpkin",
+      "D": "Yufei wears a disposable plastic glove to hold and bite a piece of fresh durian fruit"
     },
     "answer": "D"
   },
@@ -33710,12 +33710,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "In the home eating scenes, which option correctly describes what 金星 does while eating?",
+    "question": "In the home eating scenes, which option correctly describes what Jin Xing does while eating?",
     "options": {
-      "A": "金星 wears a disposable plastic glove to eat sliced boiled eggs and pumpkin",
-      "B": "金星 wears a disposable plastic glove to hold and bite a piece of fresh durian fruit",
-      "C": "金星 uses a fork to pick up and eat sliced boiled eggs, kiwi, and pumpkin from a plate",
-      "D": "金星 uses a fork to eat a piece of fresh durian fruit from a plate"
+      "A": "Jin Xing wears a disposable plastic glove to eat sliced boiled eggs and pumpkin",
+      "B": "Jin Xing wears a disposable plastic glove to hold and bite a piece of fresh durian fruit",
+      "C": "Jin Xing uses a fork to pick up and eat sliced boiled eggs, kiwi, and pumpkin from a plate",
+      "D": "Jin Xing uses a fork to eat a piece of fresh durian fruit from a plate"
     },
     "answer": "C"
   },
@@ -33770,7 +33770,7 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "After the scene where 雨菲 slurps noodles with a yellow plastic fork at home, what happens next?",
+    "question": "After the scene where Yufei slurps noodles with a yellow plastic fork at home, what happens next?",
     "options": {
       "A": "She eats a soft-serve ice cream cone on the living room sofa.",
       "B": "She eats fried chicken at the fast-food restaurant.",
@@ -33790,7 +33790,7 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "Before the scene where 雨菲 eats fresh durian fruit using a disposable plastic glove at home, what just happened?",
+    "question": "Before the scene where Yufei eats fresh durian fruit using a disposable plastic glove at home, what just happened?",
     "options": {
       "A": "She sips the iced purple drink at her office desk.",
       "B": "She eats a soft-serve ice cream cone on the living room sofa.",
@@ -33810,12 +33810,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "Regarding 雨菲's medical evaluations at the clinic, what is the chronological sequence between her blood draw and her InBody 720 body composition test?",
+    "question": "Regarding Yufei's medical evaluations at the clinic, what is the chronological sequence between her blood draw and her InBody 720 body composition test?",
     "options": {
-      "A": "The blood draw from 雨菲's arm occurs immediately after she steps off the InBody 720 analyzer.",
-      "B": "雨菲 stands barefoot on the InBody 720 analyzer before the healthcare worker draws blood from her left arm.",
-      "C": "The healthcare worker draws blood from 雨菲's left arm simultaneously while she stands on the InBody 720 analyzer.",
-      "D": "The healthcare worker draws blood from 雨菲's left arm before 雨菲 stands barefoot on the InBody 720 analyzer."
+      "A": "The blood draw from Yufei's arm occurs immediately after she steps off the InBody 720 analyzer.",
+      "B": "Yufei stands barefoot on the InBody 720 analyzer before the healthcare worker draws blood from her left arm.",
+      "C": "The healthcare worker draws blood from Yufei's left arm simultaneously while she stands on the InBody 720 analyzer.",
+      "D": "The healthcare worker draws blood from Yufei's left arm before Yufei stands barefoot on the InBody 720 analyzer."
     },
     "answer": "D"
   },
@@ -33830,12 +33830,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "In the clinic, which option correctly orders the two procedures that 雨菲 undergoes, starting with the first one?",
+    "question": "In the clinic, which option correctly orders the two procedures that Yufei undergoes, starting with the first one?",
     "options": {
-      "A": "雨菲 stands barefoot on the InBody 720 analyzer first, and then the healthcare worker draws blood from her left arm.",
-      "B": "The blood draw from 雨菲's left arm happens first, and then she stands barefoot on the InBody 720 analyzer.",
-      "C": "The healthcare worker draws blood from 雨菲's left arm at the same time as she stands on the InBody 720 analyzer.",
-      "D": "雨菲 steps off the InBody 720 analyzer, and then the healthcare worker draws blood from her arm."
+      "A": "Yufei stands barefoot on the InBody 720 analyzer first, and then the healthcare worker draws blood from her left arm.",
+      "B": "The blood draw from Yufei's left arm happens first, and then she stands barefoot on the InBody 720 analyzer.",
+      "C": "The healthcare worker draws blood from Yufei's left arm at the same time as she stands on the InBody 720 analyzer.",
+      "D": "Yufei steps off the InBody 720 analyzer, and then the healthcare worker draws blood from her arm."
     },
     "answer": "B"
   },
@@ -33850,7 +33850,7 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "At 雨菲's office desk, what does she do right after finishing the iced purple drink in the purple T-shirt?",
+    "question": "At Yufei's office desk, what does she do right after finishing the iced purple drink in the purple T-shirt?",
     "options": {
       "A": "She chews a piece of dry beef jerky in the office.",
       "B": "She sips the tall green beverage in the white T-shirt.",
@@ -33870,7 +33870,7 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "At 雨菲's office desk, what does she do right before sipping the tall green beverage in the white T-shirt?",
+    "question": "At Yufei's office desk, what does she do right before sipping the tall green beverage in the white T-shirt?",
     "options": {
       "A": "She eats fresh durian fruit with a disposable plastic glove.",
       "B": "She twirls and slurps noodles with a yellow plastic fork.",
@@ -33890,7 +33890,7 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the video, 雨菲 eats a soft-serve ice cream cone on the living room sofa. What does she do next?",
+    "question": "In the video, Yufei eats a soft-serve ice cream cone on the living room sofa. What does she do next?",
     "options": {
       "A": "She eats fresh durian fruit with a plastic glove at home.",
       "B": "She sips an iced purple drink at her office desk.",
@@ -33910,7 +33910,7 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "In the video, 雨菲 eats fried chicken at a fast-food restaurant. What did she do right before that?",
+    "question": "In the video, Yufei eats fried chicken at a fast-food restaurant. What did she do right before that?",
     "options": {
       "A": "She sipped an iced purple drink at her office desk.",
       "B": "She drank a tall green beverage at her office desk.",
@@ -33930,7 +33930,7 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the laboratory demonstrations where 00 and 雨菲 stack sugar cubes onto a digital scale, which weight reading comes first?",
+    "question": "In the laboratory demonstrations where 00 and Yufei stack sugar cubes onto a digital scale, which weight reading comes first?",
     "options": {
       "A": "The reading of 223 grams comes last",
       "B": "The reading of 563.5 grams comes first",
@@ -33950,7 +33950,7 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "In the laboratory demonstrations where 00 and 雨菲 stack sugar cubes onto a digital scale, what weight does the later demonstration reach?",
+    "question": "In the laboratory demonstrations where 00 and Yufei stack sugar cubes onto a digital scale, what weight does the later demonstration reach?",
     "options": {
       "A": "The later demonstration reaches no new weight",
       "B": "The later demonstration reaches both weights",
@@ -33972,10 +33972,10 @@
     "question_type": "multiple_choice",
     "question": "In the two scenes where one person drinks a beverage while the other watches — the office lounge scene with iced purple fruit tea and the office workspace scene with a red can of Coke Zero — who drank and who watched in each scene?",
     "options": {
-      "A": "In the lounge scene, 00 drank the beverage while 雨菲 watched her; in the workspace scene, 00 drank the beverage while 雨菲 watched her.",
-      "B": "In the lounge scene, 雨菲 drank the beverage while 00 watched her; in the workspace scene, 00 drank the beverage while 雨菲 watched her.",
-      "C": "In the lounge scene, 雨菲 drank the beverage while 00 watched her; in the workspace scene, 雨菲 drank the beverage while 00 watched her.",
-      "D": "In the lounge scene, 00 drank the beverage while 雨菲 watched her; in the workspace scene, 雨菲 drank the beverage while 00 watched her."
+      "A": "In the lounge scene, 00 drank the beverage while Yufei watched her; in the workspace scene, 00 drank the beverage while Yufei watched her.",
+      "B": "In the lounge scene, Yufei drank the beverage while 00 watched her; in the workspace scene, 00 drank the beverage while Yufei watched her.",
+      "C": "In the lounge scene, Yufei drank the beverage while 00 watched her; in the workspace scene, Yufei drank the beverage while 00 watched her.",
+      "D": "In the lounge scene, 00 drank the beverage while Yufei watched her; in the workspace scene, Yufei drank the beverage while 00 watched her."
     },
     "answer": "B"
   },
@@ -33992,10 +33992,10 @@
     "question_type": "multiple_choice",
     "question": "Considering the office lounge scene featuring iced purple fruit tea and the office workspace scene featuring a red can of Coke Zero, which option correctly describes who was the drinker and who was the onlooker in each scene?",
     "options": {
-      "A": "The drinker was 雨菲 and the onlooker was 00 in the lounge scene, while the drinker was 雨菲 and the onlooker was 00 in the workspace scene.",
-      "B": "The drinker was 00 and the onlooker was 雨菲 in the lounge scene, while the drinker was 雨菲 and the onlooker was 00 in the workspace scene.",
-      "C": "The drinker was 00 and the onlooker was 雨菲 in the lounge scene, while the drinker was 00 and the onlooker was 雨菲 in the workspace scene.",
-      "D": "The drinker was 雨菲 and the onlooker was 00 in the lounge scene, while the drinker was 00 and the onlooker was 雨菲 in the workspace scene."
+      "A": "The drinker was Yufei and the onlooker was 00 in the lounge scene, while the drinker was Yufei and the onlooker was 00 in the workspace scene.",
+      "B": "The drinker was 00 and the onlooker was Yufei in the lounge scene, while the drinker was Yufei and the onlooker was 00 in the workspace scene.",
+      "C": "The drinker was 00 and the onlooker was Yufei in the lounge scene, while the drinker was 00 and the onlooker was Yufei in the workspace scene.",
+      "D": "The drinker was Yufei and the onlooker was 00 in the lounge scene, while the drinker was 00 and the onlooker was Yufei in the workspace scene."
     },
     "answer": "D"
   },
@@ -34010,12 +34010,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "During their individual close-up self-examinations of skin breakouts that occurred during the challenge, where are 厉寒's blemishes and the young male employee's pimple located, respectively?",
+    "question": "During their individual close-up self-examinations of skin breakouts that occurred during the challenge, where are Li Han's blemishes and the young male employee's pimple located, respectively?",
     "options": {
-      "A": "厉寒's blemishes are on his forehead, while the young male employee's pimple is on his forehead.",
-      "B": "厉寒's blemishes are on his forehead, while the young male employee's pimple is on his cheek.",
-      "C": "厉寒's blemishes are on his cheek, while the young male employee's pimple is on his cheek.",
-      "D": "厉寒's blemishes are on his cheek, while the young male employee's pimple is on his forehead."
+      "A": "Li Han's blemishes are on his forehead, while the young male employee's pimple is on his forehead.",
+      "B": "Li Han's blemishes are on his forehead, while the young male employee's pimple is on his cheek.",
+      "C": "Li Han's blemishes are on his cheek, while the young male employee's pimple is on his cheek.",
+      "D": "Li Han's blemishes are on his cheek, while the young male employee's pimple is on his forehead."
     },
     "answer": "D"
   },
@@ -34030,12 +34030,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "In the individual close-up self-examinations of skin breakouts that appeared during the challenge, which facial areas are inspected by 厉寒 and by the young male employee, respectively?",
+    "question": "In the individual close-up self-examinations of skin breakouts that appeared during the challenge, which facial areas are inspected by Li Han and by the young male employee, respectively?",
     "options": {
-      "A": "厉寒 inspects blemishes on his cheek, while the young male employee inspects a pimple on his cheek.",
-      "B": "厉寒 inspects blemishes on his forehead, while the young male employee inspects a pimple on his forehead.",
-      "C": "厉寒 inspects blemishes on his cheek, while the young male employee inspects a pimple on his forehead.",
-      "D": "厉寒 inspects blemishes on his forehead, while the young male employee inspects a pimple on his cheek."
+      "A": "Li Han inspects blemishes on his cheek, while the young male employee inspects a pimple on his cheek.",
+      "B": "Li Han inspects blemishes on his forehead, while the young male employee inspects a pimple on his forehead.",
+      "C": "Li Han inspects blemishes on his cheek, while the young male employee inspects a pimple on his forehead.",
+      "D": "Li Han inspects blemishes on his forehead, while the young male employee inspects a pimple on his cheek."
     },
     "answer": "C"
   },
@@ -34050,12 +34050,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the medical body composition scans near the end of the experiment, what are the respective postures and machines for 雨菲 and 00?",
+    "question": "In the medical body composition scans near the end of the experiment, what are the respective postures and machines for Yufei and 00?",
     "options": {
-      "A": "雨菲 stands on a DEXA scanner bed, while 00 lies on an InBody analyzer.",
-      "B": "雨菲 lies on an InBody analyzer, while 00 stands on a DEXA scanner bed.",
-      "C": "雨菲 stands on an InBody analyzer, while 00 lies on a DEXA scanner bed.",
-      "D": "雨菲 lies on a DEXA scanner bed, while 00 stands on an InBody analyzer."
+      "A": "Yufei stands on a DEXA scanner bed, while 00 lies on an InBody analyzer.",
+      "B": "Yufei lies on an InBody analyzer, while 00 stands on a DEXA scanner bed.",
+      "C": "Yufei stands on an InBody analyzer, while 00 lies on a DEXA scanner bed.",
+      "D": "Yufei lies on a DEXA scanner bed, while 00 stands on an InBody analyzer."
     },
     "answer": "C"
   },
@@ -34070,12 +34070,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "During the medical body composition scans at the end of the experiment, which machine and posture are used for 雨菲, and which for 00?",
+    "question": "During the medical body composition scans at the end of the experiment, which machine and posture are used for Yufei, and which for 00?",
     "options": {
-      "A": "雨菲 uses the DEXA scanner in a lying position, and 00 uses the InBody analyzer in a standing position.",
-      "B": "雨菲 uses the DEXA scanner in a standing position, and 00 uses the InBody analyzer in a lying position.",
-      "C": "雨菲 uses the InBody analyzer in a lying position, and 00 uses the DEXA scanner in a standing position.",
-      "D": "雨菲 uses the InBody analyzer in a standing position, and 00 uses the DEXA scanner in a lying position."
+      "A": "Yufei uses the DEXA scanner in a lying position, and 00 uses the InBody analyzer in a standing position.",
+      "B": "Yufei uses the DEXA scanner in a standing position, and 00 uses the InBody analyzer in a lying position.",
+      "C": "Yufei uses the InBody analyzer in a lying position, and 00 uses the DEXA scanner in a standing position.",
+      "D": "Yufei uses the InBody analyzer in a standing position, and 00 uses the DEXA scanner in a lying position."
     },
     "answer": "D"
   },
@@ -34132,8 +34132,8 @@
     "question_type": "multiple_choice",
     "question": "In the earlier scene where a can of cola is opened at the cafeteria counter, who pulls open the tab and which type of cola is opened?",
     "options": {
-      "A": "雨菲 pulls open a red can of regular Coca-Cola",
-      "B": "雨菲 pulls open a red can of Coke Zero Sugar",
+      "A": "Yufei pulls open a red can of regular Coca-Cola",
+      "B": "Yufei pulls open a red can of Coke Zero Sugar",
       "C": "00 pulls open a red can of regular Coca-Cola",
       "D": "00 pulls open a red can of Coke Zero Sugar"
     },
@@ -34154,8 +34154,8 @@
     "options": {
       "A": "00 pulls open a red can of regular Coca-Cola",
       "B": "00 pulls open a red can of Coke Zero Sugar",
-      "C": "雨菲 pulls open a red can of regular Coca-Cola",
-      "D": "雨菲 pulls open a red can of Coke Zero Sugar"
+      "C": "Yufei pulls open a red can of regular Coca-Cola",
+      "D": "Yufei pulls open a red can of Coke Zero Sugar"
     },
     "answer": "B"
   },
@@ -34170,12 +34170,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the consecutive scenes where 厉寒 and the young male employee inspect their facial blemishes after the challenge, what is the chronological order of their actions?",
+    "question": "In the consecutive scenes where Li Han and the young male employee inspect their facial blemishes after the challenge, what is the chronological order of their actions?",
     "options": {
-      "A": "Earlier, the young male employee touches red blemishes on his left cheek; later, 厉寒 pulls back hair to expose a pimple on his forehead near the hairline.",
-      "B": "Earlier, 厉寒 touches red blemishes on his left cheek; later, the young male employee pulls back hair to expose a pimple on his forehead near the hairline.",
-      "C": "Earlier, the young male employee pulls back hair to expose a pimple on his forehead; later, 厉寒 touches red blemishes on his left cheek.",
-      "D": "Earlier, 厉寒 pulls back hair to expose a pimple on his forehead near the hairline; later, the young male employee touches red blemishes on his left cheek."
+      "A": "Earlier, the young male employee touches red blemishes on his left cheek; later, Li Han pulls back hair to expose a pimple on his forehead near the hairline.",
+      "B": "Earlier, Li Han touches red blemishes on his left cheek; later, the young male employee pulls back hair to expose a pimple on his forehead near the hairline.",
+      "C": "Earlier, the young male employee pulls back hair to expose a pimple on his forehead; later, Li Han touches red blemishes on his left cheek.",
+      "D": "Earlier, Li Han pulls back hair to expose a pimple on his forehead near the hairline; later, the young male employee touches red blemishes on his left cheek."
     },
     "answer": "B"
   },
@@ -34192,10 +34192,10 @@
     "question_type": "multiple_choice",
     "question": "During the two consecutive self-inspection scenes after the challenge, which person performs the action of touching red blemishes on the left cheek first, and which person later exposes a pimple near the hairline by pulling back hair?",
     "options": {
-      "A": "厉寒 touches his left cheek first, and the young male employee pulls back his hair later.",
-      "B": "厉寒 pulls back his hair first, and the young male employee touches his left cheek later.",
-      "C": "The young male employee touches his left cheek first, and 厉寒 pulls back his hair later.",
-      "D": "The young male employee pulls back his hair first, and 厉寒 touches his left cheek later."
+      "A": "Li Han touches his left cheek first, and the young male employee pulls back his hair later.",
+      "B": "Li Han pulls back his hair first, and the young male employee touches his left cheek later.",
+      "C": "The young male employee touches his left cheek first, and Li Han pulls back his hair later.",
+      "D": "The young male employee pulls back his hair first, and Li Han touches his left cheek later."
     },
     "answer": "A"
   },
@@ -34212,9 +34212,9 @@
     "question_type": "multiple_choice",
     "question": "During the post-challenge body composition evaluations in the clinic, which participant is examined on the InBody 720 analyzer, and which participant is examined using the DEXA body scanner?",
     "options": {
-      "A": "雨菲 is examined on the InBody 720 analyzer, while 00 is examined using the DEXA scanner.",
-      "B": "雨菲 is examined on both the InBody 720 analyzer and the DEXA scanner.",
-      "C": "00 is examined on the InBody 720 analyzer, while 雨菲 is examined using the DEXA scanner.",
+      "A": "Yufei is examined on the InBody 720 analyzer, while 00 is examined using the DEXA scanner.",
+      "B": "Yufei is examined on both the InBody 720 analyzer and the DEXA scanner.",
+      "C": "00 is examined on the InBody 720 analyzer, while Yufei is examined using the DEXA scanner.",
       "D": "00 is examined on both the InBody 720 analyzer and the DEXA scanner."
     },
     "answer": "A"
@@ -34233,9 +34233,9 @@
     "question": "In the clinic after the challenge, which participant undergoes the DEXA body scan, and which participant undergoes the InBody 720 analysis?",
     "options": {
       "A": "00 undergoes both the DEXA body scan and the InBody 720 analysis.",
-      "B": "雨菲 undergoes the DEXA body scan, while 00 undergoes the InBody 720 analysis.",
-      "C": "00 undergoes the DEXA body scan, while 雨菲 undergoes the InBody 720 analysis.",
-      "D": "雨菲 undergoes both the DEXA body scan and the InBody 720 analysis."
+      "B": "Yufei undergoes the DEXA body scan, while 00 undergoes the InBody 720 analysis.",
+      "C": "00 undergoes the DEXA body scan, while Yufei undergoes the InBody 720 analysis.",
+      "D": "Yufei undergoes both the DEXA body scan and the InBody 720 analysis."
     },
     "answer": "C"
   },
@@ -34252,10 +34252,10 @@
     "question_type": "multiple_choice",
     "question": "In the two scenes after the challenge where male colleagues examine newly appeared facial blemishes (one by a sunlit bedroom window and the other in front of the corkboard in the studio), who inspects blemishes in each scene respectively?",
     "options": {
-      "A": "厉寒 inspects his blemishes by the bedroom window, while 潘天鸿 exposes his blemish in the studio.",
-      "B": "潘天鸿 inspects his blemishes by the bedroom window, while 厉寒 exposes his blemish in the studio.",
-      "C": "The young male employee inspects his blemishes by the bedroom window, while 厉寒 exposes his blemish in the studio.",
-      "D": "厉寒 inspects his blemishes by the bedroom window, while the young male employee exposes his blemish in the studio."
+      "A": "Li Han inspects his blemishes by the bedroom window, while Pan Tianhong exposes his blemish in the studio.",
+      "B": "Pan Tianhong inspects his blemishes by the bedroom window, while Li Han exposes his blemish in the studio.",
+      "C": "The young male employee inspects his blemishes by the bedroom window, while Li Han exposes his blemish in the studio.",
+      "D": "Li Han inspects his blemishes by the bedroom window, while the young male employee exposes his blemish in the studio."
     },
     "answer": "D"
   },
@@ -34272,10 +34272,10 @@
     "question_type": "multiple_choice",
     "question": "Considering the same two blemish-inspection scenes—one by a sunlit bedroom window and one in front of the studio corkboard—which person is associated with which location?",
     "options": {
-      "A": "厉寒 is by the bedroom window, and 潘天鸿 is in front of the studio corkboard.",
-      "B": "潘天鸿 is by the bedroom window, and 厉寒 is in front of the studio corkboard.",
-      "C": "厉寒 is in front of the studio corkboard, and the young male employee is by the bedroom window.",
-      "D": "厉寒 is by the bedroom window, and the young male employee is in front of the studio corkboard."
+      "A": "Li Han is by the bedroom window, and Pan Tianhong is in front of the studio corkboard.",
+      "B": "Pan Tianhong is by the bedroom window, and Li Han is in front of the studio corkboard.",
+      "C": "Li Han is in front of the studio corkboard, and the young male employee is by the bedroom window.",
+      "D": "Li Han is by the bedroom window, and the young male employee is in front of the studio corkboard."
     },
     "answer": "D"
   },
@@ -34292,10 +34292,10 @@
     "question_type": "multiple_choice",
     "question": "In the split-screen consultation where dietary advice is given from a room with a plant, and in the dining scene where a meal of sliced boiled eggs, kiwi, pumpkin, and milk is eaten, what is the identity relationship between the person offering the nutritional guidance and the person eating the meal?",
     "options": {
-      "A": "The guidance is offered by 潘天鸿, while the meal is eaten by 金星.",
-      "B": "The same individual, 潘天鸿, appears in both scenes.",
-      "C": "The guidance is offered by 金星, while the meal is eaten by 潘天鸿.",
-      "D": "The same individual, 金星, appears in both scenes."
+      "A": "The guidance is offered by Pan Tianhong, while the meal is eaten by Jin Xing.",
+      "B": "The same individual, Pan Tianhong, appears in both scenes.",
+      "C": "The guidance is offered by Jin Xing, while the meal is eaten by Pan Tianhong.",
+      "D": "The same individual, Jin Xing, appears in both scenes."
     },
     "answer": "D"
   },
@@ -34312,10 +34312,10 @@
     "question_type": "multiple_choice",
     "question": "In the split-screen consultation where dietary advice is provided from a room with a plant, and in the dining scene where a meal of sliced boiled eggs, kiwi, pumpkin, and milk is eaten, who is the person providing the nutritional guidance and who is the person eating the meal?",
     "options": {
-      "A": "The person providing the nutritional guidance is 潘天鸿, and the person eating the meal is 金星.",
-      "B": "Both the person providing the nutritional guidance and the person eating the meal are 潘天鸿.",
-      "C": "The person providing the nutritional guidance is 金星, and the person eating the meal is 潘天鸿.",
-      "D": "Both the person providing the nutritional guidance and the person eating the meal are 金星."
+      "A": "The person providing the nutritional guidance is Pan Tianhong, and the person eating the meal is Jin Xing.",
+      "B": "Both the person providing the nutritional guidance and the person eating the meal are Pan Tianhong.",
+      "C": "The person providing the nutritional guidance is Jin Xing, and the person eating the meal is Pan Tianhong.",
+      "D": "Both the person providing the nutritional guidance and the person eating the meal are Jin Xing."
     },
     "answer": "D"
   },
@@ -34370,7 +34370,7 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "For 陈惠兰, which action happened earlier: placing cat food into the stainless steel pet bowl with a white spoon, or storing her change and receipt into her plaid zippered wallet?",
+    "question": "For Chen Huilan, which action happened earlier: placing cat food into the stainless steel pet bowl with a white spoon, or storing her change and receipt into her plaid zippered wallet?",
     "options": {
       "A": "Storing her change and receipt into her plaid zippered wallet.",
       "B": "Opening a plaid zippered wallet at the wet market stall.",
@@ -34390,7 +34390,7 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "In 陈惠兰's video, which action came later: storing her change and receipt into her plaid zippered wallet, or placing cat food into the stainless steel pet bowl with a white spoon?",
+    "question": "In Chen Huilan's video, which action came later: storing her change and receipt into her plaid zippered wallet, or placing cat food into the stainless steel pet bowl with a white spoon?",
     "options": {
       "A": "Sitting around the orange circular table during the crochet session.",
       "B": "Placing cat food into the stainless steel pet bowl with a white spoon.",
@@ -34450,12 +34450,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the chronological sequence of the video broadcast, what is the temporal relationship between 葛兆源 taking a group selfie with 霞姐 inside 霞姐's home and 葛兆源 packing care packages into red gift bags with children and adult volunteers in the care team office?",
+    "question": "In the chronological sequence of the video broadcast, what is the temporal relationship between Ge Zhaoyuan taking a group selfie with Sister Xia inside Sister Xia's home and Ge Zhaoyuan packing care packages into red gift bags with children and adult volunteers in the care team office?",
     "options": {
-      "A": "The packing of care packages into red gift bags in the office comes first, and the group selfie with 霞姐 inside her home comes later.",
-      "B": "The packing of care packages into red gift bags in the office and the group selfie with 霞姐 inside her home are shown at the exact same time via a split screen.",
-      "C": "The group selfie with 霞姐 inside her home comes first, and the packing of care packages into red gift bags in the office comes later.",
-      "D": "The packing of care packages into red gift bags in the office comes immediately after leaving 霞姐's house, before any group selfie is taken."
+      "A": "The packing of care packages into red gift bags in the office comes first, and the group selfie with Sister Xia inside her home comes later.",
+      "B": "The packing of care packages into red gift bags in the office and the group selfie with Sister Xia inside her home are shown at the exact same time via a split screen.",
+      "C": "The group selfie with Sister Xia inside her home comes first, and the packing of care packages into red gift bags in the office comes later.",
+      "D": "The packing of care packages into red gift bags in the office comes immediately after leaving Sister Xia's house, before any group selfie is taken."
     },
     "answer": "C"
   },
@@ -34470,12 +34470,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "Which of the following sequences correctly describes what happens first and what happens later in the video, with regard to 葛兆源's actions at 霞姐's home and at the care team office?",
+    "question": "Which of the following sequences correctly describes what happens first and what happens later in the video, with regard to Ge Zhaoyuan's actions at Sister Xia's home and at the care team office?",
     "options": {
-      "A": "The packing of red gift bags in the office occurs before the group selfie with 霞姐 at her home.",
-      "B": "The packing of red gift bags in the office happens right after leaving 霞姐's home, with no group selfie occurring.",
-      "C": "The packing of red gift bags in the office and the group selfie with 霞姐 happen simultaneously in a split-screen presentation.",
-      "D": "The group selfie with 霞姐 at her home occurs before the packing of red gift bags with children and volunteers in the office."
+      "A": "The packing of red gift bags in the office occurs before the group selfie with Sister Xia at her home.",
+      "B": "The packing of red gift bags in the office happens right after leaving Sister Xia's home, with no group selfie occurring.",
+      "C": "The packing of red gift bags in the office and the group selfie with Sister Xia happen simultaneously in a split-screen presentation.",
+      "D": "The group selfie with Sister Xia at her home occurs before the packing of red gift bags with children and volunteers in the office."
     },
     "answer": "D"
   },
@@ -34490,7 +34490,7 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "After 阮淑茵 finishes speaking into the grey portable megaphone near the pedestrian crossing during her outdoor outreach, what does she do next in the video?",
+    "question": "After Ruan Shuyin finishes speaking into the grey portable megaphone near the pedestrian crossing during her outdoor outreach, what does she do next in the video?",
     "options": {
       "A": "She addresses passing pedestrians while writing notes on a clipboard at the outdoor station.",
       "B": "She walks past green tree-shaped playground structures to exit the community playground.",
@@ -34510,7 +34510,7 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "Before 阮淑茵 examines printed documents and bills with an elderly resident inside an apartment flat, what had she just done in the video?",
+    "question": "Before Ruan Shuyin examines printed documents and bills with an elderly resident inside an apartment flat, what had she just done in the video?",
     "options": {
       "A": "She pressed medicine out of blister packs during an evening routine in a residence.",
       "B": "She spoke into the grey portable megaphone near a pedestrian crossing.",
@@ -34570,12 +34570,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "After the visit to 霞姐's apartment, along which direction do 葛兆源 and the volunteer team move through the residential corridor?",
+    "question": "After the visit to Sister Xia's apartment, along which direction do Ge Zhaoyuan and the volunteer team move through the residential corridor?",
     "options": {
-      "A": "葛兆源 heads to 大家姐's flat while the team heads back to 霞姐's.",
-      "B": "They leave 霞姐's flat and head toward 大家姐's apartment.",
-      "C": "They leave 大家姐's apartment and head toward 霞姐's flat.",
-      "D": "Neither 葛兆源 nor the team moves between the two flats."
+      "A": "Ge Zhaoyuan heads to Big Sister's flat while the team heads back to Sister Xia's.",
+      "B": "They leave Sister Xia's flat and head toward Big Sister's apartment.",
+      "C": "They leave Big Sister's apartment and head toward Sister Xia's flat.",
+      "D": "Neither Ge Zhaoyuan nor the team moves between the two flats."
     },
     "answer": "B"
   },
@@ -34590,12 +34590,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "Following the stop at 霞姐's apartment, where do 葛兆源 and the volunteer team go as they walk down the residential corridor?",
+    "question": "Following the stop at Sister Xia's apartment, where do Ge Zhaoyuan and the volunteer team go as they walk down the residential corridor?",
     "options": {
-      "A": "They walk from 大家姐's apartment toward 霞姐's flat.",
+      "A": "They walk from Big Sister's apartment toward Sister Xia's flat.",
       "B": "They stay in place and do not move toward either flat.",
-      "C": "葛兆源 walks to 大家姐's flat while the team walks back to 霞姐's.",
-      "D": "They walk from 霞姐's flat toward 大家姐's apartment."
+      "C": "Ge Zhaoyuan walks to Big Sister's flat while the team walks back to Sister Xia's.",
+      "D": "They walk from Sister Xia's flat toward Big Sister's apartment."
     },
     "answer": "D"
   },
@@ -34610,12 +34610,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "During the care team's outreach visits to public housing flats, who presents a gift to the resident in 霞姐's apartment, and who presents a gift to the resident in 大家姐's apartment?",
+    "question": "During the care team's outreach visits to public housing flats, who presents a gift to the resident in Sister Xia's apartment, and who presents a gift to the resident in Big Sister's apartment?",
     "options": {
-      "A": "In 霞姐's apartment, a female volunteer presents a package of dried flowers, while in 大家姐's apartment, 葛兆源 presents a red gift bag.",
-      "B": "In 霞姐's apartment, a female volunteer presents a red gift bag, while in 大家姐's apartment, 葛兆源 presents a package of dried flowers.",
-      "C": "In 霞姐's apartment, 葛兆源 presents a package of dried flowers, while in 大家姐's apartment, a female volunteer presents a red gift bag.",
-      "D": "In 霞姐's apartment, 葛兆源 presents a red gift bag, while in 大家姐's apartment, a female volunteer presents a package of dried flowers."
+      "A": "In Sister Xia's apartment, a female volunteer presents a package of dried flowers, while in Big Sister's apartment, Ge Zhaoyuan presents a red gift bag.",
+      "B": "In Sister Xia's apartment, a female volunteer presents a red gift bag, while in Big Sister's apartment, Ge Zhaoyuan presents a package of dried flowers.",
+      "C": "In Sister Xia's apartment, Ge Zhaoyuan presents a package of dried flowers, while in Big Sister's apartment, a female volunteer presents a red gift bag.",
+      "D": "In Sister Xia's apartment, Ge Zhaoyuan presents a red gift bag, while in Big Sister's apartment, a female volunteer presents a package of dried flowers."
     },
     "answer": "D"
   },
@@ -34630,12 +34630,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "In the care team's home visits, which gift is given by 葛兆源 in 霞姐's apartment, and which gift is given by a female volunteer in 大家姐's apartment?",
+    "question": "In the care team's home visits, which gift is given by Ge Zhaoyuan in Sister Xia's apartment, and which gift is given by a female volunteer in Big Sister's apartment?",
     "options": {
-      "A": "In 霞姐's apartment, 葛兆源 gives a red gift bag, and in 大家姐's apartment, the female volunteer gives a package of dried flowers.",
-      "B": "In 霞姐's apartment, 葛兆源 gives a package of dried flowers, and in 大家姐's apartment, the female volunteer also gives a package of dried flowers.",
-      "C": "In 霞姐's apartment, 葛兆源 gives a package of dried flowers, and in 大家姐's apartment, the female volunteer gives a red gift bag.",
-      "D": "In 霞姐's apartment, 葛兆源 gives a red gift bag, and in 大家姐's apartment, the female volunteer also gives a red gift bag."
+      "A": "In Sister Xia's apartment, Ge Zhaoyuan gives a red gift bag, and in Big Sister's apartment, the female volunteer gives a package of dried flowers.",
+      "B": "In Sister Xia's apartment, Ge Zhaoyuan gives a package of dried flowers, and in Big Sister's apartment, the female volunteer also gives a package of dried flowers.",
+      "C": "In Sister Xia's apartment, Ge Zhaoyuan gives a package of dried flowers, and in Big Sister's apartment, the female volunteer gives a red gift bag.",
+      "D": "In Sister Xia's apartment, Ge Zhaoyuan gives a red gift bag, and in Big Sister's apartment, the female volunteer also gives a red gift bag."
     },
     "answer": "A"
   },
@@ -34690,7 +34690,7 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the two living room scenes where 陈惠兰 is looking at her smartphone, what is shown on her phone's screen in each scene?",
+    "question": "In the two living room scenes where Chen Huilan is looking at her smartphone, what is shown on her phone's screen in each scene?",
     "options": {
       "A": "In the earlier scene, she looks at photos of a young girl, and in the later scene, she watches a video of her cat feeding.",
       "B": "In the earlier scene, she looks at photos of a young girl, and in the later scene, she records a video of her cat feeding.",
@@ -34710,7 +34710,7 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "Regarding the two living room scenes where 陈惠兰 is using her smartphone, what content appears on her phone's screen in each scene?",
+    "question": "Regarding the two living room scenes where Chen Huilan is using her smartphone, what content appears on her phone's screen in each scene?",
     "options": {
       "A": "In the earlier scene, she views photos of a young girl, and in the later scene, she watches a video of her cat feeding.",
       "B": "In the earlier scene, she views photos of a young girl, and in the later scene, she records a video of her cat feeding.",
@@ -34730,7 +34730,7 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "During 陈惠兰's shopping trip at the wet market, which item does she open?",
+    "question": "During Chen Huilan's shopping trip at the wet market, which item does she open?",
     "options": {
       "A": "a stainless steel pet bowl",
       "B": "a plastic food container",
@@ -34750,7 +34750,7 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "During 陈惠兰's subsequent time in her apartment, which item does she open?",
+    "question": "During Chen Huilan's subsequent time in her apartment, which item does she open?",
     "options": {
       "A": "a stainless steel pet bowl",
       "B": "a plastic food container",
@@ -34770,12 +34770,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the video, what colors were the outerwear jackets/coats worn by the elderly man walking along the sunny urban sidewalk and by 梁文山 inside his apartment, respectively?",
+    "question": "In the video, what colors were the outerwear jackets/coats worn by the elderly man walking along the sunny urban sidewalk and by Liang Wenshan inside his apartment, respectively?",
     "options": {
-      "A": "The elderly man on the sidewalk wore a light yellow jacket, while 梁文山 wore a purple scarf and dark vest.",
-      "B": "The elderly man on the sidewalk wore a brown coat, while 梁文山 wore a green jacket.",
-      "C": "The elderly man on the sidewalk wore a bright red jacket, while 梁文山 wore a beige fleece jacket.",
-      "D": "The elderly man on the sidewalk wore a dark green jacket, while 梁文山 wore a bright red jacket."
+      "A": "The elderly man on the sidewalk wore a light yellow jacket, while Liang Wenshan wore a purple scarf and dark vest.",
+      "B": "The elderly man on the sidewalk wore a brown coat, while Liang Wenshan wore a green jacket.",
+      "C": "The elderly man on the sidewalk wore a bright red jacket, while Liang Wenshan wore a beige fleece jacket.",
+      "D": "The elderly man on the sidewalk wore a dark green jacket, while Liang Wenshan wore a bright red jacket."
     },
     "answer": "B"
   },
@@ -34790,12 +34790,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "Regarding the outerwear worn by the elderly man strolling on the sunny urban sidewalk and by 梁文山 in his apartment, which colors were on the two men respectively?",
+    "question": "Regarding the outerwear worn by the elderly man strolling on the sunny urban sidewalk and by Liang Wenshan in his apartment, which colors were on the two men respectively?",
     "options": {
-      "A": "The man on the sidewalk wore a light yellow jacket, and 梁文山 wore a dark green jacket.",
-      "B": "The man on the sidewalk wore a brown coat, and 梁文山 wore a green jacket.",
-      "C": "The man on the sidewalk wore a beige fleece jacket, and 梁文山 wore a purple scarf and dark vest.",
-      "D": "The man on the sidewalk wore a bright red jacket, and 梁文山 wore a light yellow jacket."
+      "A": "The man on the sidewalk wore a light yellow jacket, and Liang Wenshan wore a dark green jacket.",
+      "B": "The man on the sidewalk wore a brown coat, and Liang Wenshan wore a green jacket.",
+      "C": "The man on the sidewalk wore a beige fleece jacket, and Liang Wenshan wore a purple scarf and dark vest.",
+      "D": "The man on the sidewalk wore a bright red jacket, and Liang Wenshan wore a light yellow jacket."
     },
     "answer": "B"
   },
@@ -34810,12 +34810,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "During the district care team's visits to public housing flats, what clothing items were worn by the elderly resident 大家姐 when greeting visitors at her doorway and by 霞姐 inside her flat, respectively?",
+    "question": "During the district care team's visits to public housing flats, what clothing items were worn by the elderly resident Big Sister when greeting visitors at her doorway and by Sister Xia inside her flat, respectively?",
     "options": {
-      "A": "大家姐 wore a purple scarf and dark vest, while 霞姐 wore a purple scarf and dark vest.",
-      "B": "大家姐 wore a beige fleece jacket, while 霞姐 wore a purple scarf and dark vest.",
-      "C": "大家姐 wore a beige fleece jacket, while 霞姐 wore a beige fleece jacket.",
-      "D": "大家姐 wore a purple scarf and dark vest, while 霞姐 wore a beige fleece jacket."
+      "A": "Big Sister wore a purple scarf and dark vest, while Sister Xia wore a purple scarf and dark vest.",
+      "B": "Big Sister wore a beige fleece jacket, while Sister Xia wore a purple scarf and dark vest.",
+      "C": "Big Sister wore a beige fleece jacket, while Sister Xia wore a beige fleece jacket.",
+      "D": "Big Sister wore a purple scarf and dark vest, while Sister Xia wore a beige fleece jacket."
     },
     "answer": "B"
   },
@@ -34832,10 +34832,10 @@
     "question_type": "multiple_choice",
     "question": "In the home-visit scenes, which resident was seen wearing a beige fleece jacket, and which resident was seen wearing a purple scarf and dark vest?",
     "options": {
-      "A": "大家姐 wore the beige fleece jacket, and 霞姐 wore the purple scarf and dark vest.",
-      "B": "大家姐 wore the purple scarf and dark vest, and 霞姐 wore the beige fleece jacket.",
-      "C": "大家姐 wore the beige fleece jacket, and 霞姐 wore the beige fleece jacket.",
-      "D": "大家姐 wore the purple scarf and dark vest, and 霞姐 wore the purple scarf and dark vest."
+      "A": "Big Sister wore the beige fleece jacket, and Sister Xia wore the purple scarf and dark vest.",
+      "B": "Big Sister wore the purple scarf and dark vest, and Sister Xia wore the beige fleece jacket.",
+      "C": "Big Sister wore the beige fleece jacket, and Sister Xia wore the beige fleece jacket.",
+      "D": "Big Sister wore the purple scarf and dark vest, and Sister Xia wore the purple scarf and dark vest."
     },
     "answer": "A"
   },
@@ -34890,12 +34890,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "During the district care team's visits, in 霞姐's apartment and later in 大家姐's apartment, who makes a thumbs-up gesture while the group selfie photograph is being taken at each visit?",
+    "question": "During the district care team's visits, in Sister Xia's apartment and later in Big Sister's apartment, who makes a thumbs-up gesture while the group selfie photograph is being taken at each visit?",
     "options": {
-      "A": "In 霞姐's apartment, 葛兆源 makes a thumbs-up; in 大家姐's apartment, the young man makes a thumbs-up",
-      "B": "In 霞姐's apartment, 霞姐 makes a thumbs-up; in 大家姐's apartment, the volunteer makes a thumbs-up",
-      "C": "In 霞姐's apartment, 大家姐 makes a thumbs-up; in 大家姐's apartment, 葛兆源 makes a thumbs-up",
-      "D": "In 霞姐's apartment, 葛兆源 makes a thumbs-up; in 大家姐's apartment, 大家姐 makes a thumbs-up"
+      "A": "In Sister Xia's apartment, Ge Zhaoyuan makes a thumbs-up; in Big Sister's apartment, the young man makes a thumbs-up",
+      "B": "In Sister Xia's apartment, Sister Xia makes a thumbs-up; in Big Sister's apartment, the volunteer makes a thumbs-up",
+      "C": "In Sister Xia's apartment, Big Sister makes a thumbs-up; in Big Sister's apartment, Ge Zhaoyuan makes a thumbs-up",
+      "D": "In Sister Xia's apartment, Ge Zhaoyuan makes a thumbs-up; in Big Sister's apartment, Big Sister makes a thumbs-up"
     },
     "answer": "D"
   },
@@ -34910,12 +34910,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "At the two apartment visits by the district care team, the group selfie photograph is taken once in 霞姐's apartment and once in 大家姐's apartment; which person gives a thumbs-up gesture in each of these two selfie moments?",
+    "question": "At the two apartment visits by the district care team, the group selfie photograph is taken once in Sister Xia's apartment and once in Big Sister's apartment; which person gives a thumbs-up gesture in each of these two selfie moments?",
     "options": {
-      "A": "大家姐 gives the thumbs-up in 霞姐's apartment, and 葛兆源 gives the thumbs-up in 大家姐's apartment",
-      "B": "霞姐 gives the thumbs-up in 霞姐's apartment, and the volunteer gives the thumbs-up in 大家姐's apartment",
-      "C": "葛兆源 gives the thumbs-up in 霞姐's apartment, and the young man gives the thumbs-up in 大家姐's apartment",
-      "D": "葛兆源 gives the thumbs-up in 霞姐's apartment, and 大家姐 gives the thumbs-up in 大家姐's apartment"
+      "A": "Big Sister gives the thumbs-up in Sister Xia's apartment, and Ge Zhaoyuan gives the thumbs-up in Big Sister's apartment",
+      "B": "Sister Xia gives the thumbs-up in Sister Xia's apartment, and the volunteer gives the thumbs-up in Big Sister's apartment",
+      "C": "Ge Zhaoyuan gives the thumbs-up in Sister Xia's apartment, and the young man gives the thumbs-up in Big Sister's apartment",
+      "D": "Ge Zhaoyuan gives the thumbs-up in Sister Xia's apartment, and Big Sister gives the thumbs-up in Big Sister's apartment"
     },
     "answer": "D"
   },
@@ -34930,7 +34930,7 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "Regarding 阮淑茵's outreach activities, which set of actions occurs earlier during her outdoor street station session and which occurs later during her home visit to an elderly resident's flat?",
+    "question": "Regarding Ruan Shuyin's outreach activities, which set of actions occurs earlier during her outdoor street station session and which occurs later during her home visit to an elderly resident's flat?",
     "options": {
       "A": "Earlier: Holding a water bottle at the gate and reviewing printed documents and bills with the resident; Later: Addressing passing pedestrians with a portable megaphone and writing notes on a clipboard",
       "B": "Earlier: Addressing passing pedestrians with a portable megaphone and writing notes on a clipboard; Later: Packing boxes of food and tissue boxes into red care bags with volunteers",
@@ -34950,7 +34950,7 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "For 阮淑茵's outreach activities, what is the sequence of her actions from the outdoor street station to the indoor visit at an elderly resident's flat?",
+    "question": "For Ruan Shuyin's outreach activities, what is the sequence of her actions from the outdoor street station to the indoor visit at an elderly resident's flat?",
     "options": {
       "A": "She first packs boxes of food and tissue boxes into red care bags with volunteers, then addresses passing pedestrians with a portable megaphone and writes notes on a clipboard",
       "B": "She first addresses passing pedestrians with a portable megaphone and writes notes on a clipboard, then holds a water bottle at the gate and reviews printed documents and bills with the resident",
@@ -37370,12 +37370,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In what chronological order does 鸿龙 chew his first dark red melatonin gummy relative to the animated sequence depicting the pineal gland ('松果体')?",
+    "question": "In what chronological order does Honglong chew his first dark red melatonin gummy relative to the animated sequence depicting the pineal gland ('pineal gland')?",
     "options": {
-      "A": "鸿龙 chews his first melatonin gummy after the animated sequence depicting the pineal gland appears.",
-      "B": "鸿龙 chews his first melatonin gummy only after the second consultation with Dr. 刘文娟 concludes.",
-      "C": "鸿龙 chews his first melatonin gummy simultaneously during a split-screen display of the animated pineal gland sequence.",
-      "D": "鸿龙 chews his first melatonin gummy before the animated sequence depicting the pineal gland appears."
+      "A": "Honglong chews his first melatonin gummy after the animated sequence depicting the pineal gland appears.",
+      "B": "Honglong chews his first melatonin gummy only after the second consultation with Dr. Liu Wenjuan concludes.",
+      "C": "Honglong chews his first melatonin gummy simultaneously during a split-screen display of the animated pineal gland sequence.",
+      "D": "Honglong chews his first melatonin gummy before the animated sequence depicting the pineal gland appears."
     },
     "answer": "D"
   },
@@ -37390,12 +37390,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "When the animated sequence depicting the pineal gland ('松果体') appears in the video, where is 鸿龙's first dark red melatonin gummy in relation to his chewing action?",
+    "question": "When the animated sequence depicting the pineal gland ('pineal gland') appears in the video, where is Honglong's first dark red melatonin gummy in relation to his chewing action?",
     "options": {
-      "A": "鸿龙 has already chewed and swallowed the melatonin gummy before the animated sequence appears.",
-      "B": "鸿龙 has not yet started chewing the melatonin gummy when the animated sequence appears.",
-      "C": "鸿龙 only begins chewing the melatonin gummy after the second consultation with Dr. 刘文娟 concludes.",
-      "D": "鸿龙 is still chewing the melatonin gummy while the animated sequence appears."
+      "A": "Honglong has already chewed and swallowed the melatonin gummy before the animated sequence appears.",
+      "B": "Honglong has not yet started chewing the melatonin gummy when the animated sequence appears.",
+      "C": "Honglong only begins chewing the melatonin gummy after the second consultation with Dr. Liu Wenjuan concludes.",
+      "D": "Honglong is still chewing the melatonin gummy while the animated sequence appears."
     },
     "answer": "A"
   },
@@ -37410,12 +37410,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the video, which Stroop test session comes first for 鸿龙 and 黄玮, and what reaction times did each record in that earlier session?",
+    "question": "In the video, which Stroop test session comes first for Honglong and Huang Wei, and what reaction times did each record in that earlier session?",
     "options": {
-      "A": "The session with a wooden staircase behind them comes first, with 15.37s for 鸿龙 and 12.86s for 黄玮.",
-      "B": "The session with a wooden staircase behind them comes first, with 28.57s for 鸿龙 and 24.53s for 黄玮.",
-      "C": "The session with a big TV behind them comes first, with 15.37s for 鸿龙 and 12.86s for 黄玮.",
-      "D": "The session with a big TV behind them comes first, with 28.57s for 鸿龙 and 24.53s for 黄玮."
+      "A": "The session with a wooden staircase behind them comes first, with 15.37s for Honglong and 12.86s for Huang Wei.",
+      "B": "The session with a wooden staircase behind them comes first, with 28.57s for Honglong and 24.53s for Huang Wei.",
+      "C": "The session with a big TV behind them comes first, with 15.37s for Honglong and 12.86s for Huang Wei.",
+      "D": "The session with a big TV behind them comes first, with 28.57s for Honglong and 24.53s for Huang Wei."
     },
     "answer": "B"
   },
@@ -37430,7 +37430,7 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "For the two Stroop test sessions involving 鸿龙 and 黄玮, what background was present in the session where their reaction times were 28.57s and 24.53s, and which session was that?",
+    "question": "For the two Stroop test sessions involving Honglong and Huang Wei, what background was present in the session where their reaction times were 28.57s and 24.53s, and which session was that?",
     "options": {
       "A": "That was the later session, and the background was a wooden staircase.",
       "B": "That was the earlier session, and the background was a big TV.",
@@ -37450,12 +37450,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "Which of 黄玮's recreational moments is shown first in the video: the one with the slice of cake in the armchair or the one with the wireless microphone in the KTV room?",
+    "question": "Which of Huang Wei's recreational moments is shown first in the video: the one with the slice of cake in the armchair or the one with the wireless microphone in the KTV room?",
     "options": {
-      "A": "黄玮 sings in the KTV room, but her scene with the slice of cake in the armchair occurs only after the hospital sleep monitoring phase.",
-      "B": "黄玮 is shown singing with a wireless microphone in a KTV room before she is shown holding cake and recording herself in a living room armchair.",
-      "C": "黄玮 is shown holding cake and recording herself in a living room armchair before she is shown singing with a wireless microphone in a KTV room.",
-      "D": "黄玮 is shown holding cake in an armchair and singing in the KTV room simultaneously in a split-screen presentation."
+      "A": "Huang Wei sings in the KTV room, but her scene with the slice of cake in the armchair occurs only after the hospital sleep monitoring phase.",
+      "B": "Huang Wei is shown singing with a wireless microphone in a KTV room before she is shown holding cake and recording herself in a living room armchair.",
+      "C": "Huang Wei is shown holding cake and recording herself in a living room armchair before she is shown singing with a wireless microphone in a KTV room.",
+      "D": "Huang Wei is shown holding cake in an armchair and singing in the KTV room simultaneously in a split-screen presentation."
     },
     "answer": "C"
   },
@@ -37470,7 +37470,7 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "In the video, 黄玮 is shown singing with a wireless microphone in a KTV room. What does she do before that scene?",
+    "question": "In the video, Huang Wei is shown singing with a wireless microphone in a KTV room. What does she do before that scene?",
     "options": {
       "A": "She sweeps the floor of her walk-in wardrobe with a handheld broom and dustpan.",
       "B": "She presents a smartphone with a blue case to the camera to show her time.",
@@ -37530,7 +37530,7 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "When 鸿龙 is shown drinking a beverage while seated in an ergonomic office chair, what drink container does he use in the earlier office scene compared to the later office scene?",
+    "question": "When Honglong is shown drinking a beverage while seated in an ergonomic office chair, what drink container does he use in the earlier office scene compared to the later office scene?",
     "options": {
       "A": "A dark blue plastic bottle in the earlier scene, and a large blue tumbler in the later scene",
       "B": "A clear plastic takeout cup of iced coffee in the earlier scene, and a large blue tumbler in the later scene",
@@ -37550,7 +37550,7 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "In the two office scenes where 鸿龙 drinks from different containers, which container appears first and which appears second?",
+    "question": "In the two office scenes where Honglong drinks from different containers, which container appears first and which appears second?",
     "options": {
       "A": "A dark blue plastic bottle appears first, and a large blue tumbler appears second",
       "B": "A clear plastic takeout cup of iced coffee appears first, and a dark blue plastic bottle appears second",
@@ -37610,7 +37610,7 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the two nighttime bedroom scenes where 黄玮's bedside clock reads 22:14, how does she interact with the Tibetan singing bowl in the earlier scene versus the later scene?",
+    "question": "In the two nighttime bedroom scenes where Huang Wei's bedside clock reads 22:14, how does she interact with the Tibetan singing bowl in the earlier scene versus the later scene?",
     "options": {
       "A": "Earlier she sits cross-legged with her hands on her knees; later she lies on her back with a striker held in her left hand",
       "B": "Earlier she sits cross-legged with the bowl in her left hand and a striker in her right; later she lies on her back with eyes closed and the bowl beside her pillow",
@@ -37630,7 +37630,7 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "During the two nighttime scenes in 黄玮's bedroom when the clock shows 22:14, which description matches her position relative to the Tibetan singing bowl in the earlier scene and in the later scene?",
+    "question": "During the two nighttime scenes in Huang Wei's bedroom when the clock shows 22:14, which description matches her position relative to the Tibetan singing bowl in the earlier scene and in the later scene?",
     "options": {
       "A": "Earlier: flat on her back, eyes closed, bowl beside her pillow; later: cross-legged, bowl in her left hand, striker in her right hand",
       "B": "Earlier: cross-legged with her hands on her knees; later: flat on her back with a striker held in her left hand",
@@ -37650,7 +37650,7 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the bedroom scene where 鸿龙 holds up his smartphone lock screen to the camera on Day 03 of the sleep experiment, what time is shown?",
+    "question": "In the bedroom scene where Honglong holds up his smartphone lock screen to the camera on Day 03 of the sleep experiment, what time is shown?",
     "options": {
       "A": "23:04",
       "B": "00:20",
@@ -37670,7 +37670,7 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "In the bedroom scene where 鸿龙 holds up his smartphone lock screen to the camera on Day 08 of the sleep experiment, what time is shown?",
+    "question": "In the bedroom scene where Honglong holds up his smartphone lock screen to the camera on Day 08 of the sleep experiment, what time is shown?",
     "options": {
       "A": "00:20",
       "B": "23:49",
@@ -37690,7 +37690,7 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "While seated in an office chair talking to the camera, what does 黄玮 do on Day 17 versus Day 18 of the early sleep challenge?",
+    "question": "While seated in an office chair talking to the camera, what does Huang Wei do on Day 17 versus Day 18 of the early sleep challenge?",
     "options": {
       "A": "On Day 17 she shows sleep scores of 94 and 91 on her smartphone screen, and on Day 18 she waves both hands back and forth",
       "B": "On Day 17 she rapidly types on a mechanical keyboard, and on Day 18 she leans back and drinks from a tumbler through a straw",
@@ -37710,7 +37710,7 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "In the office-chair scene where 黄玮 speaks to the camera, which actions belong to Day 17 and Day 18 of the early sleep challenge respectively?",
+    "question": "In the office-chair scene where Huang Wei speaks to the camera, which actions belong to Day 17 and Day 18 of the early sleep challenge respectively?",
     "options": {
       "A": "Day 17: she leans back and drinks from a tumbler through a straw; Day 18: she waves both hands back and forth and touches her hair",
       "B": "Day 17: she waves both hands back and forth and touches her hair; Day 18: she displays sleep scores of 94 and 91 on her smartphone screen",
@@ -37730,12 +37730,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In their respective individual scenes at the office, what upper-body garments are OO (when typing on her keyboard) and 鸿龙 (when drinking iced coffee) wearing?",
+    "question": "In their respective individual scenes at the office, what upper-body garments are OO (when typing on her keyboard) and Honglong (when drinking iced coffee) wearing?",
     "options": {
-      "A": "OO is wearing a grey-purple long-sleeved shirt, while 鸿龙 is wearing a floral patterned top.",
-      "B": "OO is wearing a black t-shirt, while 鸿龙 is wearing a red plaid short-sleeved top.",
-      "C": "OO is wearing a red plaid short-sleeved top, while 鸿龙 is wearing a black t-shirt.",
-      "D": "OO is wearing a white long-sleeved shirt, while 鸿龙 is wearing a blue sweater."
+      "A": "OO is wearing a grey-purple long-sleeved shirt, while Honglong is wearing a floral patterned top.",
+      "B": "OO is wearing a black t-shirt, while Honglong is wearing a red plaid short-sleeved top.",
+      "C": "OO is wearing a red plaid short-sleeved top, while Honglong is wearing a black t-shirt.",
+      "D": "OO is wearing a white long-sleeved shirt, while Honglong is wearing a blue sweater."
     },
     "answer": "C"
   },
@@ -37750,12 +37750,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "When OO is typing at her keyboard and 鸿龙 is drinking iced coffee in their office scenes, what are the upper-body garments on each person?",
+    "question": "When OO is typing at her keyboard and Honglong is drinking iced coffee in their office scenes, what are the upper-body garments on each person?",
     "options": {
-      "A": "OO has on a grey-purple long-sleeved shirt, and 鸿龙 has on a floral patterned top.",
-      "B": "OO has on a white long-sleeved shirt, and 鸿龙 has on a blue sweater.",
-      "C": "OO has on a black t-shirt, and 鸿龙 has on a red plaid short-sleeved top.",
-      "D": "OO has on a red plaid short-sleeved top, and 鸿龙 has on a black t-shirt."
+      "A": "OO has on a grey-purple long-sleeved shirt, and Honglong has on a floral patterned top.",
+      "B": "OO has on a white long-sleeved shirt, and Honglong has on a blue sweater.",
+      "C": "OO has on a black t-shirt, and Honglong has on a red plaid short-sleeved top.",
+      "D": "OO has on a red plaid short-sleeved top, and Honglong has on a black t-shirt."
     },
     "answer": "D"
   },
@@ -37770,12 +37770,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "When practicing meditation in their bedrooms on Day 06 (for 鸿龙) and Day 07 (for 黄玮), what physical postures do they adopt?",
+    "question": "When practicing meditation in their bedrooms on Day 06 (for Honglong) and Day 07 (for Huang Wei), what physical postures do they adopt?",
     "options": {
-      "A": "鸿龙 sits upright in bed, while 黄玮 also sits upright in bed during meditation.",
-      "B": "鸿龙 lies flat on his back with arms spread relaxed, while 黄玮 also lies flat on her back.",
-      "C": "鸿龙 sits upright in bed, while 黄玮 lies flat on her back with arms spread relaxed.",
-      "D": "鸿龙 lies flat on his back with arms spread relaxed, while 黄玮 sits upright in bed."
+      "A": "Honglong sits upright in bed, while Huang Wei also sits upright in bed during meditation.",
+      "B": "Honglong lies flat on his back with arms spread relaxed, while Huang Wei also lies flat on her back.",
+      "C": "Honglong sits upright in bed, while Huang Wei lies flat on her back with arms spread relaxed.",
+      "D": "Honglong lies flat on his back with arms spread relaxed, while Huang Wei sits upright in bed."
     },
     "answer": "D"
   },
@@ -37790,12 +37790,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "During the meditation scenes on Day 06 for 鸿龙 and Day 07 for 黄玮, which participant is positioned lying flat on the mattress with arms spread, and which is positioned sitting upright?",
+    "question": "During the meditation scenes on Day 06 for Honglong and Day 07 for Huang Wei, which participant is positioned lying flat on the mattress with arms spread, and which is positioned sitting upright?",
     "options": {
-      "A": "鸿龙 is sitting upright in bed, while 黄玮 is also sitting upright in bed.",
-      "B": "黄玮 is lying flat on her back with arms spread, while 鸿龙 is also lying flat.",
-      "C": "黄玮 is lying flat on her back with arms spread, while 鸿龙 is sitting upright.",
-      "D": "鸿龙 is lying flat on his back with arms spread, while 黄玮 is sitting upright."
+      "A": "Honglong is sitting upright in bed, while Huang Wei is also sitting upright in bed.",
+      "B": "Huang Wei is lying flat on her back with arms spread, while Honglong is also lying flat.",
+      "C": "Huang Wei is lying flat on her back with arms spread, while Honglong is sitting upright.",
+      "D": "Honglong is lying flat on his back with arms spread, while Huang Wei is sitting upright."
     },
     "answer": "D"
   },
@@ -37810,12 +37810,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In their respective bedroom scenes where 鸿龙 records a top-down selfie video in bed and 黄玮 quietly reads her phone screen under the duvet, what visual appearance do the pillows supporting them have?",
+    "question": "In their respective bedroom scenes where Honglong records a top-down selfie video in bed and Huang Wei quietly reads her phone screen under the duvet, what visual appearance do the pillows supporting them have?",
     "options": {
-      "A": "Both 鸿龙 and 黄玮 are supported by floral patterned pillows in their beds.",
-      "B": "Both 鸿龙 and 黄玮 are supported by plain white pillows in their beds.",
-      "C": "鸿龙 is supported by white pillows, while 黄玮 is supported by a floral patterned pillow.",
-      "D": "鸿龙 is supported by a floral patterned pillow, while 黄玮 is supported by white pillows."
+      "A": "Both Honglong and Huang Wei are supported by floral patterned pillows in their beds.",
+      "B": "Both Honglong and Huang Wei are supported by plain white pillows in their beds.",
+      "C": "Honglong is supported by white pillows, while Huang Wei is supported by a floral patterned pillow.",
+      "D": "Honglong is supported by a floral patterned pillow, while Huang Wei is supported by white pillows."
     },
     "answer": "D"
   },
@@ -37830,12 +37830,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "In the bedroom moments where 鸿龙 films a top-down selfie while lying in bed and 黄玮 reads her phone screen beneath the duvet, which pillow design is assigned to each person?",
+    "question": "In the bedroom moments where Honglong films a top-down selfie while lying in bed and Huang Wei reads her phone screen beneath the duvet, which pillow design is assigned to each person?",
     "options": {
-      "A": "鸿龙 rests on a floral patterned pillow, whereas 黄玮 rests on white pillows.",
-      "B": "鸿龙 rests on a white pillow, whereas 黄玮 rests on a floral patterned pillow.",
-      "C": "Both 鸿龙 and 黄玮 rest on plain white pillows in their beds.",
-      "D": "Both 鸿龙 and 黄玮 rest on floral patterned pillows in their beds."
+      "A": "Honglong rests on a floral patterned pillow, whereas Huang Wei rests on white pillows.",
+      "B": "Honglong rests on a white pillow, whereas Huang Wei rests on a floral patterned pillow.",
+      "C": "Both Honglong and Huang Wei rest on plain white pillows in their beds.",
+      "D": "Both Honglong and Huang Wei rest on floral patterned pillows in their beds."
     },
     "answer": "A"
   },
@@ -37850,7 +37850,7 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the Day 10 bedroom scene where 黄玮 gestures and gives a thumbs-up, what distinctive cosmetic or decorative feature is displayed by 黄玮?",
+    "question": "In the Day 10 bedroom scene where Huang Wei gestures and gives a thumbs-up, what distinctive cosmetic or decorative feature is displayed by Huang Wei?",
     "options": {
       "A": "teal-painted fingernails",
       "B": "blue star stickers on her face",
@@ -37890,12 +37890,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the bedroom scenes on Day 02 and Day 04 that show interactions between 黄玮 and her tabby cat, who begins the physical contact in each of the two scenes?",
+    "question": "In the bedroom scenes on Day 02 and Day 04 that show interactions between Huang Wei and her tabby cat, who begins the physical contact in each of the two scenes?",
     "options": {
-      "A": "On Day 02, the cat sniffs and touches 黄玮's wrist; on Day 04, 黄玮 reaches out and strokes the cat.",
-      "B": "On Day 02, 黄玮 strokes the cat lying against her; on Day 04, the cat leans forward to sniff and touch her wrist.",
-      "C": "On Day 02, the cat leans over and touches 黄玮's wrist; on Day 04, it also touches her wrist while she rests.",
-      "D": "On Day 02, 黄玮 reaches out and strokes the cat; on Day 04, she also strokes the cat while it rests."
+      "A": "On Day 02, the cat sniffs and touches Huang Wei's wrist; on Day 04, Huang Wei reaches out and strokes the cat.",
+      "B": "On Day 02, Huang Wei strokes the cat lying against her; on Day 04, the cat leans forward to sniff and touch her wrist.",
+      "C": "On Day 02, the cat leans over and touches Huang Wei's wrist; on Day 04, it also touches her wrist while she rests.",
+      "D": "On Day 02, Huang Wei reaches out and strokes the cat; on Day 04, she also strokes the cat while it rests."
     },
     "answer": "B"
   },
@@ -37910,12 +37910,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "In the Day 02 and Day 04 bedroom scenes featuring 黄玮 and her tabby cat, which of the two is the one who starts the physical contact in each scene?",
+    "question": "In the Day 02 and Day 04 bedroom scenes featuring Huang Wei and her tabby cat, which of the two is the one who starts the physical contact in each scene?",
     "options": {
-      "A": "In the Day 02 scene, the cat starts by leaning over and touching 黄玮's wrist; in the Day 04 scene, it also starts by touching her wrist while she rests.",
-      "B": "In the Day 02 scene, 黄玮 starts by stroking the cat lying against her; in the Day 04 scene, the cat starts by leaning forward to sniff and touch her wrist.",
-      "C": "In the Day 02 scene, 黄玮 starts by reaching out and stroking the cat; in the Day 04 scene, she also starts by stroking the cat while it rests.",
-      "D": "In the Day 02 scene, the cat starts by sniffing and touching 黄玮's wrist; in the Day 04 scene, 黄玮 starts by reaching out and stroking the cat."
+      "A": "In the Day 02 scene, the cat starts by leaning over and touching Huang Wei's wrist; in the Day 04 scene, it also starts by touching her wrist while she rests.",
+      "B": "In the Day 02 scene, Huang Wei starts by stroking the cat lying against her; in the Day 04 scene, the cat starts by leaning forward to sniff and touch her wrist.",
+      "C": "In the Day 02 scene, Huang Wei starts by reaching out and stroking the cat; in the Day 04 scene, she also starts by stroking the cat while it rests.",
+      "D": "In the Day 02 scene, the cat starts by sniffing and touching Huang Wei's wrist; in the Day 04 scene, Huang Wei starts by reaching out and stroking the cat."
     },
     "answer": "B"
   },
@@ -37930,12 +37930,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the morning bedroom scene with 黄玮 and the balcony scene with 鸿龙, what does each person do with a cat?",
+    "question": "In the morning bedroom scene with Huang Wei and the balcony scene with Honglong, what does each person do with a cat?",
     "options": {
-      "A": "黄玮 holds a cat upright by its torso, while 鸿龙 holds a cat upright by its torso.",
-      "B": "黄玮 strokes a cat lying against her stomach, while 鸿龙 holds a cat upright by its torso.",
-      "C": "黄玮 strokes a cat lying against her stomach, while 鸿龙 strokes a cat lying against his stomach.",
-      "D": "黄玮 holds a cat upright by its torso, while 鸿龙 strokes a cat lying against his stomach."
+      "A": "Huang Wei holds a cat upright by its torso, while Honglong holds a cat upright by its torso.",
+      "B": "Huang Wei strokes a cat lying against her stomach, while Honglong holds a cat upright by its torso.",
+      "C": "Huang Wei strokes a cat lying against her stomach, while Honglong strokes a cat lying against his stomach.",
+      "D": "Huang Wei holds a cat upright by its torso, while Honglong strokes a cat lying against his stomach."
     },
     "answer": "B"
   },
@@ -37950,12 +37950,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "In the same morning bedroom and balcony scenes, which action is performed by 黄玮 and which by 鸿龙 regarding a cat?",
+    "question": "In the same morning bedroom and balcony scenes, which action is performed by Huang Wei and which by Honglong regarding a cat?",
     "options": {
-      "A": "黄玮 strokes a cat lying against her stomach, and 鸿龙 holds a cat upright by its torso.",
-      "B": "黄玮 holds a cat upright by its torso, and 鸿龙 strokes a cat lying against his stomach.",
-      "C": "黄玮 strokes a cat lying against her stomach, and 鸿龙 strokes a cat lying against his stomach.",
-      "D": "黄玮 holds a cat upright by its torso, and 鸿龙 holds a cat upright by its torso."
+      "A": "Huang Wei strokes a cat lying against her stomach, and Honglong holds a cat upright by its torso.",
+      "B": "Huang Wei holds a cat upright by its torso, and Honglong strokes a cat lying against his stomach.",
+      "C": "Huang Wei strokes a cat lying against her stomach, and Honglong strokes a cat lying against his stomach.",
+      "D": "Huang Wei holds a cat upright by its torso, and Honglong holds a cat upright by its torso."
     },
     "answer": "A"
   },
@@ -37970,7 +37970,7 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In his two office scenes, which beverage container does 鸿龙 drink from in the earlier scene and which in the later scene?",
+    "question": "In his two office scenes, which beverage container does Honglong drink from in the earlier scene and which in the later scene?",
     "options": {
       "A": "In the earlier scene a large blue tumbler, and in the later scene a clear plastic takeout cup of iced coffee.",
       "B": "In the earlier scene a clear plastic takeout cup of iced coffee, and in the later scene a large blue tumbler.",
@@ -37990,7 +37990,7 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "Across the two office scenes where 鸿龙 drinks, what container is used first and what container is used second?",
+    "question": "Across the two office scenes where Honglong drinks, what container is used first and what container is used second?",
     "options": {
       "A": "First a clear plastic takeout cup of iced coffee is used, and second that same cup is used again.",
       "B": "First a large blue tumbler is used, and second a clear plastic takeout cup of iced coffee is used.",
@@ -38012,10 +38012,10 @@
     "question_type": "multiple_choice",
     "question": "On the morning of Day 10, which device does each person present directly to the camera to show their time?",
     "options": {
-      "A": "黄玮 presents a smartphone with a blue case, while OO presents a smartphone with a blue case.",
-      "B": "黄玮 presents a smartphone with a blue case, while OO presents a smartwatch.",
-      "C": "黄玮 presents a smartwatch, while OO presents a smartphone without a case.",
-      "D": "黄玮 presents a smartwatch, while OO presents a smartphone with a blue case."
+      "A": "Huang Wei presents a smartphone with a blue case, while OO presents a smartphone with a blue case.",
+      "B": "Huang Wei presents a smartphone with a blue case, while OO presents a smartwatch.",
+      "C": "Huang Wei presents a smartwatch, while OO presents a smartphone without a case.",
+      "D": "Huang Wei presents a smartwatch, while OO presents a smartphone with a blue case."
     },
     "answer": "B"
   },
@@ -38030,12 +38030,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "On the morning of Day 10, when showing their time to the camera, what is the device pairing for 黄玮 and OO?",
+    "question": "On the morning of Day 10, when showing their time to the camera, what is the device pairing for Huang Wei and OO?",
     "options": {
-      "A": "黄玮 shows a smartphone with a blue case, and OO shows a smartphone with a blue case.",
-      "B": "黄玮 shows a smartphone with a blue case, and OO shows a smartwatch.",
-      "C": "黄玮 shows a smartwatch, and OO shows a smartphone without a case.",
-      "D": "黄玮 shows a smartwatch, and OO shows a smartphone with a blue case."
+      "A": "Huang Wei shows a smartphone with a blue case, and OO shows a smartphone with a blue case.",
+      "B": "Huang Wei shows a smartphone with a blue case, and OO shows a smartwatch.",
+      "C": "Huang Wei shows a smartwatch, and OO shows a smartphone without a case.",
+      "D": "Huang Wei shows a smartwatch, and OO shows a smartphone with a blue case."
     },
     "answer": "B"
   },
@@ -38050,7 +38050,7 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the living room leisure scene and the KTV room scene, which object does 黄玮 hold in her right hand in each scene?",
+    "question": "In the living room leisure scene and the KTV room scene, which object does Huang Wei hold in her right hand in each scene?",
     "options": {
       "A": "In the living room, she holds a handheld pocket gimbal camera, and in the KTV room, she holds a handheld pocket gimbal camera.",
       "B": "In the living room, she holds a handheld pocket gimbal camera, and in the KTV room, she holds a wireless microphone.",
@@ -38070,7 +38070,7 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "For 黄玮, what object is held in her right hand during the living room leisure scene, and what object is held in her right hand during the KTV room scene?",
+    "question": "For Huang Wei, what object is held in her right hand during the living room leisure scene, and what object is held in her right hand during the KTV room scene?",
     "options": {
       "A": "A handheld pocket gimbal camera in the living room, and a wireless microphone in the KTV room.",
       "B": "A wireless microphone in the living room, and a handheld pocket gimbal camera in the KTV room.",
@@ -38090,12 +38090,12 @@
     "unit_size": 2,
     "direction": "forward",
     "question_type": "multiple_choice",
-    "question": "In the hospital sleep monitoring room scene captioned 'DAY 21 早睡早起', which participants are monitored together?",
+    "question": "In the hospital sleep monitoring room scene captioned 'DAY 21 going to bed early and waking up early', which participants are monitored together?",
     "options": {
-      "A": "OO and 鸿龙 and 黄玮",
-      "B": "OO and 鸿龙",
-      "C": "OO and 黄玮",
-      "D": "鸿龙 and 黄玮"
+      "A": "OO and Honglong and Huang Wei",
+      "B": "OO and Honglong",
+      "C": "OO and Huang Wei",
+      "D": "Honglong and Huang Wei"
     },
     "answer": "D"
   },
@@ -38110,12 +38110,12 @@
     "unit_size": 2,
     "direction": "reverse",
     "question_type": "multiple_choice",
-    "question": "In the hospital ward scene captioned 'DAY 21 晚睡晚起', which participant is monitored alone?",
+    "question": "In the hospital ward scene captioned 'DAY 21 going to bed late and waking up late', which participant is monitored alone?",
     "options": {
-      "A": "鸿龙 and 黄玮",
-      "B": "黄玮",
+      "A": "Honglong and Huang Wei",
+      "B": "Huang Wei",
       "C": "OO",
-      "D": "鸿龙"
+      "D": "Honglong"
     },
     "answer": "C"
   },
@@ -44428,12 +44428,12 @@
     "unit_size": 1,
     "direction": "single",
     "question_type": "multiple_choice",
-    "question": "Regarding the hosts' tour of Jinhuagong Coal Mine, what is the chronological relationship between their conversation on the bench beneath the '候车室' sign and 李四维 running forward along the central rails in the underground tunnel?",
+    "question": "Regarding the hosts' tour of Jinhuagong Coal Mine, what is the chronological relationship between their conversation on the bench beneath the 'Waiting Room' sign and Li Siwei running forward along the central rails in the underground tunnel?",
     "options": {
-      "A": "李四维 runs forward along the central rails in the underground tunnel before the hosts converse on the bench beneath the '候车室' sign.",
-      "B": "The conversation on the bench beneath the '候车室' sign and 李四维 running along the central rails occur simultaneously in different parts of the mine.",
-      "C": "The hosts converse on the bench beneath the '候车室' sign before 李四维 runs forward along the central rails in the underground tunnel.",
-      "D": "李四维 runs forward along the central rails in the underground tunnel immediately before sitting down on the bench beneath the '候车室' sign."
+      "A": "Li Siwei runs forward along the central rails in the underground tunnel before the hosts converse on the bench beneath the 'Waiting Room' sign.",
+      "B": "The conversation on the bench beneath the 'Waiting Room' sign and Li Siwei running along the central rails occur simultaneously in different parts of the mine.",
+      "C": "The hosts converse on the bench beneath the 'Waiting Room' sign before Li Siwei runs forward along the central rails in the underground tunnel.",
+      "D": "Li Siwei runs forward along the central rails in the underground tunnel immediately before sitting down on the bench beneath the 'Waiting Room' sign."
     },
     "answer": "C"
   },
@@ -44448,12 +44448,12 @@
     "unit_size": 1,
     "direction": "single",
     "question_type": "multiple_choice",
-    "question": "What is the chronological sequence between the group observing plumes of pink and yellowish-green smoke from the crater rim and 潘天鸿 crawling up an incline toward a small green plant in a replica spacesuit?",
+    "question": "What is the chronological sequence between the group observing plumes of pink and yellowish-green smoke from the crater rim and Pan Tianhong crawling up an incline toward a small green plant in a replica spacesuit?",
     "options": {
-      "A": "潘天鸿 crawls up the incline toward a small green plant in a replica spacesuit before the group observes plumes of pink and yellowish-green smoke from the crater rim.",
-      "B": "The observation of pink and yellowish-green smoke plumes from the crater rim and 潘天鸿 crawling toward the green plant occur at the exact same time.",
-      "C": "潘天鸿 crawls up the incline toward the green plant in a replica spacesuit immediately before pink and yellowish-green smoke erupts from the ground beside him.",
-      "D": "The group observes plumes of pink and yellowish-green smoke from the crater rim before 潘天鸿 crawls up the incline toward a small green plant in a replica spacesuit."
+      "A": "Pan Tianhong crawls up the incline toward a small green plant in a replica spacesuit before the group observes plumes of pink and yellowish-green smoke from the crater rim.",
+      "B": "The observation of pink and yellowish-green smoke plumes from the crater rim and Pan Tianhong crawling toward the green plant occur at the exact same time.",
+      "C": "Pan Tianhong crawls up the incline toward the green plant in a replica spacesuit immediately before pink and yellowish-green smoke erupts from the ground beside him.",
+      "D": "The group observes plumes of pink and yellowish-green smoke from the crater rim before Pan Tianhong crawls up the incline toward a small green plant in a replica spacesuit."
     },
     "answer": "D"
   },
@@ -44468,12 +44468,12 @@
     "unit_size": 1,
     "direction": "single",
     "question_type": "multiple_choice",
-    "question": "What is the chronological relationship between 潘天鸿 placing a camera on a mini tripod in front of 李四维 at the conference table and 食醋讲师 applying a drop of vinegar onto 李四维's wrist with a dropper?",
+    "question": "What is the chronological relationship between Pan Tianhong placing a camera on a mini tripod in front of Li Siwei at the conference table and the vinegar instructor applying a drop of vinegar onto Li Siwei's wrist with a dropper?",
     "options": {
-      "A": "潘天鸿 places the camera on a mini tripod in front of 李四维 at the conference table before 食醋讲师 applies a drop of vinegar onto 李四维's wrist with a dropper.",
-      "B": "食醋讲师 applies a drop of vinegar onto 李四维's wrist with a dropper before 潘天鸿 places the camera on a mini tripod in front of 李四维 at the conference table.",
-      "C": "食醋讲师 applies a drop of vinegar onto 李四维's wrist at the exact moment 潘天鸿 places the camera on the mini tripod at the conference table.",
-      "D": "潘天鸿 places the camera on the mini tripod in front of 李四维 only after 李四维 reacts to tasting the vinegar from his wrist."
+      "A": "Pan Tianhong places the camera on a mini tripod in front of Li Siwei at the conference table before the vinegar instructor applies a drop of vinegar onto Li Siwei's wrist with a dropper.",
+      "B": "the vinegar instructor applies a drop of vinegar onto Li Siwei's wrist with a dropper before Pan Tianhong places the camera on a mini tripod in front of Li Siwei at the conference table.",
+      "C": "the vinegar instructor applies a drop of vinegar onto Li Siwei's wrist at the exact moment Pan Tianhong places the camera on the mini tripod at the conference table.",
+      "D": "Pan Tianhong places the camera on the mini tripod in front of Li Siwei only after Li Siwei reacts to tasting the vinegar from his wrist."
     },
     "answer": "A"
   },
@@ -44508,12 +44508,12 @@
     "unit_size": 1,
     "direction": "single",
     "question_type": "multiple_choice",
-    "question": "During the visit to Fogong Temple and the subterranean tour of Jinhuagong Coal Mine, what work shirts or uniforms are worn by the guides 赵叔 and 邱师傅, respectively?",
+    "question": "During the visit to Fogong Temple and the subterranean tour of Jinhuagong Coal Mine, what work shirts or uniforms are worn by the guides Uncle Zhao and Master Qiu, respectively?",
     "options": {
-      "A": "赵叔 wears a blue denim miner uniform with a '晋华宫' badge, while 邱师傅 wears a grey Chinese collar.",
-      "B": "赵叔 wears a grey Chinese collar, while 邱师傅 wears a blue denim miner uniform with a '晋华宫' badge.",
-      "C": "Both 赵叔 and 邱师傅 wear grey Chinese collar.",
-      "D": "Both 赵叔 and 邱师傅 wear blue denim miner uniforms with '晋华宫' badges."
+      "A": "Uncle Zhao wears a blue denim miner uniform with a 'Jinhuagong' badge, while Master Qiu wears a grey Chinese collar.",
+      "B": "Uncle Zhao wears a grey Chinese collar, while Master Qiu wears a blue denim miner uniform with a 'Jinhuagong' badge.",
+      "C": "Both Uncle Zhao and Master Qiu wear grey Chinese collar.",
+      "D": "Both Uncle Zhao and Master Qiu wear blue denim miner uniforms with 'Jinhuagong' badges."
     },
     "answer": "B"
   },
@@ -44528,7 +44528,7 @@
     "unit_size": 1,
     "direction": "single",
     "question_type": "multiple_choice",
-    "question": "How do 潘天鸿 and 李四维's attire and physical activities change between their arrival at the Datong Volcano rim overlook and their subsequent scene inside the volcanic crater?",
+    "question": "How do Pan Tianhong and Li Siwei's attire and physical activities change between their arrival at the Datong Volcano rim overlook and their subsequent scene inside the volcanic crater?",
     "options": {
       "A": "Earlier at the rim overlook, they wear white replica spacesuits and perform low-gravity bounding leaps; later inside the crater, they wear casual clothing while observing colored smoke.",
       "B": "Earlier at the rim overlook, they wear white replica spacesuits while observing colored smoke; later inside the crater, they wear casual clothing and perform low-gravity leaps.",
@@ -48014,12 +48014,12 @@
     "unit_size": 1,
     "direction": "single",
     "question_type": "multiple_choice",
-    "question": "Across the pantry lunch scene where a braised chicken foot is shared and the workspace scene where a small mango cake is presented on a tray, what was the direction of food transfer between 00 and 雨菲?",
+    "question": "Across the pantry lunch scene where a braised chicken foot is shared and the workspace scene where a small mango cake is presented on a tray, what was the direction of food transfer between 00 and Yufei?",
     "options": {
-      "A": "In the pantry lunch scene, 雨菲 transfers the braised chicken foot to 00, but in the workspace scene, 00 brings the mango cake to 雨菲.",
-      "B": "In the pantry lunch scene, 00 transfers the braised chicken foot to 雨菲, but in the workspace scene, 雨菲 brings the mango cake to 00.",
-      "C": "In both scenes, 00 transfers or brings the food item to 雨菲.",
-      "D": "In both scenes, 雨菲 transfers or brings the food item to 00."
+      "A": "In the pantry lunch scene, Yufei transfers the braised chicken foot to 00, but in the workspace scene, 00 brings the mango cake to Yufei.",
+      "B": "In the pantry lunch scene, 00 transfers the braised chicken foot to Yufei, but in the workspace scene, Yufei brings the mango cake to 00.",
+      "C": "In both scenes, 00 transfers or brings the food item to Yufei.",
+      "D": "In both scenes, Yufei transfers or brings the food item to 00."
     },
     "answer": "C"
   },
@@ -48034,12 +48034,12 @@
     "unit_size": 1,
     "direction": "single",
     "question_type": "multiple_choice",
-    "question": "In their individual solo office workstation scenes where 00 chews a piece of dry beef jerky and 雨菲 sips an iced purple drink, what color T-shirts are 00 and 雨菲 wearing, respectively?",
+    "question": "In their individual solo office workstation scenes where 00 chews a piece of dry beef jerky and Yufei sips an iced purple drink, what color T-shirts are 00 and Yufei wearing, respectively?",
     "options": {
-      "A": "00 is wearing a purple T-shirt, while 雨菲 is wearing a white T-shirt.",
-      "B": "Both 00 and 雨菲 are wearing purple T-shirts.",
-      "C": "00 is wearing a white T-shirt, while 雨菲 is wearing a purple T-shirt.",
-      "D": "Both 00 and 雨菲 are wearing white T-shirts."
+      "A": "00 is wearing a purple T-shirt, while Yufei is wearing a white T-shirt.",
+      "B": "Both 00 and Yufei are wearing purple T-shirts.",
+      "C": "00 is wearing a white T-shirt, while Yufei is wearing a purple T-shirt.",
+      "D": "Both 00 and Yufei are wearing white T-shirts."
     },
     "answer": "C"
   },
@@ -48056,10 +48056,10 @@
     "question_type": "multiple_choice",
     "question": "Across the bedroom vlog recorded on Day 1 documenting baseline facial blemishes and the bedroom vlog recorded on Day 11 tracking weight on a smart scale, what is the identity relationship between the person speaking in the earlier vlog and the person speaking in the later vlog?",
     "options": {
-      "A": "The Day 1 vlog features 00, whereas the Day 11 vlog features 雨菲.",
-      "B": "Both vlogs feature 雨菲.",
+      "A": "The Day 1 vlog features 00, whereas the Day 11 vlog features Yufei.",
+      "B": "Both vlogs feature Yufei.",
       "C": "Both vlogs feature the same participant, 00 (appearing first in gray pajamas and later with short pink hair).",
-      "D": "The Day 1 vlog features 雨菲, whereas the Day 11 vlog features 00."
+      "D": "The Day 1 vlog features Yufei, whereas the Day 11 vlog features 00."
     },
     "answer": "C"
   },
@@ -48076,10 +48076,10 @@
     "question_type": "multiple_choice",
     "question": "Across the opening news studio introduction and the concluding studio segment before the broadcast credits roll, what is the identity relationship between the presenters delivering the studio commentary?",
     "options": {
-      "A": "News anchor 陈嘉欣 presents the opening introduction, but a different female presenter delivers the concluding commentary before exiting the studio.",
-      "B": "阮淑茵 delivers the opening studio introduction, and news anchor 陈嘉欣 appears only to present the concluding commentary.",
-      "C": "Two distinct television presenters anchor the broadcast, with 陈嘉欣 presenting the opening segment and 岑詠恩 presenting the closing segment.",
-      "D": "The same news anchor, 陈嘉欣, delivers the introductory report at the beginning and later presents the concluding commentary before exiting the studio."
+      "A": "News anchor Chen Jiaxin presents the opening introduction, but a different female presenter delivers the concluding commentary before exiting the studio.",
+      "B": "Ruan Shuyin delivers the opening studio introduction, and news anchor Chen Jiaxin appears only to present the concluding commentary.",
+      "C": "Two distinct television presenters anchor the broadcast, with Chen Jiaxin presenting the opening segment and Cen Yong-en presenting the closing segment.",
+      "D": "The same news anchor, Chen Jiaxin, delivers the introductory report at the beginning and later presents the concluding commentary before exiting the studio."
     },
     "answer": "D"
   },
@@ -48096,10 +48096,10 @@
     "question_type": "multiple_choice",
     "question": "Across the outdoor outreach activities at Shek Kip Mei Estate and the subsequent indoor visit to an elderly resident's apartment to review documents and bills, what is the identity relationship of the community worker conducting these tasks?",
     "options": {
-      "A": "阮淑茵 conducts the outdoor street outreach, but social worker 岑詠恩 conducts the indoor apartment visit to review documents.",
-      "B": "Social worker 岑詠恩 conducts the outdoor street outreach, while 阮淑茵 is seen only during the indoor apartment visit.",
-      "C": "The same community worker, 阮淑茵, conducts the outdoor street station outreach and later conducts the indoor apartment visit to review documents.",
-      "D": "Two distinct community workers perform these tasks, with 阮淑茵 appearing in the apartment visit while 霞姐 leads the street station outreach."
+      "A": "Ruan Shuyin conducts the outdoor street outreach, but social worker Cen Yong-en conducts the indoor apartment visit to review documents.",
+      "B": "Social worker Cen Yong-en conducts the outdoor street outreach, while Ruan Shuyin is seen only during the indoor apartment visit.",
+      "C": "The same community worker, Ruan Shuyin, conducts the outdoor street station outreach and later conducts the indoor apartment visit to review documents.",
+      "D": "Two distinct community workers perform these tasks, with Ruan Shuyin appearing in the apartment visit while Sister Xia leads the street station outreach."
     },
     "answer": "C"
   },
@@ -48116,10 +48116,10 @@
     "question_type": "multiple_choice",
     "question": "During the home visit initiated outside flat 132, who transfers the red gift bag to whom inside the apartment?",
     "options": {
-      "A": "葛兆源 presents the red gift bag to the resident of flat 132 (霞姐).",
-      "B": "The resident of flat 132 (霞姐) presents the red gift bag to 葛兆源.",
-      "C": "The resident of flat 132 (霞姐) and 葛兆源 exchange red gift bags with each other.",
-      "D": "Neither 葛兆源 nor the resident of flat 132 transfers a red gift bag to the other."
+      "A": "Ge Zhaoyuan presents the red gift bag to the resident of flat 132 (Sister Xia).",
+      "B": "The resident of flat 132 (Sister Xia) presents the red gift bag to Ge Zhaoyuan.",
+      "C": "The resident of flat 132 (Sister Xia) and Ge Zhaoyuan exchange red gift bags with each other.",
+      "D": "Neither Ge Zhaoyuan nor the resident of flat 132 transfers a red gift bag to the other."
     },
     "answer": "A"
   },
@@ -48154,7 +48154,7 @@
     "unit_size": 1,
     "direction": "single",
     "question_type": "multiple_choice",
-    "question": "Comparing news anchor 陈嘉欣's appearances in the television studio, how does she conclude her presentation in the opening studio segment versus the final studio segment at the end of the broadcast?",
+    "question": "Comparing news anchor Chen Jiaxin's appearances in the television studio, how does she conclude her presentation in the opening studio segment versus the final studio segment at the end of the broadcast?",
     "options": {
       "A": "In the opening segment, she finishes speaking, smiles, and walks off toward the right to exit the frame; in the final segment, she speaks continuously until the broadcast cuts directly to a field report",
       "B": "In the opening segment, she speaks continuously until the broadcast cuts to the field report; in the final segment, she finishes speaking, smiles, and walks off toward the right to exit the frame while credits roll",
@@ -48458,12 +48458,12 @@
     "unit_size": 1,
     "direction": "single",
     "question_type": "multiple_choice",
-    "question": "Across his daytime scenes in the office, in what chronological order does 鸿龙 drink from two different beverage containers at his desk?",
+    "question": "Across his daytime scenes in the office, in what chronological order does Honglong drink from two different beverage containers at his desk?",
     "options": {
-      "A": "鸿龙 first drinks iced coffee from a clear plastic takeout cup with a black straw, and in a later office scene drinks from a large blue tumbler through a straw.",
-      "B": "鸿龙 drinks from the large blue tumbler and the clear plastic takeout cup simultaneously during a split-screen comparison.",
-      "C": "鸿龙 drinks iced coffee from a takeout cup first, and only holds the blue tumbler without taking a drink from it later.",
-      "D": "鸿龙 first drinks from a large blue tumbler through a straw, and in a later office scene drinks iced coffee from a clear plastic takeout cup with a black straw."
+      "A": "Honglong first drinks iced coffee from a clear plastic takeout cup with a black straw, and in a later office scene drinks from a large blue tumbler through a straw.",
+      "B": "Honglong drinks from the large blue tumbler and the clear plastic takeout cup simultaneously during a split-screen comparison.",
+      "C": "Honglong drinks iced coffee from a takeout cup first, and only holds the blue tumbler without taking a drink from it later.",
+      "D": "Honglong first drinks from a large blue tumbler through a straw, and in a later office scene drinks iced coffee from a clear plastic takeout cup with a black straw."
     },
     "answer": "D"
   },
@@ -48478,12 +48478,12 @@
     "unit_size": 1,
     "direction": "single",
     "question_type": "multiple_choice",
-    "question": "Across the office scene where an employee in a dark grey beret and red plaid top types rapidly at a workstation and the coffee shop scene labeled 'DAY 20 晚睡晚起', what is the identity relationship between the women featured in these two scenes?",
+    "question": "Across the office scene where an employee in a dark grey beret and red plaid top types rapidly at a workstation and the coffee shop scene labeled 'DAY 20 going to bed late and waking up late', what is the identity relationship between the women featured in these two scenes?",
     "options": {
       "A": "Both scenes feature the same participant, OO, whose appearance changes from wearing a grey beret and plaid top to a grey-purple long-sleeved shirt.",
-      "B": "The office scene features OO, whereas the coffee shop scene introduces 黄玮 after she cut and bleached her hair for the late-riser challenge.",
-      "C": "The office scene features 黄玮 at her workstation, whereas the coffee shop scene features OO undergoing the late-riser challenge.",
-      "D": "The two scenes feature two completely different study participants who are neither OO nor 黄玮."
+      "B": "The office scene features OO, whereas the coffee shop scene introduces Huang Wei after she cut and bleached her hair for the late-riser challenge.",
+      "C": "The office scene features Huang Wei at her workstation, whereas the coffee shop scene features OO undergoing the late-riser challenge.",
+      "D": "The two scenes feature two completely different study participants who are neither OO nor Huang Wei."
     },
     "answer": "A"
   },
@@ -48500,10 +48500,10 @@
     "question_type": "multiple_choice",
     "question": "Across the morning bedroom scene where a cat meows near a sleeping participant's head and the balcony scene where a participant holds a cat upright in the sunlight, what is the identity relationship between the cats in these two scenes?",
     "options": {
-      "A": "They are the same persistent orange cat, which first wakes up 黄玮 in her bedroom before being carried out onto the balcony by 鸿龙.",
-      "B": "They are the same tabby cat, which belongs to 鸿龙 and was temporarily brought over to wake up 黄玮.",
-      "C": "Both scenes depict two different tabby cats that both belong to 鸿龙's household.",
-      "D": "They are two distinct cats: a tabby cat associated with 黄玮's household and an orange cat associated with 鸿龙's household."
+      "A": "They are the same persistent orange cat, which first wakes up Huang Wei in her bedroom before being carried out onto the balcony by Honglong.",
+      "B": "They are the same tabby cat, which belongs to Honglong and was temporarily brought over to wake up Huang Wei.",
+      "C": "Both scenes depict two different tabby cats that both belong to Honglong's household.",
+      "D": "They are two distinct cats: a tabby cat associated with Huang Wei's household and an orange cat associated with Honglong's household."
     },
     "answer": "D"
   },
@@ -51318,7 +51318,7 @@
     "unit_size": 2,
     "direction": null,
     "question_type": "true_false",
-    "question": "Ma Dong (1号) checks his identity by looking at the screen of his red OPPO R11 phone.",
+    "question": "Ma Dong (No. 1) checks his identity by looking at the screen of his red OPPO R11 phone.",
     "options": {
       "True": "True",
       "False": "False"
@@ -51336,7 +51336,7 @@
     "unit_size": 2,
     "direction": null,
     "question_type": "true_false",
-    "question": "Ma Dong (1号) checks his identity by flipping over a physical card placed face down on the table.",
+    "question": "Ma Dong (No. 1) checks his identity by flipping over a physical card placed face down on the table.",
     "options": {
       "True": "True",
       "False": "False"
@@ -51354,7 +51354,7 @@
     "unit_size": 2,
     "direction": null,
     "question_type": "true_false",
-    "question": "Xiao Xiao (5号) gasps dramatically and says 'Thank you, I really like this' after checking his identity on his phone.",
+    "question": "Xiao Xiao (No. 5) gasps dramatically and says 'Thank you, I really like this' after checking his identity on his phone.",
     "options": {
       "True": "True",
       "False": "False"
@@ -51372,7 +51372,7 @@
     "unit_size": 2,
     "direction": null,
     "question_type": "true_false",
-    "question": "Xiao Xiao (5号) frowns and shakes his head in disappointment after checking his identity on his phone.",
+    "question": "Xiao Xiao (No. 5) frowns and shakes his head in disappointment after checking his identity on his phone.",
     "options": {
       "True": "True",
       "False": "False"
@@ -51390,7 +51390,7 @@
     "unit_size": 2,
     "direction": null,
     "question_type": "true_false",
-    "question": "Pu Yu (6号) claims during his speech that he is the Hunter (猎人) and threatens to take someone down if he is voted out.",
+    "question": "Pu Yu (No. 6) claims during his speech that he is the Hunter (Hunter) and threatens to take someone down if he is voted out.",
     "options": {
       "True": "True",
       "False": "False"
@@ -51408,7 +51408,7 @@
     "unit_size": 2,
     "direction": null,
     "question_type": "true_false",
-    "question": "Pu Yu (6号) claims during his speech that he is the Witch (女巫) and has already used his poison.",
+    "question": "Pu Yu (No. 6) claims during his speech that he is the Witch (Witch) and has already used his poison.",
     "options": {
       "True": "True",
       "False": "False"

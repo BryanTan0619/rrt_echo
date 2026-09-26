@@ -22,6 +22,8 @@ The earlier count of 2,810 questions assumed 141 R0 pairs. The current R0 source
 | R6 | 574 | 266 | 42 | 308 |
 | R7 | 252 | 107 | 38 | 145 |
 
+All questions and options are in English. Chinese names use consistent romanization; Chinese on-screen labels are rendered as English translations. This text-only normalization preserves answer keys, question IDs, and pair membership. Previously collected predictions should be identified as using the pre-normalization text.
+
 ## Fields and Evaluation
 
 `question_id` is a stable question identifier, `video_id` identifies the video, and `binding_type` takes values R0–R7. For multiple-choice questions, `options` uses keys A–D and `answer` is the correct letter. For true/false questions, option keys and answers are the strings `True` and `False`.

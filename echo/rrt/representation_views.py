@@ -7,7 +7,7 @@ from .event_content import attach_coobserved_attributes
 
 
 def neutralize_ids(graph):
-    """Same pre-processing for every variant; no occurrence IDs in prefixes."""
+    """Replace occurrence-specific ID prefixes with neutral content hashes."""
     prefixes=('video:','entity:','identity:','association:','coobserved:','name-binding:','name-mention:')
     mapping={}
     def collect(x):

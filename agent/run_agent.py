@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Answer BindScope questions with the tool-calling agent over one memory variant.
+"""Answer BindScope questions with the ECHO agent over the ECHO memory.
 
     export OPENAI_BASE_URL=... OPENAI_API_KEY=...   # any OpenAI-compatible chat endpoint with function calling
-    python -m agent.run_agent --memory memory/full --out runs/full [--model deepseek-v4-flash] \
+    python -m agent.run_agent --memory memory --out runs/echo [--model deepseek-v4-flash] \\
         [--extra-body '{"thinking": {"type": "disabled"}}'] [--videos ID ...] [--workers 8]
 
 <memory>/<video_id>/hypergraph.json is produced by scripts/build_memory.py. Every question gets one JSON
 file (full dialogue, every tool call and its output, answer); runs resume. predictions.jsonl and
-summary.json are written at the end. --arm blind answers from the question text alone.
+summary.json are written at the end.
 """
 
 import argparse
@@ -76,28 +76,8 @@ def call_tool(M, name, args):
         return f"tool error: {type(e).__name__}: {e}"
 
 
-def run_one(M, q, arm, model, max_steps, cl, prompt):
+def run_one(M, q, model, max_steps, cl, prompt):
     qtext = q["question"] + ("\n(Answer True or False.)" if q["question_type"] != "MCQ" else "")
-    if arm == "blind":
-        msgs = [
-            {
-                "role": "system",
-                "content": "Answer the multiple-choice or true/false question about a video you have NOT seen and have no information about. "
-                'Use only the question text and commonsense. Reply with JSON {"answer": <letter or True/False>, "confidence": 0-1, "reasoning": "..."}.',
-            },
-            {"role": "user", "content": qtext},
-        ]
-        r = chat(cl, model=model, messages=msgs)
-        txt = r.choices[0].message.content or ""
-        m = re.search(r'"answer"\s*:\s*"?([A-D]|True|False)', txt)
-        return {
-            "answer": normalize_answer(m.group(1) if m else txt.strip()[:5], q),
-            "raw": txt,
-            "steps": 1,
-            "tool_calls": 0,
-            "usage": [r.usage.prompt_tokens, r.usage.completion_tokens],
-            "trace": [],
-        }
     valid = {"True", "False"} if q["question_type"] != "MCQ" else {"A", "B", "C", "D"}
     msgs = [
         {"role": "system", "content": prompt + "\n\n" + video_card(M)},
@@ -224,11 +204,10 @@ def agent_question(q):
 def main():
     global EXTRA_BODY
     ap = argparse.ArgumentParser()
-    ap.add_argument("--memory", required=True, help="directory with <video_id>/hypergraph.json")
+    ap.add_argument("--memory", default=str(ROOT / "memory"), help="directory with <video_id>/hypergraph.json")
     ap.add_argument("--questions", default=str(ROOT / "data/bindscope.jsonl"))
     ap.add_argument("--videos", nargs="*", help="default: every video that has a memory file")
-    ap.add_argument("--out", required=True)
-    ap.add_argument("--arm", choices=["agent", "blind"], default="agent")
+    ap.add_argument("--out", default=str(ROOT / "runs/echo"))
     ap.add_argument("--model", default=os.environ.get("OPENAI_MODEL", "deepseek-v4-flash"))
     ap.add_argument("--extra-body", default=None, help="JSON merged into every chat request")
     ap.add_argument("--prompt", default=str(HERE / "system_prompt.md"))
@@ -244,7 +223,7 @@ def main():
     Q = [agent_question(json.loads(line)) for line in open(a.questions) if line.strip()]
     root = Path(a.memory)
     videos = a.videos or sorted({q["video_id"] for q in Q if (root / q["video_id"] / "hypergraph.json").exists()})
-    mems = {v: Memory(root / v, a.cache) for v in videos} if a.arm == "agent" else {}
+    mems = {v: Memory(root / v, a.cache) for v in videos}
     todo = [q for q in Q if q["video_id"] in set(videos)]
     cl = OpenAI(api_key=os.environ["OPENAI_API_KEY"], base_url=os.environ.get("OPENAI_BASE_URL"), timeout=180)
     lock = threading.Lock()
@@ -255,7 +234,7 @@ def main():
             return json.loads(f.read_text())
         t = time.time()
         try:
-            res = run_one(mems.get(q["video_id"]), q, a.arm, a.model, a.max_steps, cl, prompt)
+            res = run_one(mems[q["video_id"]], q, a.model, a.max_steps, cl, prompt)
         except Exception as e:  # noqa: BLE001
             res = {"answer": "", "error": f"{type(e).__name__}: {e}", "trace": []}
         res.update(question_id=q["question_id"], video_id=q["video_id"], binding_type=q["binding_type"],
@@ -275,7 +254,7 @@ def main():
     for r in results:
         by_type[r["binding_type"]][0] += r["correct"]
         by_type[r["binding_type"]][1] += 1
-    summ = {"arm": a.arm, "model": a.model, "n": len(results), "correct": sum(r["correct"] for r in results),
+    summ = {"model": a.model, "n": len(results), "correct": sum(r["correct"] for r in results),
             "by_type": dict(sorted(by_type.items())), "errors": [r["question_id"] for r in results if r.get("error")]}
     (out / "summary.json").write_text(json.dumps(summ, indent=1))
     print(json.dumps(summ, indent=1))

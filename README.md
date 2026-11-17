@@ -1,28 +1,25 @@
-# ECHO: binding-aware memory for long-video QA
+# ECHO: binding-preserving memory for long-video QA
 
-Code and data for the BindScope benchmark and the controlled memory study (RQ3).
-Perception is held fixed. Every memory variant is built **forward** from the same cached
-observations: VLM window observations, cross-window identity records, and ASR. A single
-tool-calling agent then answers the questions over that memory.
+ECHO stores what a video shows as a temporal evidence hypergraph: every observed event is one
+hyperedge that keeps its participants, their roles, the attributes observed with them, and the
+time, while identities are linked across windows only through accepted identity decisions. At
+query time a tool-calling agent searches this memory with explicit scopes (time, entity, keyword,
+window), and every hit comes back with its whole binding unit.
+
+This repository contains the memory construction, the agent, the BindScope benchmark, and cached
+observations for one example video.
 
 ```
 data/
-  bindscope.jsonl                  BindScope: 3,070 questions = 1,535 paired units, 77 videos
-  example/<video_id>/observations.json   cached observations for one video (smoke test)
-echo/                              memory construction (CPU, standard library only)
-  variants.py                      the 12 memory variants of the study (entry point)
-  rrt/ledger.py                    observation ledger -> normalised facts, identities, hypergraph
-  rrt/memory.py, rrt/hypergraph.py identity admission and the temporal evidence hypergraph
-  rrt/event_content.py             co-observation hyperedges (event + co-observed attributes)
-  rrt/audio.py                     attaches ASR utterances to the memory
-  rrt/representations.py           identity-merge removal, pairwise roles, triple documents
-agent/                             tool-calling QA agent (one `search` tool + `submit_answer`)
-scripts/
-  build_memory.py                  observations -> memory/<variant>/<video_id>/hypergraph.json
-  evaluate.py                      QAcc / PairAcc / BIR, per-type tables, video bootstrap, Holm
-results/
-  predictions/<variant>.jsonl      our per-question answers for every variant
-  pair_kind.json                   pair construction type per unit (complementary / paraphrase / tf_minimal)
+  bindscope.jsonl                          BindScope: 3,070 questions = 1,535 paired units, 77 videos
+  example/<video_id>/observations.json     cached observations for one video
+echo/                                      memory construction (CPU, standard library only)
+  rrt/ledger.py                            observations -> ECHO memory (entry point: build_memory)
+  rrt/memory.py, rrt/hypergraph.py         identity admission and the temporal evidence hypergraph
+  rrt/event_content.py                     co-observation hyperedges (event + co-observed attributes)
+  rrt/audio.py                             attaches ASR utterances to the memory
+agent/                                     tool-calling agent: one `search` tool + `submit_answer`
+scripts/build_memory.py                    data/example -> memory/<video_id>/hypergraph.json
 ```
 
 ## Setup
@@ -32,62 +29,38 @@ python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Python 3.10 or later. Memory construction and evaluation run offline on CPU. The agent needs an
-OpenAI-compatible chat endpoint with function calling. Retrieval embeddings
-(all-MiniLM-L6-v2, ONNX) are computed locally. They are downloaded from the Hugging Face Hub on
-first use; set `EMBED_MODEL_DIR` to use a local copy.
+Python 3.10 or later. Memory construction runs offline on CPU. The agent needs an OpenAI-compatible
+chat endpoint with function calling. Retrieval embeddings (all-MiniLM-L6-v2, ONNX) are computed
+locally. They are downloaded from the Hugging Face Hub on first use; set `EMBED_MODEL_DIR` to use a
+local copy.
 
-## 1. Reproduce the tables from our predictions
-
-```bash
-python scripts/evaluate.py results/predictions                       # all variants vs. full (ECHO)
-python scripts/evaluate.py results/predictions --subset complementary
-python scripts/evaluate.py results/predictions --latex                # rows in the paper's table layout
-```
-
-The denominator is fixed to all 1,535 paired units: a missing answer counts as wrong. Differences are
-bootstrapped over videos (10,000 resamples). Holm correction runs over the files you pass, so pass
-only the variants of one table to reproduce that table's adjusted p-values.
-
-## 2. Build the memories
+## Build the memory
 
 ```bash
 python scripts/build_memory.py --observations data/example --out memory
 ```
 
-| variant | memory | paper name |
-|---|---|---|
-| `full` | ECHO hypergraph | ECHO |
-| `binary` | binary graph: events split into pairwise links; attributes, states, text as separate links | Binary graph |
-| `triple` | LightRAG-style triples, repeated occurrences merged | Triple |
-| `flat` | template captions, one passage per observation window | Flat text |
-| `no_identity` | hypergraph without cross-window identity merges | w/o identity merging |
-| `no_temporal` | hypergraph with no time | w/o temporal scope |
-| `no_identity_no_temporal` | both | w/o identity & temporal |
-| `full_30s`, `binary_30s` | the same memories on a 30-s clock | (30 s) |
-| `binary_untimed`, `triple_untimed`, `flat_untimed` | the same memories with no time | (untimed) |
+Each `observations.json` holds the cached perception of one video: VLM observations per window, the
+cross-window identity journal, and ASR utterances. The observations for all 77 videos are
+distributed separately; place each at `<dir>/<video_id>/observations.json` and pass
+`--observations <dir>`.
 
-The full set of cached observations (77 videos) is distributed separately. Put each video at
-`<dir>/<video_id>/observations.json` and pass `--observations <dir>`.
-
-## 3. Run the agent
+## Answer questions
 
 ```bash
 export OPENAI_BASE_URL=<endpoint>  OPENAI_API_KEY=<key>
-python -m agent.run_agent --memory memory/full --out runs/full \
+python -m agent.run_agent --memory memory --out runs/echo \
     --model <model name> --extra-body '{"thinking": {"type": "disabled"}}'
-python scripts/evaluate.py runs/full/predictions.jsonl runs/binary/predictions.jsonl --videos <video_id ...>
 ```
 
-Our runs used DeepSeek-V4-Flash with thinking disabled, at most 40 agent steps per question, and
-the same prompt, tools and embedding model for every variant. `--extra-body` passes
-provider-specific options through unchanged. Each question writes one JSON file with the full
-dialogue and every tool call; interrupted runs resume. `--arm blind` answers from the question text
-alone.
+We used DeepSeek-V4-Flash with thinking disabled and at most 40 agent steps per question.
+`--extra-body` passes provider-specific options through unchanged. Each question writes one JSON
+file with the full dialogue and every tool call; interrupted runs resume. `predictions.jsonl` lists
+`question_id`, `answer`, `gold`, and `correct` for every question.
 
-## BindScope format
+## BindScope
 
 One question per line: `question_id`, `video_id`, `unit_id` (two questions per paired unit),
 `binding_type` (R0–R7), `question_type` (`multiple_choice` or `true_false`), `question`, `options`
-(A–D or True/False), and `answer`. A unit is correct when both of its questions are correct (PairAcc).
-BIR is the share of units with exactly one correct probe among units with at least one.
+(A–D or True/False), and `answer`. A unit counts as correct when both of its questions are correct
+(PairAcc). BIR is the share of units with exactly one correct question among units with at least one.

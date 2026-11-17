@@ -1,32 +1,6 @@
-# Local experiments, datasets and archived implementations
-/outputs/
-/local_archive/
-/data/
-/models/
-/checkpoints/
-# Python/build/tool caches
 __pycache__/
-*.py[cod]
-.pytest_cache/
-.ruff_cache/
+*.pyc
 .venv/
-venv/
-*.egg-info/
-build/
-dist/
-.coverage
-htmlcov/
-# Credentials and machine-specific configuration
-.env
-.env.*
-!.env.example
-*.pem
-*.key
-*.log
-.DS_Store
-# Visualization viewer experiment artifacts (data.json embeds cropped avatars, segment.* is transcoded video)
-# Exception: runs/demo-* ships with the repo (example data), index.json is the run list
-visualization/hypergraph_viewer/runs/*
-!visualization/hypergraph_viewer/runs/index.json
-!visualization/hypergraph_viewer/runs/demo-*/
-visualization/hypergraph_viewer/runs/demo-*/segment.*
+.cache/
+memory/
+runs/

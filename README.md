@@ -1,216 +1,93 @@
-# RRT–ECHO
+# ECHO: binding-aware memory for long-video QA
 
-Build a traceable event memory from a long video, then answer questions with binding-constrained
-retrieval over that memory.
+Code and data for the BindScope benchmark and the controlled memory study (RQ3).
+Perception is held fixed. Every memory variant is built **forward** from the same cached
+observations: VLM window observations, cross-window identity records, and ASR. A single
+tool-calling agent then answers the questions over that memory.
 
-This is the **base implementation**, running the default `simple` pipeline. RRT extracts local
-events and entity correspondences; ECHO stores joint facts, evidence, and revisable identity
-interpretations. Answering and evidence support are scored separately; a successful build is not
-video semantic acceptance.
-
-The method is grounded in one idea: long-video hallucination is a **binding error** — either
-binding to nothing (out-video: asserting content that never appeared) or binding to the wrong
-thing (in-video: mis-associating content that did appear). The temporal hypergraph suppresses
-both **by construction**: a fact only enters the graph when its participants, roles, time, and
-state are jointly observed and correctly bound, and answering reads only the scoped subgraph for
-the query. The in-video failures split into seven atomic modes: R1 predicate–event leakage,
-R2 participant–event leakage, R3 role permutation, R4 entity continuity failure, R5 state–version
-leakage, R6 attribute–owner leakage, and R7 event–relation corruption.
-
-## 1. Method and code
-
-```text
-MP4 ──→ frame sampling & contiguous segments ──→ RRT joint observation ──→ budgeted entity correspondence
-         ↑ ASR text                                  ↓
-                                          ECHO observation ledger & binding acceptance
-                                                              ↓
-                                                      hypergraph.json
-                                                              ↓
-                              scoped retrieval → QA → independent in-graph support audit
+```
+data/
+  bindscope.jsonl                  BindScope: 3,070 questions = 1,535 paired units, 77 videos
+  example/<video_id>/observations.json   cached observations for one video (smoke test)
+echo/                              memory construction (CPU, standard library only)
+  variants.py                      the 12 memory variants of the study (entry point)
+  rrt/ledger.py                    observation ledger -> normalised facts, identities, hypergraph
+  rrt/memory.py, rrt/hypergraph.py identity admission and the temporal evidence hypergraph
+  rrt/event_content.py             co-observation hyperedges (event + co-observed attributes)
+  rrt/audio.py                     attaches ASR utterances to the memory
+  rrt/representations.py           identity-merge removal, pairwise roles, triple documents
+agent/                             tool-calling QA agent (one `search` tool + `submit_answer`)
+scripts/
+  build_memory.py                  observations -> memory/<variant>/<video_id>/hypergraph.json
+  evaluate.py                      QAcc / PairAcc / BIR, per-type tables, video bootstrap, Holm
+results/
+  predictions/<variant>.jsonl      our per-question answers for every variant
+  pair_kind.json                   pair construction type per unit (complementary / paraphrase / tf_minimal)
 ```
 
-| Module | Responsibility | Main code (`src/rrt_echo/`) |
+## Setup
+
+```bash
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+Python 3.10 or later. Memory construction and evaluation run offline on CPU. The agent needs an
+OpenAI-compatible chat endpoint with function calling. Retrieval embeddings
+(all-MiniLM-L6-v2, ONNX) are computed locally. They are downloaded from the Hugging Face Hub on
+first use; set `EMBED_MODEL_DIR` to use a local copy.
+
+## 1. Reproduce the tables from our predictions
+
+```bash
+python scripts/evaluate.py results/predictions                       # all variants vs. full (ECHO)
+python scripts/evaluate.py results/predictions --subset complementary
+python scripts/evaluate.py results/predictions --latex                # rows in the paper's table layout
+```
+
+The denominator is fixed to all 1,535 paired units: a missing answer counts as wrong. Differences are
+bootstrapped over videos (10,000 resamples). Holm correction runs over the files you pass, so pass
+only the variants of one table to reproduce that table's adjusted p-values.
+
+## 2. Build the memories
+
+```bash
+python scripts/build_memory.py --observations data/example --out memory
+```
+
+| variant | memory | paper name |
 |---|---|---|
-| RRT | Per-segment joint extraction of people/objects/regions, event roles, text, time, and source frames; compares `continues`, `same_identity`, `part_of` | `rrt/pipeline.py`, `rrt/observation.py`, `rrt/association.py` |
-| ECHO | Appends raw observations; validates ownership and identity conflicts; produces the hypergraph and entity registry | `rrt/memory.py`, `rrt/hypergraph.py`, `perception/graph.py` |
-| Retrieval | Retrieves whole facts by question and time, completing identity, ownership, and evidence dependencies | `retrieval.py`, `rrt/binding_scope.py`, `rrt/reader.py:payload_for` |
-| QA | Reads only the graph, never the video; forces an answer, then audits its support separately | `rrt/reader.py`, `evaluation.py` |
-| Audio | Timestamped ASR and anonymous voice clusters; unresolved speakers stay unresolved | `rrt/audio.py`, `rrt/multimodal.py` |
+| `full` | ECHO hypergraph | ECHO |
+| `binary` | binary graph: events split into pairwise links; attributes, states, text as separate links | Binary graph |
+| `triple` | LightRAG-style triples, repeated occurrences merged | Triple |
+| `flat` | template captions, one passage per observation window | Flat text |
+| `no_identity` | hypergraph without cross-window identity merges | w/o identity merging |
+| `no_temporal` | hypergraph with no time | w/o temporal scope |
+| `no_identity_no_temporal` | both | w/o identity & temporal |
+| `full_30s`, `binary_30s` | the same memories on a 30-s clock | (30 s) |
+| `binary_untimed`, `triple_untimed`, `flat_untimed` | the same memories with no time | (untimed) |
 
-`schema.py`, `memory.py`, `identity.py`, `storage.py` are the shared graph-storage base;
-`perception/` keeps the sampling, validation, and model adapters the main pipeline depends on.
-Use the entry points below. Historical experiments and old reports are not shipped with this
-repository.
+The full set of cached observations (77 videos) is distributed separately. Put each video at
+`<dir>/<video_id>/observations.json` and pass `--observations <dir>`.
 
-### What the hypergraph stores
-
-Local facts keep their role endpoints separate from the global identity interpretation. A writing
-event stores `writer=p1, instrument=pen1, surface=arm1`; a text observation stores `owner=arm1,
-value="18 km"` with `part_of(arm1,p1)` explaining the body ownership. Cross-segment
-`same_identity(p1,p7)` explains them as one entity.
-
-Roles, time, regions, and evidence of the same event are retrieved together; facts are never
-stitched into a new event from text co-occurrence alone. Text and action sharing a carrier and
-frames may form a co-observed attribute bundle, but this does not prove the text was written by
-that action. Identity revisions never overwrite the original local endpoints.
-
-## 2. Install
-
-Python 3.11+, from the repository root:
+## 3. Run the agent
 
 ```bash
-git clone https://github.com/BryanTan0619/rrt_echo.git
-cd rrt_echo
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install -e '.[dev,perception]'
-pytest -q
+export OPENAI_BASE_URL=<endpoint>  OPENAI_API_KEY=<key>
+python -m agent.run_agent --memory memory/full --out runs/full \
+    --model <model name> --extra-body '{"thinking": {"type": "disabled"}}'
+python scripts/evaluate.py runs/full/predictions.jsonl runs/binary/predictions.jsonl --videos <video_id ...>
 ```
 
-The graph storage and retrieval core has no third-party runtime dependency; the video pipeline
-uses PyAV, Pillow, NumPy, and JSON Schema. The VLM service is deployed separately; this
-repository ships no model weights, videos, or QA data.
+Our runs used DeepSeek-V4-Flash with thinking disabled, at most 40 agent steps per question, and
+the same prompt, tools and embedding model for every variant. `--extra-body` passes
+provider-specific options through unchanged. Each question writes one JSON file with the full
+dialogue and every tool call; interrupted runs resume. `--arm blind` answers from the question text
+alone.
 
-## 3. Build a graph from an MP4
+## BindScope format
 
-Prepare an OpenAI-compatible VLM service with image input and JSON output. The example uses image
-mode explicitly; the server does not need this project's video transport extension installed.
-
-```bash
-export RRT_VLM_BASE_URL=http://127.0.0.1:8001/v1
-export RRT_VLM_MODEL=your-vision-model
-# if the service requires auth: export RRT_VLM_API_KEY=...
-
-rrt-echo-offline \
-  --video /path/to/video.mp4 \
-  --source-video-id video01 \
-  --out outputs/video01 \
-  --profile simple --mode images \
-  --model "$RRT_VLM_MODEL" --base-url "$RRT_VLM_BASE_URL" \
-  --sample-fps 2 --local-seconds 12 \
-  --processor-max-pixels 401408 \
-  --max-local-calls 100 --max-identity-batches 24 \
-  --association-workers 2 --max-tokens 4096 --timeout 120 --budget 3600
-```
-
-The output directory must not exist. `source-video-id` must match the `video_id` in the QA data.
-Budget and call caps may cause partial coverage; check `report.json`, `coverage.json`,
-`failures.json`, and do not treat `DONE.json` as a quality pass. The timeout budget is not a hard
-kill guarantee for the remote model service.
-
-The default `simple` profile does not enable the global story index, multi-round local repair, or
-extra speaker audiovisual verification; it still performs local joint observation and budgeted
-correspondence comparison. `--profile legacy` keeps part of the multi-stage experimental ability
-and is not the base usage path.
-
-```text
-outputs/video01/
-  ledger/observations.jsonl   # canonical: appended observations, bindings/revocations, audio, revisions
-  hypergraph.json             # full snapshot used by QA, with snapshot_id
-  entity_registry.json        # rebuildable entity registry; isolated instances stay unresolved
-  storyline.json              # a time-ordered fact view, not a newly generated story
-  facts.jsonl, bindings.jsonl # derived exports, not a second independent fact source
-  view_manifest.json
-  coverage.json, report.json, failures.json, request_inventory.json
-  ...                         # source frames, request/response and diagnostic artifacts
-```
-
-## 4. Inspect retrieval, then run QA
-
-First export the same scoped retrieval payload QA uses, without calling the model:
-
-```bash
-python tools/inspect_memory.py \
-  --graph outputs/video01/hypergraph.json \
-  --question 'Who is carrying the child near the end?' \
-  --out outputs/video01_inspect
-```
-
-Retrieval uses term weighting, question time ranges, and full fact closure — no vector database.
-A multiple-choice question's options can be retrieved as separate hypotheses but never become
-facts. Results include event roles, identity chains, ownership chains, evidence IDs, and gaps;
-unresolved endpoints stay unresolved.
-
-Prepare a JSONL, one question per line:
-
-```json
-{"question_id":"q1","video_id":"video01","hallucination_type":"R2","question":"Who carries the child?","options":{"A":"The adult in the plaid shirt","B":"The woman in white"},"ans":"A"}
-```
-
-The example only shows the format; use your own video's questions and annotations. It supports an
-`options` dict, `A) ...` options inline in the stem, and `question_type="True/False"`.
-`hallucination_type` is used for grouped statistics and does not control the build; `ans` is used
-only for scoring and is never sent to the model.
-
-```bash
-rrt-echo-qa \
-  --graph outputs/video01/hypergraph.json \
-  --questions /path/to/questions.jsonl \
-  --acceptance outputs/video01_inspect/acceptance.json \
-  --diagnostic --out outputs/video01_qa \
-  --model "$RRT_VLM_MODEL" --base-url "$RRT_VLM_BASE_URL" \
-  --workers 2
-```
-
-The acceptance produced by the inspect tool is explicitly `passed=false`, so `--diagnostic` is
-used here. A real `passed=true` record can only be provided after video acceptance of the
-corresponding snapshot; do not flip it just to run QA.
-
-Each question normally costs two model calls: one answer, one in-graph audit. The reader receives
-only the textual representation of the retrieved graph and its evidence references — no images,
-raw video, captions, or gold answers.
-
-- `summary.json`: accuracy, execution failures, per-R-type statistics, in-graph support distribution.
-- `results.json`: per-question answers, the actual reader payload, assertion audit, and gaps.
-- `calls.json` / `question_calls/`: call latency and token usage.
-- `manifest.json`: frozen snapshot, model, access scope, and diagnostic mode.
-
-Under forced answering, an option is chosen even when the evidence is insufficient.
-`correct_with_support` stays `null` without an independent media audit; QA accuracy cannot
-substitute for binding acceptance.
-
-## 5. Rebuild, visualize, and no-GPU example
-
-```bash
-# rebuild from the ledger without re-calling the model; the original ledger stays in its source dir
-python tools/rebuild_simple_memory.py \
-  --ledger outputs/video01/ledger --out outputs/video01_rebuilt
-
-# HTML of text, carriers, and cited source frames; source frames must be reachable
-python tools/render_text_evidence.py \
-  --graph outputs/video01/hypergraph.json --out outputs/video01_text
-python -m http.server 8767 --directory outputs
-```
-
-After moving source frames across machines, pass `--path-map /old/prefix=/new/prefix` to the text
-viewer. For the full QA retrieval payload, use `tools/inspect_memory.py`.
-
-The interactive hypergraph viewer lives in [`visualization/`](visualization/README.md): it renders
-the events, participants, and role bindings over time and traces a QA run back onto the graph.
-
-## 6. ASR (audio modality)
-
-The audio modality is part of RRT's multimodal extraction: ASR transcribes the soundtrack into
-timestamped text and ERes2NetV2 forms anonymous voice clusters. It requires the M3-Agent code and
-local Whisper/ERes2NetV2 weights:
-
-```bash
-python -m pip install -e '.[audio]'
-rrt-echo-audio --video /path/to/video.mp4 \
-  --m3-root /path/to/m3-agent --device cuda --out outputs/video01_audio
-```
-
-Append `--audio-observations outputs/video01_audio/audio.json` to the build command. The visual
-model sees time-aligned ASR text; image mode does not listen to audio directly. Voice clusters
-are anonymous hypotheses, not automatically visible people; ASR content does not automatically
-become world facts.
-
-## 7. Current boundaries
-
-This base has been run end-to-end on one full development video: 45 windows, 349 facts, QA 20/28.
-That is not a cross-video generalization metric. OCR, person region/type, cross-shot identity, and
-action-initiator roles still have errors; conflict constraints can block wrong merges and can
-also cause identity fragmentation.
-
-Videos, models, credentials, experiment outputs, and local history archives do not enter Git.
-This is an internal research base; no open-source license is declared.
+One question per line: `question_id`, `video_id`, `unit_id` (two questions per paired unit),
+`binding_type` (R0–R7), `question_type` (`multiple_choice` or `true_false`), `question`, `options`
+(A–D or True/False), and `answer`. A unit is correct when both of its questions are correct (PairAcc).
+BIR is the share of units with exactly one correct probe among units with at least one.
